@@ -8,8 +8,8 @@ import firebase from 'firebase'
 export default function personalFoodCard ({navigation}){
     const prefVar=PreferVar()
     const getpath=()=>{
-        const getFood=()=>{
-            const prefer =prefVar["food"]
+    const getFood=()=>{
+    const prefer =prefVar["food"]
             let arr = [];
                 for (let key in prefer) {
                     if (prefer[key]) arr.push(key);
@@ -47,8 +47,8 @@ export default function personalFoodCard ({navigation}){
     const [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
         useEffect(()=>{
             
-                    const interval = setInterval(() => {
-                    fire.database().ref().child(getpath())
+                    const interval = setInterval(async() => {
+                     await fire.database().ref().child(getpath())
                         .once("value",
                     (snapshot)=>{
                         let item=snapshot.val()
@@ -76,8 +76,8 @@ export default function personalFoodCard ({navigation}){
             },[prefVar]);
         useEffect(()=>{
             
-            const interval = setInterval(() => {
-                    fire.database().ref().child(getpath())
+            const interval = setInterval(async() => {
+                   await fire.database().ref().child(getpath())
                         .once("value",
                     (snapshot)=>{
                         let item=snapshot.val()
@@ -94,9 +94,7 @@ export default function personalFoodCard ({navigation}){
                    {      
                         firebase.storage().ref('/food/'+item.food_pic).getDownloadURL().then(data=>setUrl2(data))
                         clearInterval(interval)
-                       
-                   }
-                   
+                   } 
                   })
                 }, 100)
               
@@ -106,8 +104,8 @@ export default function personalFoodCard ({navigation}){
         useEffect(()=>{
             
         
-        const interval = setInterval(() => {
-                fire.database().ref().child(getpath())
+        const interval = setInterval(async() => {
+               await fire.database().ref().child(getpath())
                     .once("value",
                 (snapshot)=>{
                     let item=snapshot.val()
