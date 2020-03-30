@@ -1,8 +1,10 @@
 import React, { useState,useEffect} from 'react'
 import {Alert,AsyncStorage} from 'react-native'
-import {Text,Container,Content,Body,CheckBox,ListItem, Button,Separator} from 'native-base';
+import {Text,Container,Content,Body,CheckBox,ListItem, Button,Separator, Header, View} from 'native-base';
 import fire from '../fire'
 import PreferVar from './preferVar'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
 
 export default function preference({navigation}) {
     const[pass,setPass]=useState(false)
@@ -55,85 +57,94 @@ export default function preference({navigation}) {
      
 
         return(
-            <Container style={{ justifyContent:'center',flexDirection:'row'}}>
+            <Container style={{ justifyContent:'center',backgroundColor:'black',paddingTop:24}}>
+              {/* <View style={{}}>
+              <Header transparent />
+
+              </View> */}
                 <Content>
                     <Content>
                       <Separator bordered>
-                        <Text style={{fontSize:12}}>Food Preference</Text>
+                        <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                        <Text style={{fontSize:24}}>Food Preference</Text>
+                        </View>
                         </Separator>
-                    <ListItem>
-                        <CheckBox checked={prefer.food_deter.veg} 
-                        onPress={()=>{
+                        <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food_deter:{
                             ...prevPrefer.food_deter,veg:!prefer.food_deter.veg
                           }
                           }))
                         if(prefer.food_deter.veg){setFoodDet(foodDet-1)} else {setFoodDet(foodDet+1)}
-                        }}/>
+                        }}>
+                    <ListItem> 
+                        <CheckBox checked={prefer.food_deter.veg}/>
                         <Body>
-                            <Text style={{fontWeight:'bold'}}>Veg</Text>
+                            <Text style={{fontWeight:'bold' ,color:'#ffffff'}}>Veg</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food_deter.nonveg} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{
                         setPrefer((prevPrefer)=>({...prevPrefer,
                       food_deter:{
                         ...prevPrefer.food_deter,nonveg:!prefer.food_deter.nonveg
                       }
                       }))
                         if(prefer.food_deter.nonveg){setFoodDet(foodDet-1)} else {setFoodDet(foodDet+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food_deter.nonveg}/>
                         <Body>
-                            <Text style={{fontWeight:'bold'}}>Non-Veg</Text>
+                            <Text style={{fontWeight:'bold' ,color:'#ffffff'}}>Non-Veg</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food_type.drinks} 
-                         onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food_type:{
                             ...prevPrefer.food_type,drinks:!prefer.food_type.drinks
                           }
                           }))
                         if(prefer.food_type.drinks){setFoodClass(foodClass-1)} else {setFoodClass(foodClass+1)}
-                        }} />
+                        }} >
+                    <ListItem>
+                        <CheckBox checked={prefer.food_type.drinks} />
                         <Body>
-                            <Text>Drinks</Text>
+                            <Text style={{color:'#ffffff'}}>Drinks</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food_type.snacks} 
-                        onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food_type:{
                             ...prevPrefer.food_type,snacks:!prefer.food_type.snacks
                           }
                           }))
                         if(prefer.food_type.snacks){setFoodClass(foodClass-1)} else {setFoodClass(foodClass+1)}
-                        }} />
+                        }} >
+                    <ListItem>
+                        <CheckBox checked={prefer.food_type.snacks} />
                         <Body>
-                            <Text>Snacks</Text>
+                            <Text style={{color:'#ffffff'}}>Snacks</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food_type.maincourse} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{
                         setPrefer((prevPrefer)=>({...prevPrefer,
                       food_type:{
                         ...prevPrefer.food_type,maincourse:!prefer.food_type.maincourse
                       }
                       }))
                         if(prefer.food_type.maincourse){setFoodClass(foodClass-1)} else {setFoodClass(foodClass+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food_type.maincourse} />
                         <Body>
-                            <Text>MainCourse</Text>
+                            <Text style={{color:'#ffffff'}}>MainCourse</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food_type.dessert} 
-                        onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food_type:{
                             ...prevPrefer.food_type,dessert:!prefer.food_type.dessert
@@ -141,458 +152,510 @@ export default function preference({navigation}) {
                           }))
                           
                         if(prefer.food_type.dessert){setFoodClass(foodClass-1)} else {setFoodClass(foodClass+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food_type.dessert} />
                         <Body>
-                            <Text>Dessert</Text>
+                            <Text style={{color:'#ffffff'}}>Dessert</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food.indian} 
-                         onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food:{
                             ...prevPrefer.food,indian:!prefer.food.indian,
                           }
                           }))
                         if(prefer.food.indian){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food.indian} />
                         <Body>
-                            <Text>Indian</Text>
+                            <Text style={{color:'#ffffff'}}>Indian</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food.british} 
-                         onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food:{
                             ...prevPrefer.food,british:!prefer.food.british,
                           }
                           }))
                         if(prefer.food.british){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food.british} />
                         <Body>
-                            <Text>British</Text>
+                            <Text  style={{color:'#ffffff'}}>British</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food.american} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{
                         setPrefer((prevPrefer)=>({...prevPrefer,
                       food:{
                         ...prevPrefer.food,american:!prefer.food.american,
                       }
                       }))
                         if(prefer.food.american){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food.american} />
                         <Body>
-                            <Text>American</Text>
+                            <Text style={{color:'#ffffff'}}>American</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>    
-                        <CheckBox checked={prefer.food.spanish} 
-                        onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food:{
                             ...prevPrefer.food,spanish:!prefer.food.spanish,
                           }
                           }))
                         if(prefer.food.spanish){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
-                        }}/>
+                        }}>
+                    <ListItem>    
+                        <CheckBox checked={prefer.food.spanish} />
                         <Body>
-                            <Text>Spanish</Text>
+                            <Text style={{color:'#ffffff'}}>Spanish</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food.chinese} 
-                        onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food:{
                             ...prevPrefer.food,chinese:!prefer.food.chinese,
                           }
                           }))
                         if(prefer.food.chinese){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food.chinese} />
                         <Body>
-                            <Text>Chinese</Text>
+                            <Text style={{color:'#ffffff'}}>Chinese</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                             <CheckBox checked={prefer.food.french} 
-                        onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food:{
                             ...prevPrefer.food,french:!prefer.food.french,
                           }
                           }))
                         if(prefer.food.french){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                             <CheckBox checked={prefer.food.french} />
                         <Body>
-                            <Text>French</Text>
+                            <Text style={{color:'#ffffff'}}>French</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food.mexican} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{
                         setPrefer((prevPrefer)=>({...prevPrefer,
                       food:{
                         ...prevPrefer.food,mexican:!prefer.food.mexican,
                       }
                       }))
                         if(prefer.food.mexican){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food.mexican} />
                         <Body>
-                            <Text>Mexican</Text>
+                            <Text style={{color:'#ffffff'}}>Mexican</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food.japanese} 
-                         onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food:{
                             ...prevPrefer.food,japanese:!prefer.food.japanese,
                           }
                           }))
                         if(prefer.food.japanese){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food.japanese} />
                         <Body>
-                            <Text>Japanese</Text>
+                            <Text style={{color:'#ffffff'}}>Japanese</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
-                        <CheckBox checked={prefer.food.italian} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           food:{
                             ...prevPrefer.food,italian:!prefer.food.italian,
                           }
                           }))
                         if(prefer.food.italian){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
-                        }}/>
+                        }}>
+                    <ListItem>
+                        <CheckBox checked={prefer.food.italian} />
                         <Body>
-                            <Text>Italian</Text>
+                            <Text style={{color:'#ffffff'}}>Italian</Text>
                         </Body>
                     </ListItem>
+                    </TouchableOpacity>
                       <Separator bordered>
-                      <Text style={{fontSize:12}}>App Preferences</Text>
+                        <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                      <Text style={{fontSize:20}}>App Preferences</Text>
+                      </View>
                         </Separator>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.booksandreference} 
-                       onPress={()=>{
+                        <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,booksandreference:!prefer.app_details.booksandreference,
                           }
                           }))
                         if(prefer.app_details.booksandreference){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.booksandreference} />
                         <Body>
-                            <Text>Books Reference</Text>
+                            <Text style={{color:'#ffffff'}}>Book & Reference</Text>
                         </Body>
                     </ListItem>
-                        <ListItem>
-                        <CheckBox checked={prefer.app_details.dating} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,dating:!prefer.app_details.dating,
                           }
                           }))
                         if(prefer.app_details.dating){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                        <ListItem>
+                        <CheckBox checked={prefer.app_details.dating}/>
                         <Body>
-                            <Text>Dating</Text>
+                            <Text style={{color:'#ffffff'}}>Dating</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.education} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,education:!prefer.app_details.education,
                           }
                           }))
                         if(prefer.app_details.education){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.education} />
                         <Body>
-                            <Text>Education</Text>
+                            <Text style={{color:'#ffffff'}}>Education</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.entertainment} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,entertainment:!prefer.app_details.entertainment,
                           }
                           }))
                         if(prefer.app_details.entertainment){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.entertainment} />
                         <Body>
-                            <Text>Entertainment</Text>
+                            <Text style={{color:'#ffffff'}}>Entertainment</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.finance} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,finance:!prefer.app_details.finance,
                           }
                           }))
                         if(prefer.app_details.finance){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.finance} />
                         <Body>
-                            <Text>Finance</Text>
+                            <Text style={{color:'#ffffff'}}>Finance</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.fitness} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,fitness:!prefer.app_details.fitness,
                           }
                           }))
                         if(prefer.app_details.fitness){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.fitness} />
                         <Body>
-                            <Text>Fitness</Text>
+                            <Text style={{color:'#ffffff'}}>Fitness</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.game} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity    onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,game:!prefer.app_details.game,
                           }
                           }))
                         if(prefer.app_details.game){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.game} />
                         <Body>
-                            <Text>Game</Text>
+                            <Text style={{color:'#ffffff'}}>Game</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.lifestyle} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity    onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,lifestyle:!prefer.app_details.lifestyle,
                           }
                           }))
                         if(prefer.app_details.lifestyle){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.lifestyle} />
                         <Body>
-                            <Text>Life Style</Text>
+                            <Text style={{color:'#ffffff'}}>LifeStyle</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.music} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,music:!prefer.app_details.music,
                           }
                           }))
                         if(prefer.app_details.music){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.music} />
                         <Body>
-                            <Text>Music</Text>
+                            <Text style={{color:'#ffffff'}}>Music</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.news} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,news:!prefer.app_details.news,
                           }
                           }))
                         if(prefer.app_details.finance){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.news} />
                         <Body>
-                            <Text>News</Text>
+                            <Text style={{color:'#ffffff'}}>News</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.productivity} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,productivity:!prefer.app_details.productivity,
                           }
                           }))
                         if(prefer.app_details.productivity){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.productivity} />
                         <Body>
-                            <Text>Productivity</Text>
+                            <Text style={{color:'#ffffff'}}>Productivity</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.socialmedia} 
-                       onPress={()=>{
+                    </TouchableOpacity >
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,socialmedia:!prefer.app_details.socialmedia,
                           }
                           }))
                         if(prefer.app_details.socialmedia){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.socialmedia} />
                         <Body>
-                            <Text>Social Media</Text>
+                            <Text style={{color:'#ffffff'}}>Social Media</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.app_details.travel} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{
                             ...prevPrefer.app_details,travel:!prefer.app_details.travel,
                           }
                           }))
                         if(prefer.app_details.travel){setApp(app-1)} else {setApp(app+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.app_details.travel} />
                         <Body>
-                            <Text>Travel</Text>
+                            <Text style={{color:'#ffffff'}}>Travel</Text>
                         </Body>
                     </ListItem>
+                    </TouchableOpacity>
                       <Separator bordered>
-                      <Text style={{fontSize:12}}>Topic Prefrences</Text>
+                      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                      <Text style={{fontSize:20}}>Topic Prefrences</Text>
+                      </View>
                         </Separator>
-                      <ListItem>
-                        <CheckBox checked={prefer.topic_details.architecture} 
-                       onPress={()=>{
+                        <TouchableOpacity  onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
                             ...prevPrefer.topic_details,architecture:!prefer.topic_details.architecture,
                           }
                           }))
                         if(prefer.topic_details.architecture){setTopics(topics-1)} else {setTopics(topics+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.topic_details.architecture} />
                         <Body>
-                            <Text>Architecture</Text>
+                            <Text style={{color:'#ffffff'}}>Architecture</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.topic_details.automobile} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
                             ...prevPrefer.topic_details,automobile:!prefer.topic_details.automobile,
                           }
                           }))
                         if(prefer.topic_details.automobile){setTopics(topics-1)} else {setTopics(topics+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.topic_details.automobile} />
                         <Body>
-                            <Text>Automobile</Text>
+                            <Text style={{color:'#ffffff'}}>Automobile</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.topic_details.aviation} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
                             ...prevPrefer.topic_details,aviation:!prefer.topic_details.aviation,
                           }
                           }))
                         if(prefer.topic_details.aviation){setTopics(topics-1)} else {setTopics(topics+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.topic_details.aviation} />
                         <Body>
-                            <Text>Aviation</Text>
+                            <Text style={{color:'#ffffff'}}>Aviation</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.topic_details.famouspersonality} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
                             ...prevPrefer.topic_details,famouspersonality:!prefer.topic_details.famouspersonality,
                           }
                           }))
                         if(prefer.topic_details.famouspersonality){setTopics(topics-1)} else {setTopics(topics+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.topic_details.famouspersonality} />
                         <Body>
-                            <Text>Famous Personality</Text>
+                            <Text style={{color:'#ffffff'}}>Famous Personality</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.topic_details.food} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
                             ...prevPrefer.topic_details,food:!prefer.topic_details.food,
                           }
                           }))
                         if(prefer.topic_details.food){setTopics(topics-1)} else {setTopics(topics+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.topic_details.food} />
                         <Body>
-                            <Text>Food</Text>
+                            <Text style={{color:'#ffffff'}}>Food</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.topic_details.general} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
                             ...prevPrefer.topic_details,general:!prefer.topic_details.general,
                           }
                           }))
                         if(prefer.topic_details.general){setTopics(topics-1)} else {setTopics(topics+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.topic_details.general} />
                         <Body>
-                            <Text>General</Text>
+                            <Text style={{color:'#ffffff'}}>General</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.topic_details.health} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
                             ...prevPrefer.topic_details,health:!prefer.topic_details.health,
                           }
                           }))
                         if(prefer.topic_details.health){setTopics(topics-1)} else {setTopics(topics+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.topic_details.health} />
                         <Body>
-                            <Text>Health</Text>
+                            <Text style={{color:'#ffffff'}}>Health</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.topic_details.psychology} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
                             ...prevPrefer.topic_details,psychology:!prefer.topic_details.psychology,
                           }
                           }))
                         if(prefer.topic_details.psychology){setTopics(topics-1)} else {setTopics(topics+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.topic_details.psychology} />
                         <Body>
-                            <Text>Psychology</Text>
+                            <Text style={{color:'#ffffff'}}>Psychology</Text>
                         </Body>
                     </ListItem>
-                      <ListItem>
-                        <CheckBox checked={prefer.topic_details.space} 
-                       onPress={()=>{
+                    </TouchableOpacity>
+                    <TouchableOpacity    onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
                             ...prevPrefer.topic_details,space:!prefer.topic_details.space,
                           }
                           }))
                         if(prefer.topic_details.space){setTopics(topics-1)} else {setTopics(topics+1)}
-                        }}/>
+                        }}>
+                      <ListItem>
+                        <CheckBox checked={prefer.topic_details.space} />
                         <Body>
-                            <Text>Space</Text>
+                            <Text style={{color:'#ffffff'}}>Space</Text>
                         </Body>
                     </ListItem>
-                    <Button onPress={()=>{if(check()){navigation.navigate("profileMain")
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                    <Button transparent onPress={()=>{if(check()){navigation.navigate("profileMain")
                                             setPass(true) }}}>
-                        <Text>save</Text>
+                      <View style={{flex:1,flexDirection:'row',justifyContent:'space-around'}}>
+                        <Text style={{color:'#00BFFF'}}>SAVE</Text>
+                        </View>
                     </Button>
+                    </TouchableOpacity>
                     </Content>
                 </Content>
             </Container>
         )
     
 }
+
+ 
+            /*
+            sign out 
+            review this app
+            share this app 
+            send feedback 
+            privacy policy 
+            */
+    

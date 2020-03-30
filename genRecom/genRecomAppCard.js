@@ -24,13 +24,13 @@ export default function genRecomAppCard (){
            await fire.database().ref('/0/general/app/1').once("value",snapshot=>{
                let item=snapshot.val() 
                setCard2(item)
-               firebase.storage().ref('/food/'+item.app_pic).getDownloadURL().then(data=>setUrl2(data))
+               firebase.storage().ref('/App/'+item.app_pic).getDownloadURL().then(data=>setUrl2(data))
                console.log((item.food_pic))
             })
            await fire.database().ref('/0/general/app/2').once("value",snapshot=>{
                 let item=snapshot.val() 
                 setCard3(item)
-                firebase.storage().ref('/food/'+item.app_pic).getDownloadURL().then(data=>setUrl3(data))
+                firebase.storage().ref('/App/'+item.app_pic).getDownloadURL().then(data=>setUrl3(data))
                 console.log((item.food_pic))
              }) ; 
            }

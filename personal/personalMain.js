@@ -3,8 +3,16 @@ import {  StyleSheet,TouchableOpacity,Image } from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 import {BackHandler} from 'react-native'
 import {Alert} from 'react-native';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 export default class personalMain extends Component {
-    componentDidMount() {
+   async componentDidMount() {
+        await Font.loadAsync({
+            Roboto: require('native-base/Fonts/Roboto.ttf'),
+            Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+            ...Ionicons.font,
+          });
+          this.setState({ isReady: true });
         this.handleAndroidBackButton(this.exitAlert)
       }  
     componentWillUnmount() {

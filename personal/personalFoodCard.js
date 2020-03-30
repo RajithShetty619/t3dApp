@@ -64,7 +64,8 @@ export default function personalFoodCard ({navigation}){
                 
                 
                 if(item!==null)
-                { 
+                {        
+                         firebase.storage().ref('/food/'+item.food_pic).getDownloadURL().then(data=>setUrl1(data))
                         clearInterval(interval)
                         
                 }
@@ -91,7 +92,8 @@ export default function personalFoodCard ({navigation}){
                    
                    
                    if(item!==null)
-                   { 
+                   {      
+                        firebase.storage().ref('/food/'+item.food_pic).getDownloadURL().then(data=>setUrl2(data))
                         clearInterval(interval)
                        
                    }
@@ -103,6 +105,7 @@ export default function personalFoodCard ({navigation}){
              },[prefVar]);
 
         useEffect(()=>{
+            
         fire.database().ref()
         const interval = setInterval(() => {
                 fire.database().ref().child(getpath())
@@ -120,25 +123,17 @@ export default function personalFoodCard ({navigation}){
                 
                 
                 if(item!==null)
-                { 
+                {  console.log(item,"item")
+                    firebase.storage().ref('/food/'+item.food_pic).getDownloadURL().then(data=>setUrl3(data))
                     clearInterval(interval)
-                   
                 }
-               
                 })
             }, 100)
+        
             return ()=> clearInterval(interval)
             },[prefVar]);
         
-         useEffect(()=>{firebase.storage().ref('/food/'+card1[5]).getDownloadURL().then(data=>setUrl1(data))},[card1])
-         useEffect(()=>{firebase.storage().ref('/food/'+card2[5]).getDownloadURL().then(data=>setUrl2(data))},[card2])
-         useEffect(()=>{firebase.storage().ref('/food/'+card3[5]).getDownloadURL().then(data=>setUrl3(data))},[card3])
-             
-            //indian snacks nonveg '/0/food/'+getDeter()+'/0/'+getFoodType()+'/0/'+getFood()+'/data/0/
-                                 //'/0/food/nonveg/0/snacks/0/indian/data/0/'
-            //0/food/0/nonveg/0/snacks/0/indian/0/data
-            // nonveg snacks american   firebase.storage().ref('/food/'+card1[5]).getDownloadURL().then(data=>setUrl1(data))
-    
+       
         return(
             <Container>
                 <Content>
@@ -155,20 +150,20 @@ export default function personalFoodCard ({navigation}){
                             </CardItem>
                     </Card>
                     <Card style={{ borderRadius: 8 }}> 
-                            <CardItem style={{ flexdirection:"column",borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                 <Image source={{uri: url2
-                            }} resizeMode="contain" style={{flexDirection:'row',width:400,height:400}}/>  
+                            }} resizeMode="contain" style={{width:400,height:400}}/>  
                                     <Text> {card2[2]}  </Text>
                                     <Text>{card2[3]}</Text>
                                 </Body>                           
                             </CardItem>
                     </Card>
                     <Card style={{ borderRadius: 8 }}> 
-                            <CardItem style={{ flexdirection:"column",borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                 <Image source={{uri: url3
-                            }} resizeMode="contain" style={{flexDirection:'row',width:400,height:400}}/>  
+                            }} resizeMode="contain" style={{width:400,height:400}}/>  
                                     <Text>{card3[2]}</Text>
                                     <Text>{card3[3]}</Text>
                                 </Body>                           
