@@ -40,7 +40,7 @@ export default class personalMain extends Component {
                             </CardItem>
                             <CardItem footer>
                                     <Left> 
-                                     <Text style={{fontHeight:10,fontWeight:'bold'}}>Food</Text>
+                                     <Text style={{fontWeight:'bold'}}>Food</Text>
                                     </Left>
                             </CardItem>
                         </TouchableOpacity>
@@ -55,7 +55,7 @@ export default class personalMain extends Component {
                             </CardItem>
                           <CardItem>
                             	 <Left> 
-                                     <Text style={{fontHeight:10,fontWeight:'bold'}}>App</Text>
+                                     <Text style={{fontWeight:'bold'}}>App</Text>
                                 </Left>
                           </CardItem>
                         </TouchableOpacity>
@@ -70,7 +70,7 @@ export default class personalMain extends Component {
                         </CardItem>
                           <CardItem>
                             	 <Left> 
-                                     <Text style={{fontHeight:10,fontWeight:'bold'}}>Topic</Text>
+                                     <Text style={{fontWeight:'bold'}}>Topic</Text>
                                 </Left>
                           </CardItem>
                         </TouchableOpacity>

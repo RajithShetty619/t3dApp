@@ -1,6 +1,6 @@
 import PreferVar from '../profile/preferVar';
 import React,{useState,useEffect} from 'react'
-import {  StyleSheet,TouchableOpacity,Image,AsyncStorage} from 'react-native'
+import { View, StyleSheet,TouchableOpacity,Image,AsyncStorage} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
@@ -36,7 +36,7 @@ export default function personalFoodCard ({navigation}){
         }   
         let ran =Math.floor(Math.random()*10)
         let path='/0/food/0/'+getDeter()+'/0/'+getFoodType()+'/0/'+getFood()+'/0/data/'+ran
-        console.log(path);
+      
         return path
     }
  
@@ -44,8 +44,8 @@ export default function personalFoodCard ({navigation}){
     let [card2,setCard2]=useState({})
     let [card3,setCard3]=useState({})
     const [url1,setUrl1]=useState('https://goo.gl/2W4iW6')
-    const [url2,setUrl2]=useState({})
-    const [url3,setUrl3]=useState({})
+    const [url2,setUrl2]=useState('https://goo.gl/2W4iW6')
+    const [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
         useEffect(()=>{
             fire.database().ref()
             const interval = setInterval(() => {
@@ -53,7 +53,7 @@ export default function personalFoodCard ({navigation}){
                         .once("value",
                     (snapshot)=>{
                         let item=snapshot.val()
-                        console.log(item)
+                        
                         if(item!==null){
                         let array=[];
                         Object.
@@ -62,19 +62,16 @@ export default function personalFoodCard ({navigation}){
                         setCard1(array);
                 }
                 
-                console.log(item,"item")
+                
                 if(item!==null)
                 { 
                         clearInterval(interval)
-                        console.log("should clear")
-                        console.log(card1)
+                        
                 }
-                else {
-                    console.log("polling")
-                    }
+               
                 })
                 }, 100)
-            console.log("comingout")
+            
             return ()=> clearInterval(interval)
             },[prefVar]);
         useEffect(()=>{
@@ -84,7 +81,6 @@ export default function personalFoodCard ({navigation}){
                         .once("value",
                     (snapshot)=>{
                         let item=snapshot.val()
-                        console.log(item)
                         if(item!==null){
                         let array=[];
                         Object.
@@ -93,19 +89,16 @@ export default function personalFoodCard ({navigation}){
                         setCard2(array);
                    }
                    
-                   console.log(item,"item")
+                   
                    if(item!==null)
                    { 
                         clearInterval(interval)
-                        console.log("should clear")
-                        console.log(card1)
+                       
                    }
-                   else {
-                       console.log("polling")
-                    }
+                   
                   })
                 }, 100)
-               console.log("comingout")
+              
              return ()=> clearInterval(interval)
              },[prefVar]);
 
@@ -116,7 +109,7 @@ export default function personalFoodCard ({navigation}){
                     .once("value",
                 (snapshot)=>{
                     let item=snapshot.val()
-                    console.log(item)
+                    
                     if(item!==null){
                     let array=[];
                     Object.
@@ -125,25 +118,21 @@ export default function personalFoodCard ({navigation}){
                     setCard3(array);
                 }
                 
-                console.log(item,"item")
+                
                 if(item!==null)
                 { 
                     clearInterval(interval)
-                    console.log("should clear")
-                    console.log(card)
+                   
                 }
-                else {
-                    console.log("polling")
-                }
+               
                 })
             }, 100)
-            console.log("comingout")
             return ()=> clearInterval(interval)
             },[prefVar]);
         
          useEffect(()=>{firebase.storage().ref('/food/'+card1[5]).getDownloadURL().then(data=>setUrl1(data))},[card1])
-        //  useEffect(()=>{firebase.storage().ref('/food/'+card2[5]).getDownloadURL().then(data=>setUrl2(data))},[card2])
-        //  useEffect(()=>{firebase.storage().ref('/food/'+card3[5]).getDownloadURL().then(data=>setUrl3(data))},[card3])
+         useEffect(()=>{firebase.storage().ref('/food/'+card2[5]).getDownloadURL().then(data=>setUrl2(data))},[card2])
+         useEffect(()=>{firebase.storage().ref('/food/'+card3[5]).getDownloadURL().then(data=>setUrl3(data))},[card3])
              
             //indian snacks nonveg '/0/food/'+getDeter()+'/0/'+getFoodType()+'/0/'+getFood()+'/data/0/
                                  //'/0/food/nonveg/0/snacks/0/indian/data/0/'
@@ -155,26 +144,17 @@ export default function personalFoodCard ({navigation}){
                 <Content>
                      <Card style={{ borderRadius: 8 }}> 
                             <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                 
-                            {/* <AsyncImage
-            style={{
-              borderRadius: 50,
-              height: 100,
-              width: 100,
-            }}
-            source={{
-              uri: url1
-            }}
-            placeholderColor='#b3e5fc'/> */}
                                 <Body>
-                                <Image source={{uri: url1
-                            }} resizeMode="contain" style={{flexDirection:'row',width:400,height:400}}/> 
+                                    <View style={{flex:1,justifyContent:"space-evenly"}}> 
+                                    <Image source={{uri: url1
+                                }} resizeMode="cover" style={{ width:250,height:550}}/> 
+                                     </View>
                                     <Text> {card1[2]}  </Text>
                                     <Text>{card1[3]}</Text>
                                 </Body>                           
                             </CardItem>
                     </Card>
-                    {/* <Card style={{ borderRadius: 8 }}> 
+                    <Card style={{ borderRadius: 8 }}> 
                             <CardItem style={{ flexdirection:"column",borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                 <Image source={{uri: url2
@@ -193,7 +173,7 @@ export default function personalFoodCard ({navigation}){
                                     <Text>{card3[3]}</Text>
                                 </Body>                           
                             </CardItem>  
-                    </Card>*/}
+                    </Card>
                 </Content>
             </Container>
         )

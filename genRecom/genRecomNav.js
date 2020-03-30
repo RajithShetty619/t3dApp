@@ -14,11 +14,11 @@ function AppNavigation(){
             {
               gestureEnabled:true,
               gestureDirection:'horizontal',
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-              transitionSpec:{
-                  open:TransitionSpecs.FadeInFromBottomAndroidSpec ,
-                  close:TransitionSpecs.TransitionIOSSpec,
-              }
+              cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid,
+            //   transitionSpec:{
+            //       open:TransitionSpecs.FadeInFromBottomAndroidSpec ,
+            //       close:TransitionSpecs.TransitionIOSSpec,
+            //   }
             }} >
             <generalStack.Screen name="genRecomMain" component={genRecomMain}/>
             <generalStack.Screen name="genRecomFoodCard" component={genRecomFoodCard}/>

@@ -13,68 +13,60 @@ export default function genRecomFoodCard (){
     const [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
     const[pass,setPass]=useState(false)
     useEffect(() => {
-            fire.database().ref('/0/general/food/0').once("value",snapshot=>{
+         async function GetResult() { 
+            await fire.database().ref('/0/general/food/0').once("value",snapshot=>{
                let item=snapshot.val() 
                console.log(item,"card1")
                setCard1(item)
+               firebase.storage().ref('/food/'+item.food_pic).getDownloadURL().then(data=>setUrl1(data))
                console.log((item.food_pic))
             })
-            fire.database().ref('/0/general/Food/1').once("value",snapshot=>{
+           await fire.database().ref('/0/general/food/1').once("value",snapshot=>{
                let item=snapshot.val() 
                setCard2(item)
+               firebase.storage().ref('/food/'+item.food_pic).getDownloadURL().then(data=>setUrl2(data))
+               console.log((item.food_pic))
             })
-            fire.database().ref('/0/general/Food/2').once("value",snapshot=>{
+           await fire.database().ref('/0/general/food/2').once("value",snapshot=>{
                 let item=snapshot.val() 
                 setCard3(item)
-                if(card2!==null)
-                {
-               setPass(true)
-               console.log("got thru")
-               }
-             })  ; 
-            
+                firebase.storage().ref('/food/'+item.food_pic).getDownloadURL().then(data=>setUrl3(data))
+                console.log((item.food_pic))
+             }) ; 
+           }
+           GetResult();
     },[])
-    useEffect(()=>{
-                firebase.storage().ref('/food/'+card1.food_pic).getDownloadURL().then(data=>setUrl1(data))
-                firebase.storage().ref('/food/'+card2.food_pic).getDownloadURL().then(data=>setUrl2(data))
-                firebase.storage().ref('/food/'+card3.food_pic).getDownloadURL().then(data=>setUrl3(data))},[card3])
+    
     
         return(
             <Container>
                 <Content>
                      <Card style={{ borderRadius: 8 }}> 
-                        <TouchableOpacity > 
+                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                                <Body>
+                                <Image source={{uri: url1
+                                 }} resizeMode="contain" style={{width:400,height:400}}/> 
+                                    <Text>{card1.food_info}</Text>
+                                </Body> 
+                            </CardItem>
+                    </Card>
+                    <Card style={{ borderRadius: 8 }}> 
                             <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                 <Image source={{uri: url2
-                                 }} resizeMode="contain" style={{flexDirection:'row',width:400,height:400}}/> 
-                                    <Text>gmain</Text>
-                                </Body> 
-                            </CardItem>
-                            <CardItem footer>
-                                    <Left> 
-                                     <Text>food</Text>
-                                    </Left>
-                            </CardItem>
-                        </TouchableOpacity>
-                    </Card>
-                    <Card style={{ borderRadius: 8 }}> 
-                        <TouchableOpacity>
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                    <Text>app</Text>
+                                 }} resizeMode="contain" style={{width:400,height:400}}/> 
+                                    <Text>{card2.food_info}</Text>
                                 </Body>
                             </CardItem>
-                        </TouchableOpacity>
                     </Card>
                     <Card style={{ borderRadius: 8 }}>
-                        <TouchableOpacity>
                             <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
-                                    <Text>topic</Text>
+                                <Image source={{uri: url3
+                                 }} resizeMode="contain" style={{width:400,height:400}}/> 
+                                    <Text>{card3.food_info}</Text>
                                 </Body>
                         </CardItem>
-                        </TouchableOpacity>
                     </Card>
                 </Content>
             </Container>
