@@ -45,7 +45,7 @@ export default function genRecomFoodCard (){
                             <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                 <Image source={{uri: url1
-                                 }} resizeMode="contain" style={{width:400,height:400}}/> 
+                                 }} resizeMode="contain" style={{width:320,height:520}}/> 
                                     <Text>{card1.food_info}</Text>
                                 </Body> 
                             </CardItem>
@@ -74,3 +74,5 @@ export default function genRecomFoodCard (){
         )
     
 }
+ 
+    

@@ -4,7 +4,6 @@ import { View, StyleSheet,TouchableOpacity,Image,AsyncStorage} from 'react-nativ
 import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
-import AsyncImage from '../globalcode.js/asyncImage'
 
 export default function personalFoodCard ({navigation}){
     const prefVar=PreferVar()
@@ -47,8 +46,8 @@ export default function personalFoodCard ({navigation}){
     const [url2,setUrl2]=useState('https://goo.gl/2W4iW6')
     const [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
         useEffect(()=>{
-            fire.database().ref()
-            const interval = setInterval(() => {
+            
+                    const interval = setInterval(() => {
                     fire.database().ref().child(getpath())
                         .once("value",
                     (snapshot)=>{
@@ -76,7 +75,7 @@ export default function personalFoodCard ({navigation}){
             return ()=> clearInterval(interval)
             },[prefVar]);
         useEffect(()=>{
-            fire.database().ref()
+            
             const interval = setInterval(() => {
                     fire.database().ref().child(getpath())
                         .once("value",
@@ -106,7 +105,7 @@ export default function personalFoodCard ({navigation}){
 
         useEffect(()=>{
             
-        fire.database().ref()
+        
         const interval = setInterval(() => {
                 fire.database().ref().child(getpath())
                     .once("value",
