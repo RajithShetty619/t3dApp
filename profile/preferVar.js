@@ -21,7 +21,6 @@ const [prefer,setPrefer]=useState({
              let item=snapshot.val()
              console.log(snapshot.val())
              setPrefer(JSON.parse(item))
-             console.log(prefer)
              }
      );},[])
 return(prefer)

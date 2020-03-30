@@ -1,32 +1,43 @@
 import React,{useState,useEffect} from 'react'
-import {  StyleSheet,TouchableOpacity } from 'react-native'
-import {Card,CardItem,Text,Container,Content,Image,Body,footer,Left} from 'native-base';
+import {  StyleSheet,TouchableOpacity,Image} from 'react-native'
+import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 import fire from '../fire'
+import firebase from 'firebase'
+import { set } from 'react-native-reanimated';
 export default function genRecomFoodCard (){
     let [card1,setCard1]=useState({})
     let [card2,setCard2]=useState({})
     let [card3,setCard3]=useState({})
-    const [url1,setUrl1]=useState({})
-    const [url2,setUrl2]=useState({})
-    const [url3,setUrl3]=useState({})
+    const [url1,setUrl1]=useState('https://goo.gl/2W4iW6')
+    const [url2,setUrl2]=useState('https://goo.gl/2W4iW6')
+    const [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
+    const[pass,setPass]=useState(false)
     useEffect(() => {
-            fire.database().ref('/0/general/food/0').on("value",snapshot=>{
-               const item=snapshot.val() 
+            fire.database().ref('/0/general/food/0').once("value",snapshot=>{
+               let item=snapshot.val() 
+               console.log(item,"card1")
                setCard1(item)
+               console.log((item.food_pic))
             })
-            fire.database().ref('/0/general/food/1').on("value",snapshot=>{
-               const item=snapshot.val() 
+            fire.database().ref('/0/general/Food/1').once("value",snapshot=>{
+               let item=snapshot.val() 
                setCard2(item)
             })
-            fire.database().ref('/0/general/food/2').on("value",snapshot=>{
-                const item=snapshot.val() 
+            fire.database().ref('/0/general/Food/2').once("value",snapshot=>{
+                let item=snapshot.val() 
                 setCard3(item)
-            useEffect(()=>{firebase.storage().ref('/food/'+card1[5]).getDownloadURL().then(data=>setUrl1(data))},[card1])
-            useEffect(()=>{firebase.storage().ref('/food/'+card2[5]).getDownloadURL().then(data=>setUrl2(data))},[card2])
-            useEffect(()=>{firebase.storage().ref('/food/'+card3[5]).getDownloadURL().then(data=>setUrl3(data))},[card3])
-             },[])
+                if(card2!==null)
+                {
+               setPass(true)
+               console.log("got thru")
+               }
+             })  ; 
             
     },[])
+    useEffect(()=>{
+                firebase.storage().ref('/food/'+card1.food_pic).getDownloadURL().then(data=>setUrl1(data))
+                firebase.storage().ref('/food/'+card2.food_pic).getDownloadURL().then(data=>setUrl2(data))
+                firebase.storage().ref('/food/'+card3.food_pic).getDownloadURL().then(data=>setUrl3(data))},[card3])
     
         return(
             <Container>
@@ -34,9 +45,9 @@ export default function genRecomFoodCard (){
                      <Card style={{ borderRadius: 8 }}> 
                         <TouchableOpacity > 
                             <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                
                                 <Body>
-                                    <Image source={{uri:url1}}/>
+                                <Image source={{uri: url2
+                                 }} resizeMode="contain" style={{flexDirection:'row',width:400,height:400}}/> 
                                     <Text>gmain</Text>
                                 </Body> 
                             </CardItem>
@@ -67,6 +78,7 @@ export default function genRecomFoodCard (){
                     </Card>
                 </Content>
             </Container>
+           
         )
     
 }

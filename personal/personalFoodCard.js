@@ -41,11 +41,11 @@ export default function personalFoodCard ({navigation}){
     }
  
     let [card1,setCard1]=useState({})
-    // let [card2,setCard2]=useState({})
-    // let [card3,setCard3]=useState({})
-    const [url1,setUrl1]=useState({})
-    // const [url2,setUrl2]=useState({})
-    // const [url3,setUrl3]=useState({})
+    let [card2,setCard2]=useState({})
+    let [card3,setCard3]=useState({})
+    const [url1,setUrl1]=useState('https://goo.gl/2W4iW6')
+    const [url2,setUrl2]=useState({})
+    const [url3,setUrl3]=useState({})
         useEffect(()=>{
             fire.database().ref()
             const interval = setInterval(() => {
@@ -77,69 +77,69 @@ export default function personalFoodCard ({navigation}){
             console.log("comingout")
             return ()=> clearInterval(interval)
             },[prefVar]);
-        // useEffect(()=>{
-        //     fire.database().ref()
-        //     const interval = setInterval(() => {
-        //             fire.database().ref().child(getpath())
-        //                 .once("value",
-        //             (snapshot)=>{
-        //                 let item=snapshot.val()
-        //                 console.log(item)
-        //                 if(item!==null){
-        //                 let array=[];
-        //                 Object.
-        //                 keys(item)
-        //                 .forEach(i=>array.push(item[i]));
-        //                 setCard2(array);
-        //            }
+        useEffect(()=>{
+            fire.database().ref()
+            const interval = setInterval(() => {
+                    fire.database().ref().child(getpath())
+                        .once("value",
+                    (snapshot)=>{
+                        let item=snapshot.val()
+                        console.log(item)
+                        if(item!==null){
+                        let array=[];
+                        Object.
+                        keys(item)
+                        .forEach(i=>array.push(item[i]));
+                        setCard2(array);
+                   }
                    
-        //            console.log(item,"item")
-        //            if(item!==null)
-        //            { 
-        //                 clearInterval(interval)
-        //                 console.log("should clear")
-        //                 console.log(card1)
-        //            }
-        //            else {
-        //                console.log("polling")
-        //             }
-        //           })
-        //         }, 100)
-        //        console.log("comingout")
-        //      return ()=> clearInterval(interval)
-        //      },[prefVar]);
+                   console.log(item,"item")
+                   if(item!==null)
+                   { 
+                        clearInterval(interval)
+                        console.log("should clear")
+                        console.log(card1)
+                   }
+                   else {
+                       console.log("polling")
+                    }
+                  })
+                }, 100)
+               console.log("comingout")
+             return ()=> clearInterval(interval)
+             },[prefVar]);
 
-        // useEffect(()=>{
-        // fire.database().ref()
-        // const interval = setInterval(() => {
-        //         fire.database().ref().child(getpath())
-        //             .once("value",
-        //         (snapshot)=>{
-        //             let item=snapshot.val()
-        //             console.log(item)
-        //             if(item!==null){
-        //             let array=[];
-        //             Object.
-        //             keys(item)
-        //             .forEach(i=>array.push(item[i]));
-        //             setCard3(array);
-        //         }
+        useEffect(()=>{
+        fire.database().ref()
+        const interval = setInterval(() => {
+                fire.database().ref().child(getpath())
+                    .once("value",
+                (snapshot)=>{
+                    let item=snapshot.val()
+                    console.log(item)
+                    if(item!==null){
+                    let array=[];
+                    Object.
+                    keys(item)
+                    .forEach(i=>array.push(item[i]));
+                    setCard3(array);
+                }
                 
-        //         console.log(item,"item")
-        //         if(item!==null)
-        //         { 
-        //             clearInterval(interval)
-        //             console.log("should clear")
-        //             console.log(card)
-        //         }
-        //         else {
-        //             console.log("polling")
-        //         }
-        //         })
-        //     }, 100)
-        //     console.log("comingout")
-        //     return ()=> clearInterval(interval)
-        //     },[prefVar]);
+                console.log(item,"item")
+                if(item!==null)
+                { 
+                    clearInterval(interval)
+                    console.log("should clear")
+                    console.log(card)
+                }
+                else {
+                    console.log("polling")
+                }
+                })
+            }, 100)
+            console.log("comingout")
+            return ()=> clearInterval(interval)
+            },[prefVar]);
         
          useEffect(()=>{firebase.storage().ref('/food/'+card1[5]).getDownloadURL().then(data=>setUrl1(data))},[card1])
         //  useEffect(()=>{firebase.storage().ref('/food/'+card2[5]).getDownloadURL().then(data=>setUrl2(data))},[card2])
@@ -155,9 +155,20 @@ export default function personalFoodCard ({navigation}){
                 <Content>
                      <Card style={{ borderRadius: 8 }}> 
                             <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                                 
+                            {/* <AsyncImage
+            style={{
+              borderRadius: 50,
+              height: 100,
+              width: 100,
+            }}
+            source={{
+              uri: url1
+            }}
+            placeholderColor='#b3e5fc'/> */}
                                 <Body>
-                                {/* <AsyncImage source={{uri: url1
-                            }} resizeMode="contain" style={{flexDirection:'row',width:400,height:400}}/>   */}
+                                <Image source={{uri: url1
+                            }} resizeMode="contain" style={{flexDirection:'row',width:400,height:400}}/> 
                                     <Text> {card1[2]}  </Text>
                                     <Text>{card1[3]}</Text>
                                 </Body>                           
