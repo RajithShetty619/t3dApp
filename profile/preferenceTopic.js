@@ -14,11 +14,12 @@ export default function preferenceTopic({navigation}) {
         useEffect(()=>{
            async function Does(){ let myJSON = JSON.stringify(prefer);
             let authUser=fire.auth().currentUser
+            console.log("setting");
             fire.database().ref('/users/').child(authUser.uid+'/preference/topic').set(myJSON)
-            await AsyncStorage.setItem("prefTopic",JSON) }
+            await AsyncStorage.setItem("prefTopic",myJSON) }
             Does();
         },[pass])
-        const date = new Date().getMinutes();
+        const date = new Date().getDay();
         const [topics,setTopics]=useState(0)
         const check=()=>{
             if(topics<=4){

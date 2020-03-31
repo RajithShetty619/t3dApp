@@ -8,23 +8,20 @@ export default async function IsUptoDate(){
     const _retrieveData = async (path) => {
         try {
           const value = await AsyncStorage.getItem(path);
-          console.log(value,path)
           if (value !== null) {
             return JSON.parse(value)
           }
         } catch (error) {
-          console.log(error)
+        
         }
       };
 
     
     const getpathFood=async()=>{
     const prefer = await _retrieveData("prefFood")
-    console.log(prefer,"prefer")
+    
     const getFood=()=>{
     const pref = prefer["food"]
-
-    console.log(pref,"pref")
     let arr = [];
         for (let key in pref) {
             if (pref[key]) arr.push(key);
@@ -50,18 +47,15 @@ export default async function IsUptoDate(){
     }   
     let ran =Math.floor(Math.random()*10)
     let path='/0/food/0/'+getDeter()+'/0/'+getFoodType()+'/0/'+getFood()+'/0/data/'+ran
-    console.log(path,"path")
+   
     return path
 }
   const isValidFood=(path)=>{
-    console.log("getting in")
       const interval =  setInterval( async() => {
-          console.log(getpathFood(),"getPath")
             await  fire.database().ref().child( await getpathFood())
                    .on("value",
                (snapshot)=>{
                    let item=snapshot.val()
-                   console.log(item,"item")
                    if(item!==null){
                    let array=[];
                    Object.
@@ -69,7 +63,6 @@ export default async function IsUptoDate(){
                    .forEach(i=>array.push(item[i]));   
               }
               
-              console.log(item,"item")
               if(item!==null)
               { 
                 _storeData(item,path); 
@@ -82,10 +75,9 @@ export default async function IsUptoDate(){
 const _storeData = async (obj,path) => {
 try {
   
-  console.log("storing",obj)
   await AsyncStorage.setItem(path,JSON.stringify(obj) );
 } catch (error) {
-  console.log(error)
+  
 }
 };  
  const  pathItemsApp=(path)=>{
@@ -118,7 +110,6 @@ try {
             let path= '/0/app_details/0/'+getTopic()
           
             let ran=Math.floor(Math.random()* pathItemsApp(path))
-            console.log(ran)
             return '/0/app_details/0/'+getTopic()+'/0/data/'+ ran;
         } 
     const isValidApp=(path)=>{
@@ -151,16 +142,19 @@ try {
         if(path==='/0/topic_details/0/space') {return 8;}
       }
     const getpathTopics=async()=>{
-        const prefer=await AsyncStorage.getItem("prefTopic")
+        const prefer=await _retrieveData("prefTopic")
+        console.log(prefer,"prefer")
         const getTopic=()=>{
-            
+            const pref=prefer["topic_details"]
             let arr = [];
-                for (let key in prefer) {
-                    if (prefer[key]) arr.push(key);         
+                for (let key in pref) {
+                    if (pref[key]) arr.push(key);         
                 } 
              return arr[Math.floor(Math.random()*arr.length)]  
             }
             let path= '/0/topic_details/0/'+getTopic()
+            console.log(path)
+            console.log(pathItemsTopic(path),"pathitems")
             let ran=Math.floor(Math.random()* pathItemsTopic(path))
             console.log(ran)
             return '/0/topic_details/0/'+getTopic()+'/0/data/'+ ran;
@@ -180,6 +174,7 @@ try {
                        }
                        if(item!==null)
                         { 
+                            console.log(item)
                         _storeData(item,path); 
                         clearInterval(interval); 
                         
