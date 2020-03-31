@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {  StyleSheet,TouchableOpacity,Image} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 export default class personalMain extends Component {
+    
     render() {
         return (
             <Container>

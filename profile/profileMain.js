@@ -1,19 +1,36 @@
 
-import React, { Component } from 'react';
+import React, { Component,useState,useEffect } from 'react';
 import { StyleSheet,View,Image,TouchableOpacity,} from 'react-native';
 import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
+import fire from '../fire'
+export default function profileMain({navigation}) {
+ const[user,setUser]=useState();
+const[email,setEmail]=useState();
+ useEffect(() => {
+    let authUser=fire.auth().currentUser
+        fire.database().ref().child('/users/'+authUser.uid+'/userName')
+        .once("value",(snapshot)=>{
+          let item=snapshot.val()
+          console.log(snapshot.val())
+          setUser(item)
+          })
+          fire.database().ref().child('/users/'+authUser.uid+'/email')
+          .once("value",(snapshot)=>{
+            let item=snapshot.val()
+            console.log(snapshot.val())
+            setEmail(item)
+            })
+  },[])
 
-export default class profileMain extends Component {
-
-  render() {
+  
     return (
       <Container>
       
           <View style={styles.header}>
             <View style={styles.headerContent}>
                 
-                <Text style={styles.name}>John Doe </Text>
-                <Text style={styles.userInfo}>jhonnydoe@mail.com </Text>
+                <Text style={styles.name}>{user}</Text>
+                <Text style={styles.userInfo}>{email} </Text>
                 
             </View>
           </View>
@@ -22,11 +39,26 @@ export default class profileMain extends Component {
             <View style={styles.item}>
               
               <View style={styles.infoContent}>
-                 <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate('preference')}>
-                <Text>Preferences</Text> 
+                 <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preference')}>
+                <Text>Preferences Food</Text> 
+                </TouchableOpacity>
+              </View>
+              </View>
+              <View style={styles.item}>
+            <View style={styles.infoContent}>
+                 <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preferenceApp')}>
+                <Text>Preferences App</Text> 
                 </TouchableOpacity>
               </View>
             </View>
+            <View style={styles.item}>
+            <View style={styles.infoContent}>
+                 <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preferenceTopic')} >
+                <Text>Preferences Topic</Text> 
+                </TouchableOpacity>
+              </View>
+            </View>
+
 
             <View style={styles.item}>
             
@@ -38,7 +70,6 @@ export default class profileMain extends Component {
      </Content>
       </Container>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -56,7 +87,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom:10,
-    width:100,
+    width:150,
     borderRadius:30,
     backgroundColor: "#00BFFF",
   },

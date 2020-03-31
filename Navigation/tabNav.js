@@ -7,8 +7,11 @@ import { Icon } from 'react-native-elements'
 function tabNav() {
     const tab=createBottomTabNavigator()
     return (
-        <tab.Navigator  tabBarOptions={{
-            activeTintColor: 'tomato',
+        <tab.Navigator  
+            initialRouteName="profile"
+            
+            tabBarOptions={{
+            activeTintColor: '#0000A0',
             inactiveTintColor: 'gray',
           }}>
             <tab.Screen  name="personal" component={personalNav}

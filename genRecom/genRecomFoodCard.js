@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {  StyleSheet,TouchableOpacity,Image} from 'react-native'
+import {  View,StyleSheet,TouchableOpacity,Image} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'

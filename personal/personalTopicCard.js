@@ -1,78 +1,87 @@
-import React,{useEffect,useState} from 'react'
-import {  StyleSheet,TouchableOpacity,Image ,Text} from 'react-native'
-import {Card,CardItem,Container,Content,Body,Left} from 'native-base';
+import React,{useState,useEffect} from 'react'
+import { View, StyleSheet,TouchableOpacity,Image,AsyncStorage} from 'react-native'
+import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 import firebase from 'firebase'
-import fire from '../fire'
 
-export default function personalTopicCard (){
-    const ran=Math.floor(Math.random()*10+1)
-  useEffect(()=>{
-      fire.database().ref().child('/2/data/'+ran).once("value",
-      (snapshot)=>{
-        const item=snapshot.val()
-        if(item){
-          const array=[];
-          Object.
-          keys(item)
-          .forEach(i=>array.push(item[i]));
-          setDisplay(array);
-        }
-      }
-      );
-      firebase.storage().ref('/images/Screenshot (6).png').getDownloadURL().then(data=>setUrl(data))
-  },[])
-   const[display,setDisplay]=useState([])
-    const [url,setUrl]=useState()
 
+export default function personalAppCard ({navigation}){
     
-   
+    const [pass,setPass]=useState(false)
+    const _retrieveData = async (path) => {
+        try {
+          const value = await AsyncStorage.getItem(path);
+          console.log(value,"value data")
+          if (value !== null) {
+            return JSON.parse(value)
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      };
+    let [card1,setCard1]=useState({})
+    let [card2,setCard2]=useState({})
+    let [card3,setCard3]=useState({})
+    let [url1,setUrl1]=useState('https://goo.gl/2W4iW6')
+    let [url2,setUrl2]=useState('https://goo.gl/2W4iW6')
+    let [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
+        useEffect(()=>{  
+         async function Do() { 
+           let  val1= await _retrieveData("topicData0")
+           setCard1(val1)
+           let  val2= await _retrieveData("topicData1")
+           setCard2(val2)
+           let  val3= await _retrieveData("topicData2")
+           setCard3(val3)
+           setPass(true) 
+           }
+           Do();
+          },[])
+      
+        useEffect(()=>{
+            if(pass===true)
+           { 
+            firebase.storage().ref('/topics/'+card1["topic_pic"]).getDownloadURL().then(data=>setUrl1(data))
+            firebase.storage().ref('/topics/'+card2["topic_pic"]).getDownloadURL().then(data=>setUrl2(data))
+            firebase.storage().ref('/topics/'+card3["topic_pic"]).getDownloadURL().then(data=>setUrl3(data))
+        }},[pass])
+      
         return(
             <Container>
-                <Content>
-                     <Card style={{ borderRadius: 8 }}> 
-                        <TouchableOpacity > 
-                            <CardItem  cardBody style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8,flexDirection:'column' }}>
-                                
-                                    <Image source={{uri:url}}   style={{ flex:1,width: 400, height: 300 }} resizeMode="contain"  />
-                                    <Text >{display[3]}</Text>
-                            </CardItem>
-                            <CardItem footer bordered>
-                                    <Left> 
-                                     <Text>{display[2]}</Text>
-                                    </Left>
-                            </CardItem>
-                        </TouchableOpacity>
-                    </Card>
-                    <Card style={{ borderRadius: 8 }}> 
-                        <TouchableOpacity > 
-                            <CardItem  cardBody style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8,flexDirection:'column' }}>
-                                
-                                    <Image source={{uri:url}}   style={{ flex:1,width: 400, height: 300 }} resizeMode="contain"  />
-                                    <Text >{display[3]}</Text>
-                            </CardItem>
-                            <CardItem footer bordered>
-                                    <Left> 
-                                     <Text>{display[2]}</Text>
-                                    </Left>
-                            </CardItem>
-                        </TouchableOpacity>
-                    </Card>
-                    <Card style={{ borderRadius: 8 }}> 
-                        <TouchableOpacity > 
-                            <CardItem  cardBody style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8,flexDirection:'column' }}>
-                                
-                                    <Image source={{uri:url}}   style={{ flex:1,width: 400, height: 300 }} resizeMode="contain"  />
-                                    <Text >{display[3]}</Text>
-                            </CardItem>
-                            <CardItem footer bordered>
-                                    <Left> 
-                                     <Text>{display[2]}</Text>
-                                    </Left>
-                            </CardItem>
-                        </TouchableOpacity>
-                    </Card>
-                </Content>
-            </Container>
+            <Content>
+                 {/* <Card style={{ borderRadius: 8 }}> 
+                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <Body>
+                               
+                                <Image source={{uri: url1
+                            }} resizeMode="cover" style={{ width:250,height:550}}/> 
+                            
+                                <Text>{card1["topic_name"]}  </Text>
+                                <Text>{card1["topic_info"]}</Text>
+                            </Body>                           
+                        </CardItem>
+                </Card>
+                <Card style={{ borderRadius: 8 }}> 
+                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <Body>
+                            <Image source={{uri: url2
+                        }} resizeMode="contain" style={{width:400,height:400}}/>  
+                               <Text> {card2["topic_name"]}  </Text>
+                                <Text>{card2["topic_info"]}</Text>
+                            </Body>                           
+                        </CardItem>
+                </Card>
+                <Card style={{ borderRadius: 8 }}> 
+                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <Body>
+                            <Image source={{uri: url3
+                        }} resizeMode="contain" style={{width:400,height:400}}/>  
+                                <Text> {card3["topic_name"]}  </Text>
+                                <Text>{card3["topic_info"]}</Text>
+                            </Body>                           
+                        </CardItem>  
+                </Card> */}
+            </Content>
+        </Container>
         )
     
 }

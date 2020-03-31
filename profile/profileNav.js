@@ -2,6 +2,8 @@ import React from 'react'
 import {createStackNavigator,CardStyleInterpolators,TransitionPresets,TransitionSpecs} from '@react-navigation/stack'
 import profileMain from './profileMain'
 import preference from './preference';
+import preferenceTopic from './preferenceTopic';
+import preferenceApp from './preferenceApp'
 function AppNavigation(){
 
     const profileNav = createStackNavigator();
@@ -19,8 +21,8 @@ function AppNavigation(){
             }} >
             <profileNav.Screen name="profileMain" component={profileMain}/>
             <profileNav.Screen name="preference" component={preference}/>
-            {/* <profileNav.Screen name="personalAppCard" component={personalAppCard}/>
-            <profileNav.Screen name="personalTopicCard" component={personalTopicCard}/> */}
+             <profileNav.Screen name="preferenceApp" component={preferenceApp}/>
+            <profileNav.Screen name="preferenceTopic" component={preferenceTopic}/> 
         </profileNav.Navigator>
         
     )
