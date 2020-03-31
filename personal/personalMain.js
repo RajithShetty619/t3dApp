@@ -21,8 +21,8 @@ export default function personalMain({navigation}) {
         handleAndroidBackButton(exitAlert)
         }
         Does();
-        return()=>BackHandler.removeEventListener('hardwareBackPress', true);
-    })
+        return()=>{BackHandler.removeEventListener('hardwareBackPress', true); removing}
+    },[])
 
    const handleAndroidBackButton = callback => {
     BackHandler.addEventListener('hardwareBackPress', () => {
@@ -42,58 +42,59 @@ export default function personalMain({navigation}) {
     };
      
     
-        return (
-            <Container>
-                <Content padder>
-                    <Card style={{ borderRadius: 8 }}>
-                        <TouchableOpacity onPress={()=>{navigation.navigate('personalFoodCard')}} > 
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                  	<Image source={{uri:''}} style={{height:400,width:250,flex:1}}/>
-                                    <Text>food</Text>
-                                </Body> 
-                            </CardItem>
-                            <CardItem footer>
-                                    <Left> 
-                                     <Text style={{fontWeight:'bold'}}>Food</Text>
-                                    </Left>
-                            </CardItem>
-                        </TouchableOpacity>
-                    </Card>
-                    <Card style={{ borderRadius: 8 }}>
-                        <TouchableOpacity onPress={()=>{navigation.navigate('personalAppCard')}}>
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                  	<Image source={{uri: ''}} style={{height:400,width:250,flex:1}} />
-                                    <Text>app</Text>
-                                </Body>
-                            </CardItem>
-                          <CardItem>
-                            	 <Left> 
-                                     <Text style={{fontWeight:'bold'}}>App</Text>
-                                </Left>
-                          </CardItem>
-                        </TouchableOpacity>
-                    </Card>
-                    <Card style={{ borderRadius: 8 }}>
-                        <TouchableOpacity onPress={()=>{navigation.navigate('personalTopicCard')}}>
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                  	<Image source={{uri: ''}} style={{height:400,width:250,flex:1}}/>
-                                    <Text>topic</Text>
-                                </Body>
+    return (
+        <Container>
+            <Content padder>
+                <Card style={{ borderRadius: 8 }}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('personalFoodCard')}} > 
+                        <CardItem style={{ backgroundColor:'black',borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <Body>
+                                  <Image source={require('../assets/img-5708.png')} style={{height:500,width:310,flex:1}}/>
+                                
+                            </Body> 
                         </CardItem>
-                          <CardItem>
-                            	 <Left> 
-                                     <Text style={{fontWeight:'bold'}}>Topic</Text>
+                        <CardItem footer>
+                                <Left> 
+                                 <Text style={{fontWeight:'bold'}}>Food</Text>
                                 </Left>
-                          </CardItem>
-                        </TouchableOpacity>
-                    </Card>
-                </Content>
-            </Container>
-        )
-    
+                        </CardItem>
+                    </TouchableOpacity>
+                </Card>
+                <Card style={{ borderRadius: 8 }}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('personalAppCard')}}>
+                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <Body>
+                                  <Image source={require('../assets/img-5710.png')} style={{height:200,width:300,flexDirection:'row'}} />
+                                
+                            </Body>
+                        </CardItem>
+                      <CardItem>
+                             <Left> 
+                                 <Text style={{fontWeight:'bold'}}>App</Text>
+                            </Left>
+                      </CardItem>
+                    </TouchableOpacity>
+                </Card>
+                <Card style={{ borderRadius: 8 }}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('personalTopicCard')}}>
+                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <Body>
+                                  <Image source={require('../assets/img-5709.png')} style={{height:200,width:300,flexDirection:'row'}} resizeMode="contain"/>
+                                
+                            </Body>
+                    </CardItem>
+                      <CardItem>
+                             <Left> 
+                                 <Text style={{fontWeight:'bold'}}>Topic</Text>
+                            </Left>
+                      </CardItem>
+                    </TouchableOpacity>
+                </Card>
+            </Content>
+        </Container>
+    )
 }
+    
 
-const styles = StyleSheet.create({})
+
+

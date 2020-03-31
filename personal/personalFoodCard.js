@@ -6,7 +6,7 @@ import fire from '../fire'
 import firebase from 'firebase'
 
 export default function personalFoodCard ({navigation}){
-    const [pass,setPass]=useState(false)
+    
     const _retrieveData = async (path) => {
         try {
           const value = await AsyncStorage.getItem(path);
@@ -18,9 +18,9 @@ export default function personalFoodCard ({navigation}){
           console.log(error)
         }
       };
-    let [card1,setCard1]=useState({})
-    let [card2,setCard2]=useState({})
-    let [card3,setCard3]=useState({})
+    let [card1,setCard1]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
+    let [card2,setCard2]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
+    let [card3,setCard3]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
     let [url1,setUrl1]=useState('https://goo.gl/2W4iW6')
     let [url2,setUrl2]=useState('https://goo.gl/2W4iW6')
     let [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
@@ -28,21 +28,24 @@ export default function personalFoodCard ({navigation}){
          async function Do() { 
            let  val1= await _retrieveData("foodData0")
            setCard1(val1)
+           await firebase.storage().ref('/food/'+val1["food_pic"]).getDownloadURL().then(data=>setUrl1(data))
            let  val2= await _retrieveData("foodData1")
            setCard2(val2)
+           await firebase.storage().ref('/food/'+val2["food_pic"]).getDownloadURL().then(data=>setUrl2(data))
            let  val3= await _retrieveData("foodData2")
            setCard3(val3)
-           setPass(true) 
+           await firebase.storage().ref('/food/'+val3["food_pic"]).getDownloadURL().then(data=>setUrl3(data))
+           
            }
            Do();
           },[])
       
-        useEffect(()=>{
-            if(pass===true)
-           { firebase.storage().ref('/food/'+card1["food_pic"]).getDownloadURL().then(data=>setUrl1(data))
-            firebase.storage().ref('/food/'+card2["food_pic"]).getDownloadURL().then(data=>setUrl2(data))
-            firebase.storage().ref('/food/'+card3["food_pic"]).getDownloadURL().then(data=>setUrl3(data))}
-        },[pass])
+        // useEffect(()=>{
+        //     if(pass===true)
+        //    { firebase.storage().ref('/food/'+card1["food_pic"]).getDownloadURL().then(data=>setUrl1(data))
+        //     firebase.storage().ref('/food/'+card2["food_pic"]).getDownloadURL().then(data=>setUrl2(data))
+        //     firebase.storage().ref('/food/'+card3["food_pic"]).getDownloadURL().then(data=>setUrl3(data))}
+        // },[pass])
        
         return(
             <Container>
@@ -52,9 +55,9 @@ export default function personalFoodCard ({navigation}){
                                 <Body>
                                     <View style={{flex:1,justifyContent:"space-evenly"}}> 
                                     <Image source={{uri: url1
-                                }} resizeMode="contain" /> 
-                                </View>
-                                    <Text>{card1["cuisine"]}  </Text>
+                                }} resizeMode="cover" style={{ height:520,width:320,flex:1}}/> 
+                                     </View>
+                                    <Text> {card1["cuisine"]}  </Text>
                                     <Text>{card1["food_info"]}</Text>
                                 </Body>                           
                             </CardItem>
@@ -63,8 +66,8 @@ export default function personalFoodCard ({navigation}){
                             <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                 <Image source={{uri: url2
-                            }} resizeMode="contain" style={{width:400,height:400}}/>  
-                                   <Text> {card2["cuisine"]}  </Text>
+                            }} resizeMode="contain" style={{ height:520,width:320,flex:1}}/>  
+                                    <Text> {card2["cuisine"]}  </Text>
                                     <Text>{card2["food_info"]}</Text>
                                 </Body>                           
                             </CardItem>
@@ -73,8 +76,8 @@ export default function personalFoodCard ({navigation}){
                             <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                 <Image source={{uri: url3
-                            }} resizeMode="contain" style={{width:400,height:400}}/>  
-                                    <Text> {card3["cuisine"]}  </Text>
+                            }} resizeMode="contain" style={{ height:520,width:320,flex:1}}/>  
+                                    <Text>{card3["cuisine"]}</Text>
                                     <Text>{card3["food_info"]}</Text>
                                 </Body>                           
                             </CardItem>  
@@ -84,3 +87,4 @@ export default function personalFoodCard ({navigation}){
         )
     
 }
+    

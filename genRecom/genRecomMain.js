@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import {  StyleSheet,TouchableOpacity,Image} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 export default class personalMain extends Component {
-    
+
     render() {
-        return (
+         return (
             <Container>
                 <Content>
                     <Card style={{backgroundColor:'#777',borderRadius: 8 }}>
                         <TouchableOpacity onPress={()=>{this.props.navigation.navigate('genRecomFoodCard')}} > 
-                            <CardItem style={{ backgroundColor:'#777',borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <CardItem style={{ backgroundColor:'black',borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
-                                  <Image source={{uri:''}} style={{height:400,width:250,flex:1}}/> 
+                                  <Image source={require('../assets/img-5708.png')} style={{height:500,width:330,}}/> 
                                     <Text style={{fontWeight:'bold',color:'coral'}}>Food</Text>
                                 </Body> 
                             </CardItem>
@@ -22,12 +22,12 @@ export default class personalMain extends Component {
                             </CardItem>
                         </TouchableOpacity>
                     </Card>
-                    <Card style={{ card:{backgroundColor:'black'}, borderRadius: 8 }}>
+                    <Card style={{ backgroundColor:'#777', borderRadius: 8 }}>
                         <TouchableOpacity onPress={()=>{this.props.navigation.navigate('genRecomAppCard')}}>
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <CardItem style={{ backgroundColor:'black',borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
-                                  <Image source={{uri:''}} style={{height:400,width:250,flex:1}}/>
-                                    <Text style={{fontWeight:'bold'}}>app</Text>
+                                  <Image source={require('../assets/img-5710.png')} style={{height:420,width:300,flex:1}}/>
+                                    <Text style={{fontWeight:'bold',color:'coral'}}>app</Text>
                                 </Body>
                             </CardItem>
                             <CardItem footer>
@@ -37,12 +37,12 @@ export default class personalMain extends Component {
                             </CardItem>
                         </TouchableOpacity>
                     </Card>
-                    <Card style={{ card:{backgroundColor:'black'}, borderRadius: 8 }}>
+                    <Card style={{ backgroundColor:'black', borderRadius: 8 }}>
                         <TouchableOpacity onPress={()=>{this.props.navigation.navigate('genRecomTopicCard')}}>
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                            <CardItem style={{backgroundColor:'black', borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
-                                  <Image source={{uri:''}} style={{height:400,width:250,flex:1}}/>
-                                    <Text style={{fontWeight:'bold'}}>topic</Text>
+                                  <Image source={require('../assets/img-5709.png')} style={{height:200,width:330,flexDirection:'row'}}/>
+                                    <Text style={{fontWeight:'bold',color:'coral'}}>topic</Text>
                                 </Body>
                         </CardItem>
                             <CardItem footer>
@@ -57,5 +57,7 @@ export default class personalMain extends Component {
         )
     }
 }
+    
+
 
 const styles = StyleSheet.create({})

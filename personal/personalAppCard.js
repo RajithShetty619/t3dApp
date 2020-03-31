@@ -30,6 +30,7 @@ export default function personalAppCard ({navigation}){
            let  val1= await _retrieveData("appData0")
            setCard1(val1)
            let  val2= await _retrieveData("appData1")
+           console.log(val2)
            setCard2(val2)
            let  val3= await _retrieveData("appData2")
            setCard3(val3)

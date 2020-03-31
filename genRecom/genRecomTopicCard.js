@@ -17,19 +17,20 @@ export default function genRecomAppCard (){
                let item=snapshot.val() 
                console.log(item,"card1")
                setCard1(item)
-               firebase.storage().ref('/App/'+item.topic_pic).getDownloadURL().then(data=>setUrl1(data))
+               firebase.storage().ref('/topics/'+item["topic_pic"]).getDownloadURL().then(data=>setUrl1(data))
                
             })
            await fire.database().ref('/0/general/topic/1').once("value",snapshot=>{
                let item=snapshot.val() 
                setCard2(item)
-               firebase.storage().ref('/food/'+item.topic_pic).getDownloadURL().then(data=>setUrl2(data))
+               firebase.storage().ref('/topics/'+item["topic_pic"]).getDownloadURL().then(data=>setUrl2(data))
                
             })
            await fire.database().ref('/0/general/topic/2').once("value",snapshot=>{
                 let item=snapshot.val() 
                 setCard3(item)
-                firebase.storage().ref('/food/'+item.topic_pic).getDownloadURL().then(data=>setUrl3(data))
+                console.log(item["topic_pic"])
+                firebase.storage().ref('/topics/'+item["topic_pic"]).getDownloadURL().then(data=>setUrl3(data))
                 
              }) ; 
            }
@@ -45,8 +46,9 @@ export default function genRecomAppCard (){
                                 <Body>
                                 <Image source={{uri: url1
                                  }} resizeMode="contain" style={{width:400,height:400}}/> 
-                                    <Text>{card1.app_name}</Text>
-                                    <Text>{card1.app_info}</Text>
+                                 <Text>{card1.topic_name}</Text>
+                                    <Text>{card1.topic_info}</Text>
+                                    
                                 </Body> 
                             </CardItem>
                     </Card>
@@ -55,8 +57,9 @@ export default function genRecomAppCard (){
                                 <Body>
                                 <Image source={{uri: url2
                                  }} resizeMode="contain" style={{width:400,height:400}}/> 
-                                    <Text>{card2.app_name}</Text>
-                                    <Text>{card2.app_info}</Text>
+                                    <Text>{card2.topic_name}</Text>
+                                    <Text>{card2.topic_info}</Text>
+                                     
                                 </Body>
                             </CardItem>
                     </Card>
@@ -65,8 +68,9 @@ export default function genRecomAppCard (){
                                 <Body>
                                 <Image source={{uri: url3
                                  }} resizeMode="contain" style={{width:400,height:400}}/> 
-                                    <Text>{card3.app_name}</Text>
-                                    <Text>{card3.app_info}</Text>
+                                    <Text>{card3.topic_name}</Text>
+                                    <Text>{card3.topic_info}</Text>
+                                   
                                 </Body>
                         </CardItem>
                     </Card>
