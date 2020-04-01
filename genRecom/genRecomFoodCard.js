@@ -8,9 +8,9 @@ export default function genRecomFoodCard (){
     let [card1,setCard1]=useState({})
     let [card2,setCard2]=useState({})
     let [card3,setCard3]=useState({})
-    const [url1,setUrl1]=useState(require('../assets/loading.png'))
-    const [url2,setUrl2]=useState(require('../assets/loading.png'))
-    const [url3,setUrl3]=useState(require('../assets/loading.png'))
+    const [url1,setUrl1]=useState('../assets/loading.png')
+    const [url2,setUrl2]=useState('../assets/loading.png')
+    const [url3,setUrl3]=useState('../assets/loading.png')
     const[pass,setPass]=useState(false)
     useEffect(() => {
          async function GetResult() { 

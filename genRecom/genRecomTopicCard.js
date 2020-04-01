@@ -7,9 +7,9 @@ export default function genRecomAppCard (){
     let [card1,setCard1]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [card2,setCard2]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [card3,setCard3]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
-    const [url1,setUrl1]=useState(require('../assets/loading.png'))
-    const [url2,setUrl2]=useState(require('../assets/loading.png'))
-    const [url3,setUrl3]=useState(require('../assets/loading.png'))
+    const [url1,setUrl1]=useState('../assets/loading.png')
+    const [url2,setUrl2]=useState('../assets/loading.png')
+    const [url3,setUrl3]=useState('../assets/loading.png')
     const[pass,setPass]=useState(false)
     useEffect(() => {
          async function GetResult() { 

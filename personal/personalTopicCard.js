@@ -60,9 +60,7 @@ export default function personalAppCard ({navigation}){
                             </CardItem>
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
-                                <Text >
-                                    {card1["topic_name"]}
-                                </Text>
+                            
                                 <Text >
                                     {card1["topic_info"]}
                                 </Text>
@@ -80,9 +78,6 @@ export default function personalAppCard ({navigation}){
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
                                 <Text >
-                                    {card2["topic_name"]}
-                                </Text>
-                                <Text >
                                     {card1["topic_info"]}
                                 </Text>
                                 </Body>
@@ -98,9 +93,6 @@ export default function personalAppCard ({navigation}){
                             </CardItem>
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
-                                <Text >
-                                    {card3["topic_name"]}
-                                </Text>
                                 <Text >
                                     {card1["topic_info"]}
                                 </Text>
