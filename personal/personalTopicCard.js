@@ -21,9 +21,9 @@ export default function personalAppCard ({navigation}){
     let [card1,setCard1]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [card2,setCard2]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [card3,setCard3]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
-    let [url1,setUrl1]=useState('https://goo.gl/2W4iW6')
-    let [url2,setUrl2]=useState('https://goo.gl/2W4iW6')
-    let [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
+    let [url1,setUrl1]=useState(require('../assets/loading.png'))
+    let [url2,setUrl2]=useState(require('../assets/loading.png'))
+    let [url3,setUrl3]=useState(require('../assets/loading.png'))
         useEffect(()=>{  
          async function Do() { 
            let  val1= await _retrieveData("topicData0")
@@ -49,42 +49,69 @@ export default function personalAppCard ({navigation}){
         }},[pass])
       
         return(
-            <Container>
-            <Content>
-                 <Card style={{ borderRadius: 8 }}> 
-                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                            <Body>
-                               
-                                <Image source={{uri: url1
-                            }} resizeMode="contain" style={{width:400,height:400}}/> 
-                            
-                                <Text>{card1["topic_name"]}  </Text>
-                                <Text>{card1["topic_info"]}</Text>
-                            </Body>                           
-                        </CardItem>
-                </Card>
-                <Card style={{ borderRadius: 8 }}> 
-                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                            <Body>
-                            <Image source={{uri: url2
-                        }} resizeMode="contain" style={{width:400,height:400}}/>  
-                               <Text> {card2["topic_name"]}  </Text>
-                                <Text>{card2["topic_info"]}</Text>
-                            </Body>                           
-                        </CardItem>
-                </Card>
-                <Card style={{ borderRadius: 8 }}> 
-                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                            <Body>
-                            <Image source={{uri: url3
-                        }} resizeMode="contain" style={{width:400,height:400}}/>  
-                                <Text> {card3["topic_name"]}  </Text>
-                                <Text>{card3["topic_info"]}</Text>
-                            </Body>                           
-                        </CardItem>  
-                </Card>
-            </Content>
-        </Container>
+            <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
+                <Content>
+                    <View >
+                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                        borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                <Image source={{uri: url1}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                                resizeMode="cover" />
+                            </CardItem>
+                            <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                <Body>
+                                <Text >
+                                    {card1["topic_name"]}
+                                </Text>
+                                <Text >
+                                    {card1["topic_info"]}
+                                </Text>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                    </View>
+                    <View >
+                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                        borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                <Image source={{uri: url2}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                                resizeMode="cover" />
+                            </CardItem>
+                            <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                <Body>
+                                <Text >
+                                    {card2["topic_name"]}
+                                </Text>
+                                <Text >
+                                    {card1["topic_info"]}
+                                </Text>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                    </View>
+                    <View >
+                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                        borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                <Image source={{uri: url3}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                                resizeMode="cover" />
+                            </CardItem>
+                            <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                <Body>
+                                <Text >
+                                    {card3["topic_name"]}
+                                </Text>
+                                <Text >
+                                    {card1["topic_info"]}
+                                </Text>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                    </View>
+                </Content>
+            </Container>
+    
         )
+    
     
 }

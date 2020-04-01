@@ -9,10 +9,12 @@ function tabNav() {
     return (
         <tab.Navigator  
             initialRouteName="profile"
-            
             tabBarOptions={{
             activeTintColor: '#0000A0',
             inactiveTintColor: 'gray',
+            // activeBackgroundColor:'black',
+            // inactiveBackgroundColor:'#A9A9A9',
+           
           }}>
             <tab.Screen  name="personal" component={personalNav}
             options={{

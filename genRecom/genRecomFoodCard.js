@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
-import {  View,StyleSheet,TouchableOpacity,Image} from 'react-native'
-import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
+import {  View,StyleSheet,TouchableOpacity, Image} from 'react-native'
+import {Card,CardItem,Text,Container,Content,Body,cardBody, Left} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
 import { set } from 'react-native-reanimated';
@@ -8,9 +8,9 @@ export default function genRecomFoodCard (){
     let [card1,setCard1]=useState({})
     let [card2,setCard2]=useState({})
     let [card3,setCard3]=useState({})
-    const [url1,setUrl1]=useState('https://goo.gl/2W4iW6')
-    const [url2,setUrl2]=useState('https://goo.gl/2W4iW6')
-    const [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
+    const [url1,setUrl1]=useState(require('../assets/loading.png'))
+    const [url2,setUrl2]=useState(require('../assets/loading.png'))
+    const [url3,setUrl3]=useState(require('../assets/loading.png'))
     const[pass,setPass]=useState(false)
     useEffect(() => {
          async function GetResult() { 
@@ -38,41 +38,66 @@ export default function genRecomFoodCard (){
     },[])
     
     
-        return(
-            <Container>
-                <Content>
-                     <Card style={{ borderRadius: 8 }}> 
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                <Image source={{uri: url1
-                                 }} resizeMode="contain" style={{width:320,height:520}}/> 
-                                    <Text>{card1.food_info}</Text>
-                                </Body> 
-                            </CardItem>
-                    </Card>
-                    <Card style={{ borderRadius: 8 }}> 
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                <Image source={{uri: url2
-                                 }} resizeMode="contain" style={{width:400,height:400}}/> 
-                                    <Text>{card2.food_info}</Text>
-                                </Body>
-                            </CardItem>
-                    </Card>
-                    <Card style={{ borderRadius: 8 }}>
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                <Image source={{uri: url3
-                                 }} resizeMode="contain" style={{width:400,height:400}}/> 
-                                    <Text>{card3.food_info}</Text>
-                                </Body>
-                        </CardItem>
-                    </Card>
-                </Content>
-            </Container>
-           
-        )
+        
+            return(
+                <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
+                    <Content>
+                        <View >
+                            <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                                <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                            borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                    <Image source={{uri: url1}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                                    resizeMode="cover" />
+                                </CardItem>
+                                <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                    <Body>
+                                    <Text >
+                                        {card1.food_info}
+                                    </Text>
+                                    </Body>
+                                </CardItem>
+                            </Card>
+                        </View>
+                        <View >
+                            <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                                <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                            borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                    <Image source={{uri: url2}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                                    resizeMode="cover" />
+                                </CardItem>
+                                <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                    <Body>
+                                    <Text >
+                                        {card2.food_info}
+                                    </Text>
+                                    </Body>
+                                </CardItem>
+                            </Card>
+                        </View>
+                        <View >
+                            <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                                <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                            borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                    <Image source={{uri: url3}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                                    resizeMode="cover" />
+                                </CardItem>
+                                <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                    <Body>
+                                    <Text >
+                                        {card3.food_info}
+                                    </Text>
+                                    </Body>
+                                </CardItem>
+                            </Card>
+                        </View>
+                    </Content>
+                </Container>
     
-}
+            )
+    
+    }
+        
+    
+
  
     

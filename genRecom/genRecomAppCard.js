@@ -1,19 +1,19 @@
 import React,{useState,useEffect} from 'react'
-import {  StyleSheet,TouchableOpacity,Image} from 'react-native'
+import { View,Image} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
 import { set } from 'react-native-reanimated';
 export default function genRecomAppCard (){
-    let [card1,setCard1]=useState({"cuisine":"","food_deter":"",
-    "food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
-    let [card2,setCard2]=useState({"cuisine":"","food_deter":"",
-    "food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
-    let [card3,setCard3]=useState({"cuisine":"","food_deter":"",
-    "food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
-    const [url1,setUrl1]=useState('https://goo.gl/2W4iW6')
-    const [url2,setUrl2]=useState('https://goo.gl/2W4iW6')
-    const [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
+    let [card1,setCard1]=useState({"app_info":"",
+    "app_name":"","app_pic":"","category":"","sr":""})
+    let [card2,setCard2]=useState({"app_info":"",
+    "app_name":"","app_pic":"","category":"","sr":""})
+    let [card3,setCard3]=useState({"app_info":"",
+    "app_name":"","app_pic":"","category":"","sr":""})
+    const [url1,setUrl1]=useState(require('../assets/loading.png'))
+    const [url2,setUrl2]=useState(require('../assets/loading.png'))
+    const [url3,setUrl3]=useState(require('../assets/loading.png'))
     const[pass,setPass]=useState(false)
     useEffect(() => {
          async function GetResult() { 
@@ -41,42 +41,61 @@ export default function genRecomAppCard (){
     },[])
     
     
+    
     return(
-        <Container>
+        <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
             <Content>
-                 <Card style={{ borderRadius: 8 }}> 
-                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                            <Body>
-                            <Image source={{uri: url1
-                             }} resizeMode="contain" style={{width:330,height:260,flex:1}}/> 
-                                <Text>{card1.app_name}</Text>
-                                <Text>{card1.app_info}</Text>
-                            </Body> 
+                <View >
+                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                    borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Image source={{uri: url1}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                            resizeMode="cover" />
                         </CardItem>
-                </Card>
-                <Card style={{ borderRadius: 8 }}> 
-                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                        <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
-                            <Image source={{uri: url2
-                             }} resizeMode="contain" style={{width:330,height:260,flex:1}}/> 
-                                <Text>{card2.app_name}</Text>
-                                <Text>{card2.app_info}</Text>
+                            <Text >
+                                {card1.app_info}
+                            </Text>
                             </Body>
                         </CardItem>
-                </Card>
-                <Card style={{ borderRadius: 8 }}>
-                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                    </Card>
+                </View>
+                <View >
+                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                    borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Image source={{uri: url2}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                            resizeMode="cover" />
+                        </CardItem>
+                        <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
-                            <Image source={{uri: url3
-                             }} resizeMode="contain" style={{width:330,height:260,flex:1}}/> 
-                                <Text>{card3.app_name}</Text>
-                                <Text>{card3.app_info}</Text>
+                            <Text >
+                                {card2.app_info}
+                            </Text>
                             </Body>
-                    </CardItem>
-                </Card>
+                        </CardItem>
+                    </Card>
+                </View>
+                <View >
+                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                    borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Image source={{uri: url3}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                            resizeMode="cover" />
+                        </CardItem>
+                        <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Body>
+                            <Text >
+                                {card3.app_info}
+                            </Text>
+                            </Body>
+                        </CardItem>
+                    </Card>
+                </View>
             </Content>
         </Container>
-       
+
     )
 
 }

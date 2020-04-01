@@ -21,7 +21,7 @@ export default function preference({navigation}) {
         }
         Does();
         },[pass])
-        const date = JSON.stringify(new Date().getMinutes());
+        const date = JSON.stringify(new Date().getDate());
         const [foodtype, setFoodtype] = useState(0)
         const [foodDet,setFoodDet]=useState(0)
         const [foodClass,setFoodClass]=useState(0)

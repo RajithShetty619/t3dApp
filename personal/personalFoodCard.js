@@ -21,9 +21,9 @@ export default function personalFoodCard ({navigation}){
     let [card1,setCard1]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
     let [card2,setCard2]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
     let [card3,setCard3]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
-    let [url1,setUrl1]=useState('https://goo.gl/2W4iW6')
-    let [url2,setUrl2]=useState('https://goo.gl/2W4iW6')
-    let [url3,setUrl3]=useState('https://goo.gl/2W4iW6')
+    let [url1,setUrl1]=useState(require('../assets/loading.png'))
+    let [url2,setUrl2]=useState(require('../assets/loading.png'))
+    let [url3,setUrl3]=useState(require('../assets/loading.png'))
         useEffect(()=>{  
          async function Do() { 
            let  val1= await _retrieveData("foodData0")
@@ -39,52 +39,65 @@ export default function personalFoodCard ({navigation}){
            }
            Do();
           },[])
+      //  <Text> {card1["cuisine"]}  </Text>
+      //<Text>{card1["food_info"]}</Text>
       
-        // useEffect(()=>{
-        //     if(pass===true)
-        //    { firebase.storage().ref('/food/'+card1["food_pic"]).getDownloadURL().then(data=>setUrl1(data))
-        //     firebase.storage().ref('/food/'+card2["food_pic"]).getDownloadURL().then(data=>setUrl2(data))
-        //     firebase.storage().ref('/food/'+card3["food_pic"]).getDownloadURL().then(data=>setUrl3(data))}
-        // },[pass])
        
-        return(
-            <Container>
-                <Content>
-                     <Card style={{ borderRadius: 8 }}> 
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                    <View style={{flex:1,justifyContent:"space-evenly"}}> 
-                                    <Image source={{uri: url1
-                                }} resizeMode="cover" style={{ height:520,width:320,flex:1}}/> 
-                                     </View>
-                                    <Text> {card1["cuisine"]}  </Text>
-                                    <Text>{card1["food_info"]}</Text>
-                                </Body>                           
-                            </CardItem>
+      return(
+        <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
+            <Content>
+                <View >
+                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                    borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Image source={{uri: url1}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                            resizeMode="cover" />
+                        </CardItem>
+                        <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Body>
+                            <Text >
+                                {card1["food_info"]}
+                            </Text>
+                            </Body>
+                        </CardItem>
                     </Card>
-                    <Card style={{ borderRadius: 8 }}> 
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                <Image source={{uri: url2
-                            }} resizeMode="contain" style={{ height:520,width:320,flex:1}}/>  
-                                    <Text> {card2["cuisine"]}  </Text>
-                                    <Text>{card2["food_info"]}</Text>
-                                </Body>                           
-                            </CardItem>
+                </View>
+                <View >
+                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                    borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Image source={{uri: url2}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                            resizeMode="cover" />
+                        </CardItem>
+                        <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Body>
+                            <Text >
+                                {card2["food_info"]}
+                            </Text>
+                            </Body>
+                        </CardItem>
                     </Card>
-                    <Card style={{ borderRadius: 8 }}> 
-                            <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
-                                <Body>
-                                <Image source={{uri: url3
-                            }} resizeMode="contain" style={{ height:520,width:320,flex:1}}/>  
-                                    <Text>{card3["cuisine"]}</Text>
-                                    <Text>{card3["food_info"]}</Text>
-                                </Body>                           
-                            </CardItem>  
+                </View>
+                <View >
+                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                    borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Image source={{uri: url3}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                            resizeMode="cover" />
+                        </CardItem>
+                        <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                            <Body>
+                            <Text >
+                                {card3["food_info"]}
+                            </Text>
+                            </Body>
+                        </CardItem>
                     </Card>
-                </Content>
-            </Container>
-        )
-    
+                </View>
+            </Content>
+        </Container>
+
+    )
+
 }
     

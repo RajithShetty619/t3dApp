@@ -10,7 +10,7 @@ export default function preferenceApp({navigation}) {
     const[prefer,setPrefer]=useState({"app_details":{"booksandreference":false,"dating":false,"education":false,"entertainment":false,
     "finance":false,"fitness":false,"game":false,"lifestyle":false,
 "music":false,"news":false,"productivity":false,"socialmedia":false,"travel":false}})
-    const date = new Date().getMinutes();
+    const date = JSON.stringify(new Date().getDate());
         useEffect(()=>{
         async function Does(){ let myJSON = JSON.stringify(prefer);
             let authUser=fire.auth().currentUser
