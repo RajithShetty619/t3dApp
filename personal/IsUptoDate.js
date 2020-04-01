@@ -191,7 +191,7 @@ try {
                 },1000)
 
    }  
-    const  date= JSON.parse(await AsyncStorage.getItem("date"))
+    const  date= parseInt(JSON.parse(await AsyncStorage.getItem("date")))
     console.log(date,"date")
     const NewDate=parseInt(new Date().getDate())
     console.log(NewDate,"NewDate")

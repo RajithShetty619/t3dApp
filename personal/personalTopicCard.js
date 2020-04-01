@@ -21,9 +21,9 @@ export default function personalAppCard ({navigation}){
     let [card1,setCard1]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [card2,setCard2]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [card3,setCard3]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
-    let [url1,setUrl1]=useState(require('../assets/loading.png'))
-    let [url2,setUrl2]=useState(require('../assets/loading.png'))
-    let [url3,setUrl3]=useState(require('../assets/loading.png'))
+    let [url1,setUrl1]=useState('../assets/loading.png')
+    let [url2,setUrl2]=useState('../assets/loading.png')
+    let [url3,setUrl3]=useState('../assets/loading.png')
         useEffect(()=>{  
          async function Do() { 
            let  val1= await _retrieveData("topicData0")

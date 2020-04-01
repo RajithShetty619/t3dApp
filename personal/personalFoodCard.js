@@ -21,9 +21,9 @@ export default function personalFoodCard ({navigation}){
     let [card1,setCard1]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
     let [card2,setCard2]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
     let [card3,setCard3]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
-    let [url1,setUrl1]=useState(require('../assets/loading.png'))
-    let [url2,setUrl2]=useState(require('../assets/loading.png'))
-    let [url3,setUrl3]=useState(require('../assets/loading.png'))
+    let [url1,setUrl1]=useState('../assets/loading.png')
+    let [url2,setUrl2]=useState('../assets/loading.png')
+    let [url3,setUrl3]=useState('../assets/loading.png')
         useEffect(()=>{  
          async function Do() { 
            let  val1= await _retrieveData("foodData0")

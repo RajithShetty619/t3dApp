@@ -25,8 +25,8 @@ export default function personalAppCard ({navigation}){
                                      "app_name":"","app_pic":"","category":"","sr":""})
     let [card3,setCard3]=useState({"app_info":"",
                                      "app_name":"","app_pic":"","category":"","sr":""})
-    let [url1,setUrl1]=useState(require('../assets/loading.png'))
-    let [url2,setUrl2]=useState(require('../assets/loading.png'))
+    let [url1,setUrl1]=useState("https://www.google.com/imgres?imgurl=https%3A%2F%2Fmiro.medium.com%2Fmax%2F3796%2F1*hi7euM223Sr-9PIi1Pk7ng.png&imgrefurl=https%3A%2F%2Fmedium.com%2Fbetter-programming%2Fangular-application-with-loaders-216390c6da92&tbnid=29TuE-JkU82FbM&vet=12ahUKEwiP9q25gMfoAhVQcH0KHQceBtsQMygTegUIARDYAg..i&docid=S5HLntakH15I9M&w=1898&h=968&q=loading%20image&ved=2ahUKEwiP9q25gMfoAhVQcH0KHQceBtsQMygTegUIARDYAg")
+    let [url2,setUrl2]=useState('../assets/loading.png')
     let [url3,setUrl3]=useState(require('../assets/loading.png'))
         useEffect(()=>{  
          async function Do() { 
