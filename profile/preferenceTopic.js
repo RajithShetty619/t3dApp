@@ -19,7 +19,7 @@ export default function preferenceTopic({navigation}) {
             await AsyncStorage.setItem("prefTopic",myJSON) }
             Does();
         },[pass])
-        const date = JSON.stringify(new Date().getDay());
+        const date = JSON.stringify(new Date().getDate());
         const [topics,setTopics]=useState(0)
         const check=()=>{
             if(topics<=4){

@@ -192,7 +192,9 @@ try {
 
    }  
     const  date= JSON.parse(await AsyncStorage.getItem("date"))
-    const NewDate=new Date().getMinutes()
+    console.log(date,"date")
+    const NewDate=parseInt(new Date().getDate())
+    console.log(NewDate,"NewDate")
     
     if(date!==NewDate)
     {   let keys=["foodData0","foodData1","foodData2","appData0","appData0","appData0"]

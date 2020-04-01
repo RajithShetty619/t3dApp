@@ -4,8 +4,8 @@ import { StyleSheet,View,Image,TouchableOpacity,} from 'react-native';
 import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
 import fire from '../fire'
 export default function profileMain({navigation}) {
- const[user,setUser]=useState();
-const[email,setEmail]=useState();
+ const[user,setUser]=useState('');
+const[email,setEmail]=useState('');
  useEffect(() => {
   async function Does(){
         let authUser=fire.auth().currentUser
