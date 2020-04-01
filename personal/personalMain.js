@@ -21,7 +21,7 @@ export default function personalMain({navigation}) {
         handleAndroidBackButton(exitAlert)
         }
         Does();
-        return()=>{BackHandler.removeEventListener('hardwareBackPress', true); removing}
+        return()=>{BackHandler.removeEventListener('hardwareBackPress', true); }
     },[])
 
    const handleAndroidBackButton = callback => {
@@ -44,7 +44,7 @@ export default function personalMain({navigation}) {
     
     return (
         <Container>
-            <Content padder>
+            <Content >
                 <Card style={{ borderRadius: 8 }}>
                     <TouchableOpacity onPress={()=>{navigation.navigate('personalFoodCard')}} > 
                         <CardItem style={{ backgroundColor:'black',borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
@@ -55,14 +55,14 @@ export default function personalMain({navigation}) {
                         </CardItem>
                         <CardItem footer>
                                 <Left> 
-                                 <Text style={{fontWeight:'bold'}}>Food</Text>
+                                 <Text style={{fontWeight:'bold'}}>Personalized Food </Text>
                                 </Left>
                         </CardItem>
                     </TouchableOpacity>
                 </Card>
                 <Card style={{ borderRadius: 8 }}>
                     <TouchableOpacity onPress={()=>{navigation.navigate('personalAppCard')}}>
-                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                        <CardItem style={{  backgroundColor:'black',borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                             <Body>
                                   <Image source={require('../assets/img-5710.png')} style={{height:200,width:300,flexDirection:'row'}} />
                                 
@@ -70,14 +70,14 @@ export default function personalMain({navigation}) {
                         </CardItem>
                       <CardItem>
                              <Left> 
-                                 <Text style={{fontWeight:'bold'}}>App</Text>
+                                 <Text style={{fontWeight:'bold'}}>Personalized App</Text>
                             </Left>
                       </CardItem>
                     </TouchableOpacity>
                 </Card>
                 <Card style={{ borderRadius: 8 }}>
                     <TouchableOpacity onPress={()=>{navigation.navigate('personalTopicCard')}}>
-                        <CardItem style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
+                        <CardItem style={{ backgroundColor:'black', borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                             <Body>
                                   <Image source={require('../assets/img-5709.png')} style={{height:200,width:300,flexDirection:'row'}} resizeMode="contain"/>
                                 
@@ -85,7 +85,7 @@ export default function personalMain({navigation}) {
                     </CardItem>
                       <CardItem>
                              <Left> 
-                                 <Text style={{fontWeight:'bold'}}>Topic</Text>
+                                 <Text style={{fontWeight:'bold'}}>Personalized Topic</Text>
                             </Left>
                       </CardItem>
                     </TouchableOpacity>

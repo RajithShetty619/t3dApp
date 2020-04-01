@@ -16,7 +16,6 @@ export default function genRecomAppCard (){
             await fire.database().ref('/0/general/topic/0').once("value",snapshot=>{
                let item=snapshot.val() 
                console.log(item,"card1")
-               setCard1(item)
                firebase.storage().ref('/topics/'+item["topic_pic"]).getDownloadURL().then(data=>setUrl1(data))
                
             })
@@ -29,7 +28,7 @@ export default function genRecomAppCard (){
            await fire.database().ref('/0/general/topic/2').once("value",snapshot=>{
                 let item=snapshot.val() 
                 setCard3(item)
-                console.log(item["topic_pic"])
+                console.log(item["topic_pic"],item,"card3")
                 firebase.storage().ref('/topics/'+item["topic_pic"]).getDownloadURL().then(data=>setUrl3(data))
                 
              }) ; 

@@ -7,7 +7,8 @@ export default function profileMain({navigation}) {
  const[user,setUser]=useState();
 const[email,setEmail]=useState();
  useEffect(() => {
-    let authUser=fire.auth().currentUser
+  async function Does(){
+        let authUser=fire.auth().currentUser
         fire.database().ref().child('/users/'+authUser.uid+'/userName')
         .once("value",(snapshot)=>{
           let item=snapshot.val()
@@ -19,7 +20,8 @@ const[email,setEmail]=useState();
             let item=snapshot.val()
             console.log(snapshot.val())
             setEmail(item)
-            })
+            })}
+            Does();
   },[])
 
   
@@ -60,12 +62,6 @@ const[email,setEmail]=useState();
             </View>
 
 
-            <View style={styles.item}>
-            
-              <View style={styles.infoContent}>
-                <Text style={styles.info}>text</Text>
-              </View>
-            </View>
           </View>
      </Content>
       </Container>

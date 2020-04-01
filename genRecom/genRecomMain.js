@@ -12,14 +12,10 @@ export default class personalMain extends Component {
                             <CardItem style={{ backgroundColor:'black',borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                   <Image source={require('../assets/img-5708.png')} style={{height:500,width:330,}}/> 
-                                    <Text style={{fontWeight:'bold',color:'coral'}}>Food</Text>
+                                    <Text style={{fontWeight:'bold',color:'#FFFFFF'}}>General Food</Text>
                                 </Body> 
                             </CardItem>
-                            <CardItem footer>
-                                    <Left> 
-                                     <Text style={{fontWeight:'bold'}}>Food</Text>
-                                    </Left>
-                            </CardItem>
+                            
                         </TouchableOpacity>
                     </Card>
                     <Card style={{ backgroundColor:'#777', borderRadius: 8 }}>
@@ -27,14 +23,10 @@ export default class personalMain extends Component {
                             <CardItem style={{ backgroundColor:'black',borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                   <Image source={require('../assets/img-5710.png')} style={{height:420,width:300,flex:1}}/>
-                                    <Text style={{fontWeight:'bold',color:'coral'}}>app</Text>
+                                    <Text style={{fontWeight:'bold',color:'coral'}}>General App</Text>
                                 </Body>
                             </CardItem>
-                            <CardItem footer>
-                                    <Left> 
-                                     <Text style={{fontWeight:'bold'}}>App</Text>
-                                    </Left>
-                            </CardItem>
+                            
                         </TouchableOpacity>
                     </Card>
                     <Card style={{ backgroundColor:'black', borderRadius: 8 }}>
@@ -42,14 +34,10 @@ export default class personalMain extends Component {
                             <CardItem style={{backgroundColor:'black', borderTopLeftRadius: 8, borderTopRightRadius: 8,borderBottomRightRadius:8,borderBottomLeftRadius:8 }}>
                                 <Body>
                                   <Image source={require('../assets/img-5709.png')} style={{height:200,width:330,flexDirection:'row'}}/>
-                                    <Text style={{fontWeight:'bold',color:'coral'}}>topic</Text>
+                                    <Text style={{fontWeight:'bold',color:'coral'}}>General Topic</Text>
                                 </Body>
                         </CardItem>
-                            <CardItem footer>
-                                    <Left> 
-                                     <Text style={{fontWeight:'bold'}}>Topic</Text>
-                                    </Left>
-                            </CardItem>
+                            
                         </TouchableOpacity>
                     </Card>
                 </Content>

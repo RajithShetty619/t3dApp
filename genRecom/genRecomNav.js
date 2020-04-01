@@ -13,7 +13,7 @@ function AppNavigation(){
         <generalStack.Navigator   headerMode="none" screenOptions={
             {
               gestureEnabled:true,
-              gestureDirection:'horizontal',
+              gestureDirection:'horizontal-inverted',
               cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid,
             //   transitionSpec:{
             //       open:TransitionSpecs.FadeInFromBottomAndroidSpec ,

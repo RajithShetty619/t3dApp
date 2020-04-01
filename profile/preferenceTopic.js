@@ -69,14 +69,14 @@ export default function preferenceTopic({navigation}) {
                                let array=[];
                                Object.
                                keys(item)
-                               .forEach(i=>array.push(item[i]));   
-                               }
+                               .forEach(i=>array.push(item[i]));
                                if(item!==null)
                                 { 
                                 _storeData(item,path); 
                                 clearInterval(interval); 
+                                }   
+                               }
                                 
-                                }
                      })
                         
                         },1000)

@@ -63,22 +63,29 @@ export default function preferenceApp({navigation}) {
             return '/0/app_details/0/'+getTopic()+'/0/data/'+ ran;
         } 
     const isValid=(path)=>{
-          
-        async function Does(){ console.log(getpath(),"getpath")
-                 await  fire.database().ref().child(getpath())
-                       .once("value",
-                   (snapshot)=>{
-                       let item=snapshot.val()
-                       if(item!==null){
-                       let array=[];
-                       Object.
-                       keys(item)
-                       .forEach(i=>array.push(item[i]));   
-                       }
+          const interval=setInterval(()=>{
+            async function Does(){ console.log(getpath(),"getpath")
+            await  fire.database().ref().child(getpath())
+                  .once("value",
+              (snapshot)=>{
+                  let item=snapshot.val()
+                  if(item!==null){
+                  let array=[];
+                  Object.
+                  keys(item)
+                  .forEach(i=>array.push(item[i]));  
+                  if(item!==null)
+                  {
                     _storeData(item,path); 
-                 })
-                }
-                Does()
+                    clearInterval(interval)
+                  } 
+                  }
+               
+            })
+           }
+           Does()
+          },1000)
+         
    }  
    const _storeData = async (obj,path) => {
     try {

@@ -113,22 +113,29 @@ try {
             return '/0/app_details/0/'+getTopic()+'/0/data/'+ ran;
         } 
     const isValidApp=(path)=>{
-          console.log("app")
-        async function Does(){ console.log(getpathApp(),"getpathApp")
-                 await  fire.database().ref().child( await getpathApp() )
-                       .once("value",
-                   (snapshot)=>{
-                       let item=snapshot.val()
-                       if(item!==null){
-                       let array=[];
-                       Object.
-                       keys(item)
-                       .forEach(i=>array.push(item[i]));   
-                       }
+          const interval=setInterval(()=>{
+            async function Does(){ console.log(getpathApp(),"getpathApp")
+            await  fire.database().ref().child( await getpathApp() )
+                  .once("value",
+              (snapshot)=>{
+                  let item=snapshot.val()
+                  if(item!==null){
+                  let array=[];
+                  Object.
+                  keys(item)
+                  .forEach(i=>array.push(item[i]));   
+                  if(item!==null)
+                  {
                     _storeData(item,path); 
-                 })
-                }
-                Does()
+                    clearInterval(interval)
+                  }
+                  }
+               
+            })
+           }
+           Does();
+          },200)
+         
     } 
     function pathItemsTopic(path){
         if(path ==='/0/topic_details/0/architecture') {return 0;}
