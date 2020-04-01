@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
-import {  View,StyleSheet,TouchableOpacity, Image} from 'react-native'
-import {Card,CardItem,Text,Container,Content,Body,cardBody, Left} from 'native-base';
+import {  View, Image} from 'react-native'
+import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
-import { set } from 'react-native-reanimated';
+
 export default function genRecomFoodCard (){
     let [card1,setCard1]=useState({})
     let [card2,setCard2]=useState({})

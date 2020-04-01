@@ -1,7 +1,4 @@
-
-// Loading.js
 import React from 'react'
-import fire from '../fire'
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
 import firebase from 'firebase';
 export default class Loading extends React.Component {

@@ -1,7 +1,6 @@
-
-import React, { Component,useState,useEffect } from 'react';
-import { StyleSheet,View,Image,TouchableOpacity,} from 'react-native';
-import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
+import React, { useState,useEffect } from 'react';
+import { StyleSheet,View,TouchableOpacity,BackHandler} from 'react-native';
+import {Text,Container,Content} from 'native-base';
 import fire from '../fire'
 export default function profileMain({navigation}) {
  const[user,setUser]=useState('');
@@ -20,10 +19,33 @@ const[email,setEmail]=useState('');
             let item=snapshot.val()
             console.log(snapshot.val())
             setEmail(item)
-            })}
+            })
+            console.log("handleAndroidBackButton")
+            handleAndroidBackButton(exitAlert)
+          }
             Does();
+            
+            
   },[])
 
+  
+  const handleAndroidBackButton = callback => {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+        callback();
+        return true;
+    });
+    };
+    const exitAlert = () => {
+    Alert.alert(
+        'Confirm exit',
+        'Do you want to quit the app?',
+        [
+        {text: 'CANCEL', style: 'cancel'},
+        {text: 'OK', onPress: () => BackHandler.exitApp()}
+        ]
+    );
+    };
+     
   
     return (
       <Container>
@@ -36,27 +58,27 @@ const[email,setEmail]=useState('');
                 
             </View>
           </View>
-        <Content style={{backgroundColor:'black'}}>
+        <Content style={{backgroundColor:'gray'}}>
           <View style={styles.body}>
             <View style={styles.item}>
               
               <View style={styles.infoContent}>
                  <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preference')}>
-                <Text>Preferences Food</Text> 
+                <Text>Food Preferences  </Text> 
                 </TouchableOpacity>
               </View>
               </View>
               <View style={styles.item}>
             <View style={styles.infoContent}>
                  <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preferenceApp')}>
-                <Text>Preferences App</Text> 
+                <Text> App Preferences </Text> 
                 </TouchableOpacity>
               </View>
             </View>
             <View style={styles.item}>
             <View style={styles.infoContent}>
                  <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preferenceTopic')} >
-                <Text>Preferences Topic</Text> 
+                <Text>Topic Preferences  </Text> 
                 </TouchableOpacity>
               </View>
             </View>

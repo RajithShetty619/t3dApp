@@ -1,11 +1,9 @@
-import PreferVar from '../profile/preferVar';
 import React,{useState,useEffect} from 'react'
-import { View, StyleSheet,TouchableOpacity,Image,AsyncStorage} from 'react-native'
-import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
-import fire from '../fire'
+import { View,Image,AsyncStorage} from 'react-native'
+import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import firebase from 'firebase'
 
-export default function personalFoodCard ({navigation}){
+export default function personalFoodCard (){
     
     const _retrieveData = async (path) => {
         try {
@@ -39,8 +37,7 @@ export default function personalFoodCard ({navigation}){
            }
            Do();
           },[])
-      //  <Text> {card1["cuisine"]}  </Text>
-      //<Text>{card1["food_info"]}</Text>
+  
       
        
       return(

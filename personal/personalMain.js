@@ -1,14 +1,15 @@
 import React, {  useEffect } from 'react'
 import {  View,TouchableOpacity,Image,} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,} from 'native-base';
-import {BackHandler} from 'react-native'
+
 import {Alert} from 'react-native';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import IsUptoDate from './IsUptoDate'
 
 export default function personalMain({navigation}) {
-
+    
+    
 
     useEffect(()=>{
        async function Does(){
@@ -18,28 +19,13 @@ export default function personalMain({navigation}) {
                         ...Ionicons.font,
                       });
         await IsUptoDate()
-        handleAndroidBackButton(exitAlert)
+        
         }
         Does();
-        return()=>{BackHandler.removeEventListener('hardwareBackPress', true); }
+        
     },[])
 
-   const handleAndroidBackButton = callback => {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-        callback();
-        return true;
-    });
-    };
-    const exitAlert = () => {
-    Alert.alert(
-        'Confirm exit',
-        'Do you want to quit the app?',
-        [
-        {text: 'CANCEL', style: 'cancel'},
-        {text: 'OK', onPress: () => BackHandler.exitApp()}
-        ]
-    );
-    };
+  
      
     
     return (
@@ -64,7 +50,7 @@ export default function personalMain({navigation}) {
                     </TouchableOpacity>
                 </View>
                 <View >
-            <TouchableOpacity onPress={()=>{navigation.navigate('personalTopicCard')}}>
+            <TouchableOpacity onPress={()=>{navigation.navigate('personalCard')}}>
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
@@ -74,7 +60,7 @@ export default function personalMain({navigation}) {
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
                             <Text style={{fontWeight:'bold'}}>
-                                Personalized Topic
+                                Personalized App
                             </Text>
                             </Body>
                         </CardItem>

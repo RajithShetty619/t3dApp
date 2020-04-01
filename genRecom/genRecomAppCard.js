@@ -1,9 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import { View,Image} from 'react-native'
-import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
+import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
-import { set } from 'react-native-reanimated';
 export default function genRecomAppCard (){
     let [card1,setCard1]=useState({"app_info":"",
     "app_name":"","app_pic":"","category":"","sr":""})
@@ -51,6 +50,7 @@ export default function genRecomAppCard (){
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Image source={{uri: url1}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
                             resizeMode="cover" />
+                            
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>

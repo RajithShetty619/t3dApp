@@ -1,5 +1,5 @@
 import React from 'react'
-import {createStackNavigator,CardStyleInterpolators,TransitionPresets,TransitionSpecs} from '@react-navigation/stack'
+import {createStackNavigator,CardStyleInterpolators,TransitionSpecs} from '@react-navigation/stack'
 import profileMain from './profileMain'
 import preference from './preference';
 import preferenceTopic from './preferenceTopic';

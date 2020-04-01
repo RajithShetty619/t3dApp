@@ -1,5 +1,5 @@
 import React from 'react'
-import {createStackNavigator,CardStyleInterpolators,TransitionPresets,TransitionSpecs} from '@react-navigation/stack'
+import {createStackNavigator,CardStyleInterpolators} from '@react-navigation/stack'
 import genRecomFoodCard from './genRecomFoodCard'
 import genRecomMain from './genRecomMain'
 import genRecomTopicCard  from './genRecomTopicCard'
@@ -15,10 +15,7 @@ function genRecomNav(){
               gestureEnabled:true,
               gestureDirection:'horizontal-inverted',
               cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid,
-            //   transitionSpec:{
-            //       open:TransitionSpecs.FadeInFromBottomAndroidSpec ,
-            //       close:TransitionSpecs.TransitionIOSSpec,
-            //   }
+           
             }} >
             <generalStack.Screen name="genRecomMain" component={genRecomMain}/>
             <generalStack.Screen name="genRecomFoodCard" component={genRecomFoodCard}/>

@@ -1,7 +1,5 @@
-
-import {Alert,AsyncStorage} from 'react-native'
+import {AsyncStorage} from 'react-native'
 import fire from '../fire'
-
 
 export default async function IsUptoDate(){
 

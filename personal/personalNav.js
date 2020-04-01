@@ -1,5 +1,5 @@
 import React from 'react'
-import {createStackNavigator,CardStyleInterpolators,TransitionPresets,TransitionSpecs} from '@react-navigation/stack'
+import {createStackNavigator,CardStyleInterpolators,TransitionSpecs} from '@react-navigation/stack'
 import personalFoodCard from './personalFoodCard'
 import personalMain from './personalMain'
 import personalAppCard from './personalAppCard'

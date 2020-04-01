@@ -1,11 +1,10 @@
 import React,{useState,useEffect} from 'react'
-import { View, StyleSheet,TouchableOpacity,Image,AsyncStorage} from 'react-native'
-import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
-import fire from '../fire'
+import { View,Image,AsyncStorage} from 'react-native'
+import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import firebase from 'firebase'
 
 
-export default function personalAppCard ({navigation}){
+export default function personalAppCard (){
     
     const [pass,setPass]=useState(false)
     const _retrieveData = async (path) => {

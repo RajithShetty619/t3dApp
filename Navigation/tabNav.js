@@ -12,20 +12,18 @@ function tabNav() {
             tabBarOptions={{
             activeTintColor: '#0000A0',
             inactiveTintColor: 'gray',
-            // activeBackgroundColor:'black',
-            // inactiveBackgroundColor:'#A9A9A9',
-           keyboardHidesTabBar:true
+            keyboardHidesTabBar:true
            
           }}>
-            <tab.Screen  name="personal" component={personalNav}
+            <tab.Screen  name="Personal" component={personalNav}
             options={{
                 tabBarIcon:({color,size})=>{ return <Icon name='person-outline' size={size} color={color} />;}
             }}/>
-            <tab.Screen  name="general" component={genRecomNav}
+            <tab.Screen  name="General" component={genRecomNav}
             options={{
                 tabBarIcon:({color,size})=>{ return <Icon name='explore' size={size} color={color} />;}
             }}/>
-            <tab.Screen  name="profile" component={profileNav}
+            <tab.Screen  name="Profile" component={profileNav}
             options={{
                 tabBarIcon:({color,size})=>{ return <Icon name='fingerprint' size={size} color={color} />;}
             }}/>

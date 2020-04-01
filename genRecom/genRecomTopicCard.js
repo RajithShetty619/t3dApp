@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { View,Image} from 'react-native'
-import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
+import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
 export default function genRecomAppCard (){
@@ -10,12 +10,12 @@ export default function genRecomAppCard (){
     const [url1,setUrl1]=useState('../assets/loading.png')
     const [url2,setUrl2]=useState('../assets/loading.png')
     const [url3,setUrl3]=useState('../assets/loading.png')
-    const[pass,setPass]=useState(false)
+    
     useEffect(() => {
          async function GetResult() { 
             await fire.database().ref('/0/general/topic/0').once("value",snapshot=>{
                let item=snapshot.val() 
-               console.log(item,"card1")
+               setCard1(item)
                firebase.storage().ref('/topics/'+item["topic_pic"]).getDownloadURL().then(data=>setUrl1(data))
                
             })
@@ -76,7 +76,7 @@ export default function genRecomAppCard (){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: url3}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                            <Image source={{uri: url3}} style={{height: 400, width: null, flex: 1,borderRadius:16}} 
                             resizeMode="cover" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>

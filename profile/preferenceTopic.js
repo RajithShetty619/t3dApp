@@ -1,8 +1,7 @@
 import React, { useState,useEffect} from 'react'
 import {Alert,AsyncStorage} from 'react-native'
-import {Text,Container,Content,Body,CheckBox,ListItem, Button,Separator, Header, View} from 'native-base';
+import {Text,Container,Content,Body,CheckBox,ListItem, Button,Separator, View} from 'native-base';
 import fire from '../fire'
-import PreferVar from './preferVar'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 

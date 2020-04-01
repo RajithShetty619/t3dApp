@@ -1,5 +1,5 @@
-import React,{ Component } from 'react';
-import { Container, Text, Header, Title, Content,Thumbnail, Footer, FooterTab, Button, Left, Right, Body, Icon, Card, CardItem, View, DeckSwiper, } from 'native-base';
+import React from 'react';
+import { Container, Text, Content,Thumbnail, Button, Left, Body, Card, CardItem, View, DeckSwiper } from 'native-base';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'react-native';

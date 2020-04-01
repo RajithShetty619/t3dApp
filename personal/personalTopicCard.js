@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from 'react'
-import { View, StyleSheet,TouchableOpacity,Image,AsyncStorage} from 'react-native'
-import {Card,CardItem,Text,Container,Content,Body,footer,Left} from 'native-base';
+import { View,Image,AsyncStorage} from 'react-native'
+import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import firebase from 'firebase'
 
 
-export default function personalAppCard ({navigation}){
+export default function personalAppCard (){
     
-    const [pass,setPass]=useState(false)
+    
     const _retrieveData = async (path) => {
         try {
           const value = await AsyncStorage.getItem(path);
@@ -40,13 +40,6 @@ export default function personalAppCard ({navigation}){
            Do();
           },[])
       
-        useEffect(()=>{
-            if(pass===true)
-           { 
-            // firebase.storage().ref('/topics/'+card1["topic_pic"]).getDownloadURL().then(data=>setUrl1(data))
-            // firebase.storage().ref('/topics/'+card2["topic_pic"]).getDownloadURL().then(data=>setUrl2(data))
-            // firebase.storage().ref('/topics/'+card3["topic_pic"]).getDownloadURL().then(data=>setUrl3(data))
-        }},[pass])
       
         return(
             <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
@@ -78,7 +71,7 @@ export default function personalAppCard ({navigation}){
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
                                 <Text >
-                                    {card1["topic_info"]}
+                                    {card2["topic_info"]}
                                 </Text>
                                 </Body>
                             </CardItem>
@@ -94,7 +87,7 @@ export default function personalAppCard ({navigation}){
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
                                 <Text >
-                                    {card1["topic_info"]}
+                                    {card3["topic_info"]}
                                 </Text>
                                 </Body>
                             </CardItem>
