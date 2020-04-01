@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "422452307527-lim5ve47pb38v1nf8mp5e6ti8gaq1vc5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.t3d.snapinsight",
+            "certificate_hash": "128026953f0e6df17fe62ec78d36fa03e6de004f"
+          }
+        },
+        {
           "client_id": "422452307527-g759kbnn68i0ot9f7jtco5fa0ph2afl9.apps.googleusercontent.com",
           "client_type": 3
         }

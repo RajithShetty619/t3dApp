@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { StyleSheet,View,TouchableOpacity,BackHandler} from 'react-native';
 import {Text,Container,Content} from 'native-base';
 import fire from '../fire'
+import { signOutAsync } from 'expo-google-sign-in';
 export default function profileMain({navigation}) {
  const[user,setUser]=useState('');
 const[email,setEmail]=useState('');
@@ -27,6 +28,10 @@ const[email,setEmail]=useState('');
             
             
   },[])
+  signOutAsync = async () => {
+    await GoogleSignIn.signOutAsync();
+    this.setState({ user: null });
+  };
 
   
   const handleAndroidBackButton = callback => {
@@ -58,13 +63,13 @@ const[email,setEmail]=useState('');
                 
             </View>
           </View>
-        <Content style={{backgroundColor:'gray'}}>
+        <Content style={{backgroundColor:'black'}}>
           <View style={styles.body}>
             <View style={styles.item}>
               
               <View style={styles.infoContent}>
                  <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preference')}>
-                <Text>Food Preferences  </Text> 
+                <Text>  Food Preferences</Text> 
                 </TouchableOpacity>
               </View>
               </View>
@@ -78,7 +83,14 @@ const[email,setEmail]=useState('');
             <View style={styles.item}>
             <View style={styles.infoContent}>
                  <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preferenceTopic')} >
-                <Text>Topic Preferences  </Text> 
+                <Text>  Topic Preferences</Text> 
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.item}>
+            <View style={styles.infoContent}>
+                 <TouchableOpacity style={styles.buttonContainerTransparent}  onPress={()=>navigation.navigate('privacyPolicy')} >
+                <Text style={{color:'#00BFFF'}}>Privacy Policy</Text> 
                 </TouchableOpacity>
               </View>
             </View>

@@ -363,7 +363,7 @@ export default function preference({navigation}) {
                   </Body>
               </ListItem>
               </TouchableOpacity>
-              <TouchableOpacity>
+             
               <Button transparent onPress={()=>{if(check()){navigation.navigate("profileMain")
                                       setPass(true) 
                                       isValid("foodData0")
@@ -374,7 +374,7 @@ export default function preference({navigation}) {
                   <Text style={{color:'#00BFFF'}}>SAVE</Text>
                   </View>
               </Button>
-              </TouchableOpacity>
+              
               </Content>
           </Content>
       </Container>

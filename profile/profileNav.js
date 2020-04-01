@@ -3,7 +3,8 @@ import {createStackNavigator,CardStyleInterpolators,TransitionSpecs} from '@reac
 import profileMain from './profileMain'
 import preference from './preference';
 import preferenceTopic from './preferenceTopic';
-import preferenceApp from './preferenceApp'
+import preferenceApp from './preferenceApp';
+import privacyPolicy from './privacyPolicy';
 function AppNavigation(){
 
     const profileNav = createStackNavigator();
@@ -23,6 +24,7 @@ function AppNavigation(){
             <profileNav.Screen name="preference" component={preference}/>
              <profileNav.Screen name="preferenceApp" component={preferenceApp}/>
             <profileNav.Screen name="preferenceTopic" component={preferenceTopic}/> 
+            <profileNav.Screen name="privacyPolicy" component={privacyPolicy} />
         </profileNav.Navigator>
         
     )
