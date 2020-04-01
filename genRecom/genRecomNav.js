@@ -5,7 +5,7 @@ import genRecomMain from './genRecomMain'
 import genRecomTopicCard  from './genRecomTopicCard'
 import genRecomAppCard from './genRecomAppCard'
 
-function AppNavigation(){
+function genRecomNav(){
 
     const generalStack = createStackNavigator();
     return (
@@ -29,4 +29,4 @@ function AppNavigation(){
     )
 }
 
-export default AppNavigation
+export default genRecomNav

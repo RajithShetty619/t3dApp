@@ -14,6 +14,7 @@ function tabNav() {
             inactiveTintColor: 'gray',
             // activeBackgroundColor:'black',
             // inactiveBackgroundColor:'#A9A9A9',
+           keyboardHidesTabBar:true
            
           }}>
             <tab.Screen  name="personal" component={personalNav}
