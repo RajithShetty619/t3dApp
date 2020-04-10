@@ -1,5 +1,6 @@
 import {AsyncStorage} from 'react-native'
-import fire from '../fire'
+import fire from '../fire';
+import firebase from 'firebase';
 
 export default async function IsUptoDate(){
 
@@ -50,7 +51,7 @@ export default async function IsUptoDate(){
 }
   const isValidFood=(path)=>{
       const interval =  setInterval( async() => {
-            await  fire.database().ref().child( await getpathFood())
+            await  firebase.database().ref().child( await getpathFood())
                    .on("value",
                (snapshot)=>{
                    let item=snapshot.val()
@@ -167,7 +168,7 @@ try {
     const isValidTopic=(path)=>{
           
     const interval =setInterval(  async()=>{ 
-                 await  fire.database().ref().child(await getpathTopics())
+                 await  firebase.database().ref().child(await getpathTopics())
                        .once("value",
                    (snapshot)=>{
                        let item=snapshot.val()

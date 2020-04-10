@@ -14,7 +14,6 @@ export default function preferenceTopic({navigation}) {
            async function Does(){ let myJSON = JSON.stringify(prefer);
             let authUser=fire.auth().currentUser
             console.log("setting");
-            fire.database().ref('/users/').child(authUser.uid+'/preference/topic').set(myJSON)
             await AsyncStorage.setItem("prefTopic",myJSON) }
             Does();
         },[pass])

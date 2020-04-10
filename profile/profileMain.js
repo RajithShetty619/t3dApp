@@ -1,8 +1,7 @@
 import React, { useState,useEffect } from 'react';
-import { StyleSheet,View,TouchableOpacity,BackHandler} from 'react-native';
+import { StyleSheet,View,TouchableOpacity,BackHandler,Alert} from 'react-native';
 import {Text,Container,Content} from 'native-base';
-import fire from '../fire'
-import { signOutAsync } from 'expo-google-sign-in';
+import fire from '../fire';
 export default function profileMain({navigation}) {
  const[user,setUser]=useState('');
 const[email,setEmail]=useState('');
@@ -15,23 +14,21 @@ const[email,setEmail]=useState('');
           console.log(snapshot.val())
           setUser(item)
           })
+
           fire.database().ref().child('/users/'+authUser.uid+'/email')
           .once("value",(snapshot)=>{
             let item=snapshot.val()
             console.log(snapshot.val())
             setEmail(item)
             })
-            console.log("handleAndroidBackButton")
-            handleAndroidBackButton(exitAlert)
+           
+           
           }
             Does();
             
-            
+           ; 
   },[])
-  signOutAsync = async () => {
-    await GoogleSignIn.signOutAsync();
-    this.setState({ user: null });
-  };
+  
 
   
   const handleAndroidBackButton = callback => {
@@ -67,14 +64,14 @@ const[email,setEmail]=useState('');
           <View style={styles.body}>
             <View style={styles.item}>
               
-              <View style={styles.infoContent}>
+              <View style={styles.info}>
                  <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preference')}>
                 <Text>  Food Preferences</Text> 
                 </TouchableOpacity>
               </View>
               </View>
               <View style={styles.item}>
-            <View style={styles.infoContent}>
+            <View style={styles.info}>
                  <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('preferenceApp')}>
                 <Text> App Preferences </Text> 
                 </TouchableOpacity>
@@ -88,14 +85,17 @@ const[email,setEmail]=useState('');
               </View>
             </View>
             <View style={styles.item}>
-            <View style={styles.infoContent}>
+            <View style={styles.info}>
                  <TouchableOpacity style={styles.buttonContainerTransparent}  onPress={()=>navigation.navigate('privacyPolicy')} >
                 <Text style={{color:'#00BFFF'}}>Privacy Policy</Text> 
                 </TouchableOpacity>
               </View>
+              <View style={styles.info}>
+                 <TouchableOpacity style={styles.buttonContainerTransparent}  onPress={()=>{fire.auth().signOut();navigation.navigate('NavigationStack')}} >
+                <Text style={{color:'#00BFFF'}}>Sign out</Text> 
+                </TouchableOpacity>
+              </View>
             </View>
-
-
           </View>
      </Content>
       </Container>

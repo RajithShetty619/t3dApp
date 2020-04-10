@@ -11,7 +11,7 @@ export default function genRecomFoodCard (){
     const [url1,setUrl1]=useState('../assets/loading.png')
     const [url2,setUrl2]=useState('../assets/loading.png')
     const [url3,setUrl3]=useState('../assets/loading.png')
-    const[pass,setPass]=useState(false)
+   
     useEffect(() => {
          async function GetResult() { 
             await fire.database().ref('/0/general/food/0').once("value",snapshot=>{

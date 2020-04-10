@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
-import { View,Image,AsyncStorage} from 'react-native'
+import { View,Image,AsyncStorage,BackHandler} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import firebase from 'firebase'
 
-export default function personalFoodCard (){
+export default function personalFoodCard ({route,navigation}){
     
     const _retrieveData = async (path) => {
         try {
@@ -16,24 +16,28 @@ export default function personalFoodCard (){
           console.log(error)
         }
       };
-    let [card1,setCard1]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
-    let [card2,setCard2]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
-    let [card3,setCard3]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
-    let [url1,setUrl1]=useState('../assets/loading.png')
-    let [url2,setUrl2]=useState('../assets/loading.png')
-    let [url3,setUrl3]=useState('../assets/loading.png')
+    let { cardF1 } = route.params;
+    let [cardF2,setCardF2]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
+    let [cardF3,setCardF3]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
+    let { urlF1 } = route.params;
+    let [urlF2,setUrlF2]=useState('../assets/loading.png')
+    let [urlF3,setUrlF3]=useState('../assets/loading.png')
+    
+    
         useEffect(()=>{  
          async function Do() { 
-           let  val1= await _retrieveData("foodData0")
-           setCard1(val1)
-           await firebase.storage().ref('/food/'+val1["food_pic"]).getDownloadURL().then(data=>setUrl1(data))
+        //    let  val1= await _retrieveData("foodData0")
+        //    setCard1(val1)
+        //    await firebase.storage().ref('/food/'+val1["food_pic"]).getDownloadURL().then(data=>setUrl1(data))
            let  val2= await _retrieveData("foodData1")
-           setCard2(val2)
-           await firebase.storage().ref('/food/'+val2["food_pic"]).getDownloadURL().then(data=>setUrl2(data))
+           setCardF2(val2)
+           await firebase.storage().ref('/food/'+val2["food_pic"]).getDownloadURL().then(data=>setUrlF2(data))
            let  val3= await _retrieveData("foodData2")
-           setCard3(val3)
-           await firebase.storage().ref('/food/'+val3["food_pic"]).getDownloadURL().then(data=>setUrl3(data))
-           
+           setCardF3(val3)
+           await firebase.storage().ref('/food/'+val3["food_pic"]).getDownloadURL().then(data=>setUrlF3(data))
+           BackHandler.removeEventListener("hardwareBackPress")
+           BackHandler.addEventListener("hardwareBackPress",()=>{
+               navigation.navigate("personalMain")})
            }
            Do();
           },[])
@@ -47,13 +51,13 @@ export default function personalFoodCard (){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: url1}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                            <Image source={{uri: urlF1}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
                             resizeMode="cover" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
                             <Text >
-                                {card1["food_info"]}
+                                {cardF1["food_info"]}
                             </Text>
                             </Body>
                         </CardItem>
@@ -63,13 +67,13 @@ export default function personalFoodCard (){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: url2}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                            <Image source={{uri: urlF2}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
                             resizeMode="cover" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
                             <Text >
-                                {card2["food_info"]}
+                                {cardF2["food_info"]}
                             </Text>
                             </Body>
                         </CardItem>
@@ -79,13 +83,13 @@ export default function personalFoodCard (){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: url3}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                            <Image source={{uri: urlF3}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
                             resizeMode="cover" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
                             <Text >
-                                {card3["food_info"]}
+                                {cardF3["food_info"]}
                             </Text>
                             </Body>
                         </CardItem>

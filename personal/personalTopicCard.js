@@ -4,7 +4,7 @@ import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import firebase from 'firebase'
 
 
-export default function personalAppCard (){
+export default function personalAppCard ({route}){
     
     
     const _retrieveData = async (path) => {
@@ -18,23 +18,20 @@ export default function personalAppCard (){
           console.log(error)
         }
       };
-    let [card1,setCard1]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
-    let [card2,setCard2]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
-    let [card3,setCard3]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
-    let [url1,setUrl1]=useState('../assets/loading.png')
-    let [url2,setUrl2]=useState('../assets/loading.png')
-    let [url3,setUrl3]=useState('../assets/loading.png')
+    let {cardT1}=route.params
+    let [cardT2,setCardT2]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
+    let [cardT3,setCardT3]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
+    let {urlT1}=route.params
+    let [urlT2,setUrlT2]=useState('../assets/loading.png')
+    let [urlT3,setUrlT3]=useState('../assets/loading.png')
         useEffect(()=>{  
          async function Do() { 
-           let  val1= await _retrieveData("topicData0")
-           setCard1(val1)
-           await firebase.storage().ref('/topics/'+val1["topic_pic"]).getDownloadURL().then(data=>setUrl1(data))
            let  val2= await _retrieveData("topicData1")
-           setCard2(val2)
-           await firebase.storage().ref('/topics/'+val2["topic_pic"]).getDownloadURL().then(data=>setUrl2(data))
+           setCardT2(val2)
+           await firebase.storage().ref('/topics/'+val2["topic_pic"]).getDownloadURL().then(data=>setUrlT2(data))
            let  val3= await _retrieveData("topicData2")
-           setCard3(val3)
-           await firebase.storage().ref('/topics/'+val3["topic_pic"]).getDownloadURL().then(data=>setUrl3(data))
+           setCardT3(val3)
+           await firebase.storage().ref('/topics/'+val3["topic_pic"]).getDownloadURL().then(data=>setUrlT3(data))
            setPass(true) 
            }
            Do();
@@ -48,14 +45,14 @@ export default function personalAppCard (){
                         <Card style={{ borderRadius: 16,borderColor:"black"}} >
                             <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                         borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                                <Image source={{uri: url1}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                                <Image source={{uri: urlT1}} style={{height: 200, width: null, flex: 1,borderRadius:16}} 
                                 resizeMode="cover" />
                             </CardItem>
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
                             
                                 <Text >
-                                    {card1["topic_info"]}
+                                    {cardT1["topic_info"]}
                                 </Text>
                                 </Body>
                             </CardItem>
@@ -65,13 +62,13 @@ export default function personalAppCard (){
                         <Card style={{ borderRadius: 16,borderColor:"black"}} >
                             <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                         borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                                <Image source={{uri: url2}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                                <Image source={{uri: urlT2}} style={{height: 200, width: null, flex: 1,borderRadius:16}} 
                                 resizeMode="cover" />
                             </CardItem>
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
                                 <Text >
-                                    {card2["topic_info"]}
+                                    {cardT2["topic_info"]}
                                 </Text>
                                 </Body>
                             </CardItem>
@@ -81,13 +78,13 @@ export default function personalAppCard (){
                         <Card style={{ borderRadius: 16,borderColor:"black"}} >
                             <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                         borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                                <Image source={{uri: url3}} style={{height: 300, width: null, flex: 1,borderRadius:16}} 
+                                <Image source={{uri: urlT3}} style={{height: 200, width: null, flex: 1,borderRadius:16}} 
                                 resizeMode="cover" />
                             </CardItem>
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
                                 <Text >
-                                    {card3["topic_info"]}
+                                    {cardT3["topic_info"]}
                                 </Text>
                                 </Body>
                             </CardItem>

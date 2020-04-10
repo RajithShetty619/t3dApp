@@ -14,7 +14,6 @@ export default function preferenceApp({navigation}) {
         useEffect(()=>{
         async function Does(){ let myJSON = JSON.stringify(prefer);
             let authUser=fire.auth().currentUser
-            fire.database().ref('/users/').child(authUser.uid+'/preference/app').set(myJSON)
             await AsyncStorage.setItem("prefApp",myJSON)
         }
             Does();

@@ -15,14 +15,15 @@ function tabNav() {
             keyboardHidesTabBar:true
            
           }}>
-            <tab.Screen  name="Personal" component={personalNav}
+             <tab.Screen  name="Personal" component={personalNav}
             options={{
                 tabBarIcon:({color,size})=>{ return <Icon name='person-outline' size={size} color={color} />;}
-            }}/>
+            }}/> 
             <tab.Screen  name="General" component={genRecomNav}
             options={{
                 tabBarIcon:({color,size})=>{ return <Icon name='explore' size={size} color={color} />;}
             }}/>
+            
             <tab.Screen  name="Profile" component={profileNav}
             options={{
                 tabBarIcon:({color,size})=>{ return <Icon name='fingerprint' size={size} color={color} />;}

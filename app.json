@@ -27,6 +27,11 @@
       "supportsTablet": false
     },
     "android": {
+      "config": {
+        "googleSignIn": {
+          "certificateHash": "21:54:4F:EF:29:7B:65:69:97:D3:D7:F3:AF:72:6C:7D:38:F0:27:72"
+        }
+      },
       "package": "com.t3d.snapinsight",
       "googleServicesFile": "./google-services.json"
       
