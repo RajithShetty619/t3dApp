@@ -42,7 +42,8 @@ function Login({ navigation }) {
         const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
         const name=user.firstName+user.lastName
         const email=user.email
-        fire.database().ref().child('/users/').child(authUser.user.uid)
+        let authUser= firebase.auth().currentUser
+        fire.database().ref().child('/users/').child(authUser.uid)
         .set({
          name,
           email,

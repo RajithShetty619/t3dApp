@@ -12,7 +12,8 @@ export default function preferenceApp({navigation}) {
 "music":false,"news":false,"productivity":false,"socialmedia":false,"travel":false}})
     const date = JSON.stringify(new Date().getDate());
         useEffect(()=>{
-        async function Does(){ let myJSON = JSON.stringify(prefer);
+        async function Does(){ 
+            let myJSON = JSON.stringify(prefer);
             let authUser=fire.auth().currentUser
             await AsyncStorage.setItem("prefApp",myJSON)
         }

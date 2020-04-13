@@ -104,7 +104,9 @@ export default function General() {
     },[])
     
 
-     const[textShow,setTextShow]=useState({"food1":true,"food2":true,"food3":true,"app1":true,"app2":true,"app3":true,"topic1":true,"topic2":true,"topic3":true})
+     const[textShow,setTextShow]=useState({"food1":true,"food2":true,"food3":true,
+                                            "app1":true,"app2":true,"app3":true,
+                                            "topic1":true,"topic2":true,"topic3":true})
 
 
 

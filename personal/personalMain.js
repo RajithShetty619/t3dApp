@@ -24,6 +24,7 @@ export default function personalMain({navigation}) {
           console.log(error)
         }
       };
+      
     useEffect(()=>{
        async function Does(){
         let  val1= await _retrieveData("foodData0")
@@ -45,19 +46,29 @@ export default function personalMain({navigation}) {
                         ...Ionicons.font,
                       });
         await IsUptoDate()
-        handleAndroidBackButton(exitAlert)
+        handleAndroidBackButton(true)
         }
         Does();
-        return()=>BackHandler.addEventListener("hardwareBackPress",true);
+        
     },[])
 
   
-    const handleAndroidBackButton = callback => {
-        BackHandler.addEventListener('hardwareBackPress', () => {
-            callback();
-            return true;
-        });
-        };
+    const handleAndroidBackButton = (bool) => {
+       if(bool)
+       {
+            BackHandler.addEventListener('hardwareBackPress', () => {
+                exitAlert();
+                // return true;
+            });
+        }
+        else
+        {
+            BackHandler.removeEventListener('hardwareBackPress',()=>{
+                exitAlert();
+                // return true;
+            })
+        }
+    }
         const exitAlert = () => {
         Alert.alert(
             'Confirm exit',
@@ -67,15 +78,18 @@ export default function personalMain({navigation}) {
             {text: 'OK', onPress: () => BackHandler.exitApp()}
             ]
         );
+        return true
         };
          
-     
     
     return (
         <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
             <Content >
             <View >
-            <TouchableOpacity onPress={()=>{navigation.navigate('personalFoodCard',{cardF1,urlF1})}}>
+            <TouchableOpacity onPress={()=>{
+                    handleAndroidBackButton(false)
+                    navigation.replace('personalFoodCard',{cardF1,urlF1})
+                    }}>
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
@@ -85,7 +99,7 @@ export default function personalMain({navigation}) {
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
                             <Text style={{fontWeight:'bold'}}>
-                                Personalized Food
+                                 Food for you
                             </Text>
                             </Body>
                         </CardItem>
@@ -103,7 +117,7 @@ export default function personalMain({navigation}) {
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
                             <Text style={{fontWeight:'bold'}}>
-                                Personalized App
+                                Apps for you
                             </Text>
                             </Body>
                         </CardItem>
@@ -121,7 +135,7 @@ export default function personalMain({navigation}) {
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
                             <Text style={{fontWeight:'bold'}}>
-                                Personalized Topic
+                                Do you know?
                             </Text>
                             </Body>
                         </CardItem>

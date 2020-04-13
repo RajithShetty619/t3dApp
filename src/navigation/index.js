@@ -19,11 +19,11 @@ function index({ navigation, firebase }) {
       fire.auth().onAuthStateChanged(user => {
         if(user) {
           setUser(user);
-          navigation.navigate("main")
+          navigation.navigate("tabNav")
         } else {
           const user = GoogleSignIn.getCurrentUser();
           if (user) {
-          navigation.navigate("main")
+          navigation.navigate("tabNav")
           setUser(user);
           } else {
             setUser(null);
@@ -60,7 +60,7 @@ function index({ navigation, firebase }) {
   return (
     isAssetsLoadingComplete
       ?
-      <ActivityIndicator size="large" />
+      <ActivityIndicator size="large" style={{flex:1}} color="black"/>
       :
       <AppLoading
         startAsync={loadLocalAsync}

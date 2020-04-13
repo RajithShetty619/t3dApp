@@ -35,7 +35,7 @@ const validationSchema = Yup.object().shape({
   check: Yup.boolean().oneOf([true], "Please check the agreement")
 });
 
-function Signup({ navigation, firebase }) {
+function Signup({ navigation }) {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [passwordIcon, setPasswordIcon] = useState("ios-eye");
   const [confirmPasswordIcon, setConfirmPasswordIcon] = useState("ios-eye");
@@ -68,7 +68,7 @@ function Signup({ navigation, firebase }) {
   }
 
   async function handleOnSignup(values, actions) {
-    const { userName, email, password } = values;
+    const { name, email, password } = values;
 try{
     fire.
     auth()
@@ -76,7 +76,7 @@ try{
      .then(authUser => {
         fire.database().ref().child('/users/').child(authUser.user.uid)
         .set({
-          userName,
+          name,
           email,
         });
     })
@@ -95,7 +95,7 @@ try{
       <ScrollView>
         <Formik
           initialValues={{
-            userName: "",
+            name: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -120,7 +120,7 @@ try{
             <>
               <FormInput
                 name="name"
-                value={values.userName}
+                value={values.name}
                 onChangeText={handleChange("name")}
                 placeholder="Enter your full name"
                 iconName="md-person"

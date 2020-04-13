@@ -35,8 +35,7 @@ export default function personalFoodCard ({route,navigation}){
            let  val3= await _retrieveData("foodData2")
            setCardF3(val3)
            await firebase.storage().ref('/food/'+val3["food_pic"]).getDownloadURL().then(data=>setUrlF3(data))
-           BackHandler.removeEventListener("hardwareBackPress")
-           BackHandler.addEventListener("hardwareBackPress",()=>{
+           await BackHandler.addEventListener("hardwareBackPress",()=>{
                navigation.navigate("personalMain")})
            }
            Do();

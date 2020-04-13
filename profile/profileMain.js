@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { StyleSheet,View,TouchableOpacity,BackHandler,Alert} from 'react-native';
 import {Text,Container,Content} from 'native-base';
 import fire from '../fire';
-
+import * as GoogleSignIn from 'expo-google-sign-in';
 
 export default function profileMain({navigation}) {
  const[user,setUser]=useState('');
@@ -10,7 +10,7 @@ const[email,setEmail]=useState('');
  useEffect(() => {
   async function Does(){
         let authUser=fire.auth().currentUser
-        fire.database().ref().child('/users/'+authUser.uid+'/userName')
+        fire.database().ref().child('/users/'+authUser.uid+'/name')
         .once("value",(snapshot)=>{
           let item=snapshot.val()
           console.log(snapshot.val())
@@ -92,7 +92,11 @@ const[email,setEmail]=useState('');
             </View>
             <View style={styles.item}>
             <View style={styles.infoContent}>
-                 <TouchableOpacity style={styles.buttonContainerTransparent} onPress={()=>{fire.auth().signOut();navigation.navigate('NavigationStack')}}  >
+                 <TouchableOpacity style={styles.buttonContainerTransparent} 
+                 onPress={async()=>{
+                                await fire.auth().signOut();
+                                await GoogleSignIn.signOutAsync();
+                                navigation.navigate('NavigationStack')}}  >
                 <Text style={{color:'#00BFFF',padding:20,fontSize:20}}>Sign Out</Text> 
                 </TouchableOpacity>
               </View>
