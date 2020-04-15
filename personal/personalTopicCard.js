@@ -1,10 +1,10 @@
 import React,{useState,useEffect} from 'react'
-import { View,Image,AsyncStorage} from 'react-native'
+import { View,Image,AsyncStorage,BackHandler} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import firebase from 'firebase'
+import {useFocusEffect} from "@react-navigation/native";
 
-
-export default function personalAppCard ({route}){
+export default function personalAppCard ({route,navigation}){
     
     
     const _retrieveData = async (path) => {
@@ -36,7 +36,20 @@ export default function personalAppCard ({route}){
            }
            Do();
           },[])
-      
+        useFocusEffect(
+            React.useCallback(()=>{
+                BackHandler.addEventListener("hardwareBackPress",()=>{
+                    navigation.navigate("personalMain")
+                    return true
+                    })
+                return()=>{
+                    BackHandler.removeEventListener("hardwareBackPress",()=>{
+                        navigation.navigate("personalMain")
+                        return true
+                    })
+                }    
+            },[])
+        );
       
         return(
             <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>

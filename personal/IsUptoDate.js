@@ -51,7 +51,7 @@ export default async function IsUptoDate(){
 }
   const isValidFood=(path)=>{
       const interval =  setInterval( async() => {
-            await  firebase.database().ref().child( await getpathFood())
+              firebase.database().ref().child( await getpathFood())
                    .on("value",
                (snapshot)=>{
                    let item=snapshot.val()
@@ -196,7 +196,9 @@ try {
     console.log(NewDate,"NewDate")
     
     if(date!==NewDate)
-    {   let keys=["foodData0","foodData1","foodData2","appData0","appData0","appData0"]
+    {   let keys=["foodData0","foodData1","foodData2",
+                  "appData0","appData1","appData2",
+                  "topicData0","topicData1","topicData2"]
         await AsyncStorage.multiRemove(keys)
         isValidFood("foodData0")
         isValidFood("foodData1")

@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { View,Image,AsyncStorage,BackHandler} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
+import {useFocusEffect} from "@react-navigation/native";
 import firebase from 'firebase'
 
 export default function personalFoodCard ({route,navigation}){
@@ -25,22 +26,34 @@ export default function personalFoodCard ({route,navigation}){
     
     
         useEffect(()=>{  
-         async function Do() { 
-        //    let  val1= await _retrieveData("foodData0")
-        //    setCard1(val1)
-        //    await firebase.storage().ref('/food/'+val1["food_pic"]).getDownloadURL().then(data=>setUrl1(data))
-           let  val2= await _retrieveData("foodData1")
-           setCardF2(val2)
-           await firebase.storage().ref('/food/'+val2["food_pic"]).getDownloadURL().then(data=>setUrlF2(data))
-           let  val3= await _retrieveData("foodData2")
-           setCardF3(val3)
-           await firebase.storage().ref('/food/'+val3["food_pic"]).getDownloadURL().then(data=>setUrlF3(data))
-           await BackHandler.addEventListener("hardwareBackPress",()=>{
-               navigation.navigate("personalMain")})
+            async function Do() { 
+            let  val2= await _retrieveData("foodData1")
+            setCardF2(val2)
+            await firebase.storage().ref('/food/'+val2["food_pic"]).getDownloadURL().then(data=>setUrlF2(data))
+            let  val3= await _retrieveData("foodData2")
+            setCardF3(val3)
+            await firebase.storage().ref('/food/'+val3["food_pic"]).getDownloadURL().then(data=>setUrlF3(data))
+            // BackHandler.addEventListener("hardwareBackPress",()=>{
+            //     navigation.navigate("personalMain")
+            //     return true})
            }
            Do();
+           return()=>{BackHandler.removeEventListener("hardwareBackPress",true)}
           },[])
-  
+          useFocusEffect(
+                React.useCallback(()=>{
+                    BackHandler.addEventListener("hardwareBackPress",()=>{
+                        navigation.navigate("personalMain")
+                        return true
+                        })
+                    return()=>{
+                        BackHandler.removeEventListener("hardwareBackPress",()=>{
+                            navigation.navigate("personalMain")
+                            return true
+                        })
+                    }    
+                },[])
+          );
       
        
       return(

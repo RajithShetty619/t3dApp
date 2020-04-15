@@ -1,6 +1,7 @@
 import React, {  useEffect,useState } from 'react'
 import {  View,TouchableOpacity,Image,AsyncStorage,BackHandler,Alert} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,} from 'native-base';
+import {useFocusEffect} from '@react-navigation/native'
 import fire from '../fire'
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -46,49 +47,44 @@ export default function personalMain({navigation}) {
                         ...Ionicons.font,
                       });
         await IsUptoDate()
-        handleAndroidBackButton(true)
         }
         Does();
         
     },[])
 
-  
-    const handleAndroidBackButton = (bool) => {
-       if(bool)
-       {
-            BackHandler.addEventListener('hardwareBackPress', () => {
-                exitAlert();
-                // return true;
-            });
-        }
-        else
-        {
-            BackHandler.removeEventListener('hardwareBackPress',()=>{
-                exitAlert();
-                // return true;
-            })
-        }
-    }
-        const exitAlert = () => {
+    useFocusEffect(
+        React.useCallback(()=>{
+                handleAndroidBackButton(exitAlert);
+                
+            return()=>{
+                console.log("usefocuseffectcleanes")
+                BackHandler.removeEventListener('hardwareBackPress', true);
+            }    
+        },[])
+  );
+    const handleAndroidBackButton = callback => {
+        BackHandler.addEventListener('hardwareBackPress', () => {
+          callback();
+          return true;
+        });
+      };
+    const  exitAlert = () => {
         Alert.alert(
-            'Confirm exit',
-            'Do you want to quit the app?',
-            [
+          'Confirm exit',
+          'Do you want to quit the app?',
+          [
             {text: 'CANCEL', style: 'cancel'},
             {text: 'OK', onPress: () => BackHandler.exitApp()}
-            ]
+          ]
         );
-        return true
-        };
-         
-    
+      };
+      
     return (
         <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
             <Content >
             <View >
             <TouchableOpacity onPress={()=>{
-                    handleAndroidBackButton(false)
-                    navigation.replace('personalFoodCard',{cardF1,urlF1})
+                    navigation.navigate('personalFoodCard',{cardF1,urlF1})
                     }}>
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,

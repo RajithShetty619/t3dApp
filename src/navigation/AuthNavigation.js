@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 const AuthNavigation = () => (
   <Stack.Navigator
     initialRouteName="Login"
-    headerMode="float"
+    headerMode="none"
     screenOptions={{
       title: "Demo",
       headerTitleStyle: {

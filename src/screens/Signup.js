@@ -4,9 +4,10 @@ import {
   View,
   TouchableOpacity,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
+  Linking
 } from "react-native";
-import { Button, CheckBox } from "react-native-elements";
+import { Button, CheckBox,Text } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -192,7 +193,7 @@ try{
                   buttonType="outline"
                   onPress={handleSubmit}
                   title="SIGNUP"
-                  buttonColor="#F57C00"
+                  buttonColor="#039BE5"
                   disabled={!isValid || isSubmitting}
                   loading={isSubmitting}
                 />
@@ -205,10 +206,17 @@ try{
           title="Have an account? Login"
           onPress={goToLogin}
           titleStyle={{
-            color: "#039BE5"
+            color: "#F57C00",
+            
+            
           }}
           type="clear"
         />
+      
+        <Text style={{color: "#039BE5",fontStyle:"italic",fontSize:13,alignSelf:"center"}}
+         onPress={()=>{Linking.openURL('https://snapinsight.net/Privacypolicy.php')}}>
+          Privacypolicy
+        </Text>
       </ScrollView>
     </KeyboardAvoidingView>
   );
