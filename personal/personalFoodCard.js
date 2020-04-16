@@ -63,7 +63,7 @@ export default function personalFoodCard ({route,navigation}){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: urlF1}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                            <Image source={{uri: urlF1}} style={{height: 550, width: null, flex: 1,borderRadius:16}} 
                             resizeMode="cover" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
@@ -79,7 +79,7 @@ export default function personalFoodCard ({route,navigation}){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: urlF2}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                            <Image source={{uri: urlF2}} style={{height: 550, width: null, flex: 1,borderRadius:16}} 
                             resizeMode="cover" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
@@ -95,7 +95,7 @@ export default function personalFoodCard ({route,navigation}){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: urlF3}} style={{height: 500, width: null, flex: 1,borderRadius:16}} 
+                            <Image source={{uri: urlF3}} style={{height: 550, width: null, flex: 1,borderRadius:16}} 
                             resizeMode="cover" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>

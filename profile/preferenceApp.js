@@ -6,30 +6,42 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export default function preferenceApp({navigation}) {
-    const[pass,setPass]=useState(false)
+    
     const[prefer,setPrefer]=useState({"app_details":{"booksandreference":false,"dating":false,"education":false,"entertainment":false,
     "finance":false,"fitness":false,"game":false,"lifestyle":false,
-"music":false,"news":false,"productivity":false,"socialmedia":false,"travel":false}})
+    "music":false,"news":false,"productivity":false,"socialmedia":false,"travel":false}})
     const date = JSON.stringify(new Date().getDate());
+     
         useEffect(()=>{
-        async function Does(){ 
-            let myJSON = JSON.stringify(prefer);
-            let authUser=fire.auth().currentUser
-            await AsyncStorage.setItem("prefApp",myJSON)
+          async function Does(){ 
+            let pref=await AsyncStorage.getItem("prefApp")
+            setPrefer(JSON.parse(pref))
+          }
+          Does();
+        },[])
+            
+     
+        async function Set(){ 
+                    let myJSON = JSON.stringify(prefer);
+                    await AsyncStorage.setItem("prefApp",myJSON)
+                }
+    const [app,setApp]=useState(0) 
+    const check=()=>{
+      
+      let count=0
+      console.log(app,"inittialApp")
+      for(let i in prefer["app_details"])
+      {  
+        if(prefer["app_details"][i]){
+          count=count+1
         }
-            Does();
-        },[pass])
-
-        const [app,setApp]=useState(0)
-        const check=()=>{
-            if(app<=4){
-                console.log("appdetails")
-    console.log(app)
-          Alert.alert("choose atleast four app type")
-          return false
-    }
-         else return true
-    }
+      }
+        if(count<=4){
+              Alert.alert("Choose atleast five app type")
+              return false
+        }
+        else {return true }
+      }
     const pathItems=(path)=>{
     if(path ==='/0/app_details/0/booksandreference') {return 4;}
     if(path==='/0/app_details/0/dating') {return 19;}
@@ -57,14 +69,14 @@ export default function preferenceApp({navigation}) {
             }
             
             let path= '/0/app_details/0/'+getTopic()
-            console.log(pathItems(path),"pathitem")
+            
             let ran=Math.floor(Math.random()* pathItems(path))
-            console.log(ran)
+             
             return '/0/app_details/0/'+getTopic()+'/0/data/'+ ran;
         } 
     const isValid=(path)=>{
           const interval=setInterval(()=>{
-            async function Does(){ console.log(getpath(),"getpath")
+            async function Does(){  
             await  fire.database().ref().child(getpath())
                   .once("value",
               (snapshot)=>{
@@ -88,9 +100,7 @@ export default function preferenceApp({navigation}) {
          
    }  
    const _storeData = async (obj,path) => {
-    try {
-      
-      console.log("storing",obj)
+    try {  
       await AsyncStorage.setItem(path,JSON.stringify(obj) );
     } catch (error) {
       console.log(error)
@@ -112,7 +122,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,booksandreference:!prefer.app_details.booksandreference,
                           }
                           }))
-                        if(prefer.app_details.booksandreference){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.booksandreference} />
@@ -127,7 +136,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,dating:!prefer.app_details.dating,
                           }
                           }))
-                        if(prefer.app_details.dating){setApp(app-1)} else {setApp(app+1)}
                         }}>
                         <ListItem>
                         <CheckBox checked={prefer.app_details.dating}/>
@@ -142,7 +150,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,education:!prefer.app_details.education,
                           }
                           }))
-                        if(prefer.app_details.education){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.education} />
@@ -157,7 +164,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,entertainment:!prefer.app_details.entertainment,
                           }
                           }))
-                        if(prefer.app_details.entertainment){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.entertainment} />
@@ -172,7 +178,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,finance:!prefer.app_details.finance,
                           }
                           }))
-                        if(prefer.app_details.finance){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.finance} />
@@ -187,7 +192,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,fitness:!prefer.app_details.fitness,
                           }
                           }))
-                        if(prefer.app_details.fitness){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.fitness} />
@@ -202,7 +206,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,game:!prefer.app_details.game,
                           }
                           }))
-                        if(prefer.app_details.game){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.game} />
@@ -217,7 +220,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,lifestyle:!prefer.app_details.lifestyle,
                           }
                           }))
-                        if(prefer.app_details.lifestyle){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.lifestyle} />
@@ -232,7 +234,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,music:!prefer.app_details.music,
                           }
                           }))
-                        if(prefer.app_details.music){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.music} />
@@ -247,7 +248,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,news:!prefer.app_details.news,
                           }
                           }))
-                        if(prefer.app_details.finance){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.news} />
@@ -262,7 +262,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,productivity:!prefer.app_details.productivity,
                           }
                           }))
-                        if(prefer.app_details.productivity){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.productivity} />
@@ -277,7 +276,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,socialmedia:!prefer.app_details.socialmedia,
                           }
                           }))
-                        if(prefer.app_details.socialmedia){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.socialmedia} />
@@ -292,7 +290,6 @@ export default function preferenceApp({navigation}) {
                             ...prevPrefer.app_details,travel:!prefer.app_details.travel,
                           }
                           }))
-                        if(prefer.app_details.travel){setApp(app-1)} else {setApp(app+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.app_details.travel} />
@@ -303,7 +300,7 @@ export default function preferenceApp({navigation}) {
                     </TouchableOpacity>
                     <TouchableOpacity>
                     <Button transparent onPress={()=>{if(check()){navigation.navigate("profileMain")
-                                            setPass(true) 
+                                            Set();
                                             isValid("appData0")
                                             isValid("appData1")
                                             isValid("appData2")

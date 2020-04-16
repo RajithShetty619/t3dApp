@@ -1,5 +1,4 @@
 import React from 'react'
-import {View,ScrollView} from 'react-native'
 import {Container,Content,Header,Card,CardItem,Text, Left, Button, Icon, Body} from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 

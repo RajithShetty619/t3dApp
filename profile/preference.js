@@ -12,36 +12,62 @@ export default function preference({navigation}) {
     "japanese":false,"italian":false,"french":false},
     "food_deter":{"veg":false,"nonveg":false},
     "food_type":{"snacks":false ,"maincourse":false,"dessert":false,"drinks":false}})
-
-        useEffect(()=>{
-          async function Does(){let myJSON = JSON.stringify(prefer);
-          let authUser=fire.auth().currentUser
-          await AsyncStorage.setItem("prefFood",myJSON)
-        }
-        Does();
-        },[pass])
-        const date = JSON.stringify(new Date().getDate());
+    const date = JSON.stringify(new Date().getDate());
         const [foodtype, setFoodtype] = useState(0)
         const [foodDet,setFoodDet]=useState(0)
         const [foodClass,setFoodClass]=useState(0)
+
+        useEffect(()=>{
+                  async function Does(){ 
+                    let pref=await AsyncStorage.getItem("prefFood")
+                    
+                   
+                    setPrefer(JSON.parse(pref))
+                   
+                  }
+                  Does();
+                },[])
+
+      
+          async function Set(){
+            let myJSON = JSON.stringify(prefer);
+            await AsyncStorage.setItem("prefFood",myJSON);
+          }
+       
+       
+        
+        
        
         const check=()=>{
-            if(foodtype<=3){
-                console.log("cusine")
-                console.log(foodtype)
-                  Alert.alert("choose more food cusines")
+          let food_type=0
+          let food=0
+          let food_deter=0
+          
+         for(let i in prefer["food"] )
+         {
+            if(prefer["food"][i]){food=food+1}
+         }
+         for(let i in prefer.food_deter)
+         {
+            if(prefer["food_deter"][i]){food_deter=food_deter+1}
+         }
+         for(let i in prefer.food_type)
+         {
+            if(prefer["food_type"][i]){food_type=food_type+1}
+         }
+            if(food<=3){
+                  
+                  Alert.alert("Choose atlest 4 food cusines")
                   return false
             }
-            if(foodDet<=0){
-                console.log("veg-nonveg")
-                console.log(foodDet)
-                  Alert.alert("choose non-veg or veg")
+            if(food_deter<=0){
+                
+                  Alert.alert("Choose non-veg or veg")
                   return false
             }
-            if(foodClass<=1){
-                console.log("snacks")
-                console.log(foodClass)
-                  Alert.alert("choose atleast two food type")
+            if(food_type<=1){
+              
+                  Alert.alert("Choose atleast two food type")
                   return false
             }
        
@@ -80,7 +106,7 @@ export default function preference({navigation}) {
       }
       
         const isValid=(path)=>{
-          console.log("getting in")
+          
             const interval =  setInterval(async() => {
                    await  fire.database().ref().child(getpath())
                          .once("value",
@@ -93,7 +119,6 @@ export default function preference({navigation}) {
                          .forEach(i=>array.push(item[i]));   
                     }
                     
-                    console.log(item,"item")
                     if(item!==null)
                     { 
                       _storeData(item,path); 
@@ -105,20 +130,15 @@ export default function preference({navigation}) {
      }  
      const _storeData = async (obj,path) => {
       try {
-        
-        console.log("storing",obj)
         await AsyncStorage.setItem(path,JSON.stringify(obj) );
       } catch (error) {
-        console.log(error)
       }
     };  
      
 
     return(
       <Container style={{ justifyContent:'center',backgroundColor:'black',paddingTop:24}}>
-        {/* <View style={{}}>
-        <Header transparent />
-        </View> */}
+
           <Content>
               <Content>
                 <Separator bordered>
@@ -132,7 +152,6 @@ export default function preference({navigation}) {
                       ...prevPrefer.food_deter,veg:!prefer.food_deter.veg
                     }
                     }))
-                  if(prefer.food_deter.veg){setFoodDet(foodDet-1)} else {setFoodDet(foodDet+1)}
                   }}>
               <ListItem> 
                   <CheckBox checked={prefer.food_deter.veg}/>
@@ -147,7 +166,7 @@ export default function preference({navigation}) {
                   ...prevPrefer.food_deter,nonveg:!prefer.food_deter.nonveg
                 }
                 }))
-                  if(prefer.food_deter.nonveg){setFoodDet(foodDet-1)} else {setFoodDet(foodDet+1)}
+                  
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food_deter.nonveg}/>
@@ -167,7 +186,7 @@ export default function preference({navigation}) {
                       ...prevPrefer.food_type,drinks:!prefer.food_type.drinks
                     }
                     }))
-                  if(prefer.food_type.drinks){setFoodClass(foodClass-1)} else {setFoodClass(foodClass+1)}
+                   
                   }} >
               <ListItem>
                   <CheckBox checked={prefer.food_type.drinks} />
@@ -182,7 +201,7 @@ export default function preference({navigation}) {
                       ...prevPrefer.food_type,snacks:!prefer.food_type.snacks
                     }
                     }))
-                  if(prefer.food_type.snacks){setFoodClass(foodClass-1)} else {setFoodClass(foodClass+1)}
+                   
                   }} >
               <ListItem>
                   <CheckBox checked={prefer.food_type.snacks} />
@@ -197,7 +216,7 @@ export default function preference({navigation}) {
                   ...prevPrefer.food_type,maincourse:!prefer.food_type.maincourse
                 }
                 }))
-                  if(prefer.food_type.maincourse){setFoodClass(foodClass-1)} else {setFoodClass(foodClass+1)}
+                  
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food_type.maincourse} />
@@ -212,8 +231,7 @@ export default function preference({navigation}) {
                       ...prevPrefer.food_type,dessert:!prefer.food_type.dessert
                     }
                     }))
-                    
-                  if(prefer.food_type.dessert){setFoodClass(foodClass-1)} else {setFoodClass(foodClass+1)}
+                      
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food_type.dessert} />
@@ -232,8 +250,7 @@ export default function preference({navigation}) {
                     food:{
                       ...prevPrefer.food,indian:!prefer.food.indian,
                     }
-                    }))
-                  if(prefer.food.indian){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
+                    })) 
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food.indian} />
@@ -247,8 +264,7 @@ export default function preference({navigation}) {
                     food:{
                       ...prevPrefer.food,british:!prefer.food.british,
                     }
-                    }))
-                  if(prefer.food.british){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
+                    })) 
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food.british} />
@@ -262,8 +278,7 @@ export default function preference({navigation}) {
                 food:{
                   ...prevPrefer.food,american:!prefer.food.american,
                 }
-                }))
-                  if(prefer.food.american){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
+                })) 
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food.american} />
@@ -277,8 +292,7 @@ export default function preference({navigation}) {
                     food:{
                       ...prevPrefer.food,spanish:!prefer.food.spanish,
                     }
-                    }))
-                  if(prefer.food.spanish){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
+                    })) 
                   }}>
               <ListItem>    
                   <CheckBox checked={prefer.food.spanish} />
@@ -292,8 +306,7 @@ export default function preference({navigation}) {
                     food:{
                       ...prevPrefer.food,chinese:!prefer.food.chinese,
                     }
-                    }))
-                  if(prefer.food.chinese){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
+                    })) 
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food.chinese} />
@@ -307,8 +320,7 @@ export default function preference({navigation}) {
                     food:{
                       ...prevPrefer.food,french:!prefer.food.french,
                     }
-                    }))
-                  if(prefer.food.french){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
+                    })) 
                   }}>
               <ListItem>
                        <CheckBox checked={prefer.food.french} />
@@ -322,8 +334,7 @@ export default function preference({navigation}) {
                 food:{
                   ...prevPrefer.food,mexican:!prefer.food.mexican,
                 }
-                }))
-                  if(prefer.food.mexican){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
+                })) 
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food.mexican} />
@@ -337,8 +348,7 @@ export default function preference({navigation}) {
                     food:{
                       ...prevPrefer.food,japanese:!prefer.food.japanese,
                     }
-                    }))
-                  if(prefer.food.japanese){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
+                    })) 
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food.japanese} />
@@ -352,8 +362,7 @@ export default function preference({navigation}) {
                     food:{
                       ...prevPrefer.food,italian:!prefer.food.italian,
                     }
-                    }))
-                  if(prefer.food.italian){setFoodtype(foodtype-1)} else {setFoodtype(foodtype+1)}
+                    })) 
                   }}>
               <ListItem>
                   <CheckBox checked={prefer.food.italian} />
@@ -364,7 +373,7 @@ export default function preference({navigation}) {
               </TouchableOpacity>
              
               <Button transparent onPress={()=>{if(check()){navigation.navigate("profileMain")
-                                      setPass(true) 
+                                      Set();
                                       isValid("foodData0")
                                       isValid("foodData1")
                                       isValid("foodData2") 

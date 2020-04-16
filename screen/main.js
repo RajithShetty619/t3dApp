@@ -11,25 +11,27 @@ import { View,ActivityIndicator,AsyncStorage} from 'react-native';
 };
   componentDidMount()
   {
+    this.Does();
     this.pushnotif();
     this._notificationSubscription = Notifications.addListener(this._handleNotification);
-   async()=>{ 
-     await this._storeData({"app_details":{"booksandreference":true,"dating":true,"education":true,"entertainment":true,
+   
+  }
+  Does=async()=>{ 
+    await this._storeData({"app_details":{"booksandreference":true,"dating":true,"education":true,"entertainment":true,
     "finance":true,"fitness":true,"game":true,"lifestyle":true,
     "music":true,"news":true,"productivity":true,"socialmedia":true,"travel":true}}
-      ,prefApp)
+      ,"prefApp")
     await this._storeData({"topic_details":{"architecture":true,"automobile":true,"aviation":true,"famouspersonality":true,
       "food":true,"general":true,"health":true,"psychology":true,"space":true}}
-      ,prefTopic)
+      ,"prefTopic")
     await  this._storeData({"food":{"indian":true,"british":true,"american":true,
       "spanish":true,"chinese":true,"mexican":true,
       "japanese":true,"italian":true,"french":true},
       "food_deter":{"veg":true,"nonveg":true},
       "food_type":{"snacks":true ,"maincourse":true,"dessert":true,"drinks":true}}
-        ,prefFood)
-      }
-  }
- 
+        ,"prefFood")
+    
+    }
   _storeData = async (obj,path) => {
     try {
       await AsyncStorage.setItem(path,JSON.stringify(obj) );

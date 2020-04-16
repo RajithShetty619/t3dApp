@@ -113,7 +113,7 @@ try {
         } 
     const isValidApp=(path)=>{
           const interval=setInterval(()=>{
-            async function Does(){ console.log(getpathApp(),"getpathApp")
+            async function Does(){
             await  fire.database().ref().child( await getpathApp() )
                   .once("value",
               (snapshot)=>{
@@ -149,7 +149,7 @@ try {
       }
     const getpathTopics=async()=>{
         const prefer=await _retrieveData("prefTopic")
-        console.log(prefer,"prefer")
+        
         const getTopic=()=>{
             const pref=prefer["topic_details"]
             let arr = [];
@@ -159,10 +159,9 @@ try {
              return arr[Math.floor(Math.random()*arr.length)]  
             }
             let path= '/0/topic_details/0/'+getTopic()
-            console.log(path)
-            console.log(pathItemsTopic(path),"pathitems")
+      
             let ran=Math.floor(Math.random()* pathItemsTopic(path))
-            console.log(ran)
+            
             return '/0/topic_details/0/'+getTopic()+'/0/data/'+ ran;
         } 
     const isValidTopic=(path)=>{
@@ -180,7 +179,6 @@ try {
                        }
                        if(item!==null)
                         { 
-                            console.log(item)
                         _storeData(item,path); 
                         clearInterval(interval); 
                         
@@ -191,9 +189,8 @@ try {
 
    }  
     const  date= parseInt(JSON.parse(await AsyncStorage.getItem("date")))
-    console.log(date,"date")
     const NewDate=parseInt(new Date().getDate())
-    console.log(NewDate,"NewDate")
+    
     
     if(date!==NewDate)
     {   let keys=["foodData0","foodData1","foodData2",

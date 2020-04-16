@@ -74,7 +74,7 @@ export default function General() {
     let [cardT1,setCardT1]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [cardT2,setCardT2]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [cardT3,setCardT3]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
-    const [urlT1,setUrlT1]=useState('../assets/loading.png')
+    const [urlT1,setUrlT1]=useState('../')
     const [urlT2,setUrlT2]=useState('../assets/loading.png')
     const [urlT3,setUrlT3]=useState('../assets/loading.png')
     

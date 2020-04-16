@@ -6,24 +6,39 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export default function preferenceTopic({navigation}) {
-    const[pass,setPass]=useState(false)
+    
     const[prefer,setPrefer]=useState({"topic_details":{"architecture":false,"automobile":false,"aviation":false,"famouspersonality":false,
     "food":false,"general":false,"health":false,"psychology":false,"space":false}})
-
+    const date = JSON.stringify(new Date().getDate());
+    const [topics,setTopics]=useState(0)   
         useEffect(()=>{
-           async function Does(){ let myJSON = JSON.stringify(prefer);
-            let authUser=fire.auth().currentUser
-            console.log("setting");
-            await AsyncStorage.setItem("prefTopic",myJSON) }
-            Does();
-        },[pass])
-        const date = JSON.stringify(new Date().getDate());
-        const [topics,setTopics]=useState(0)
+          async function Does(){ 
+            let pref=await AsyncStorage.getItem("prefTopic")
+           
+            setPrefer(JSON.parse(pref))
+           
+          }
+          Does();
+        },[])
+            
+        async function Set(){ 
+          let myJSON = JSON.stringify(prefer);
+          await AsyncStorage.setItem("prefTopic",myJSON) 
+      
+        }
+            
+      
+       
         const check=()=>{
-            if(topics<=4){
+            let count=0
+            for(let i in prefer["topic_details"])
+            {
+              if(prefer["topic_details"][i]){count=count+1}
+            }
+            if(count<=4){
                 console.log("topicdetails")
-                    console.log(topics)
-                      Alert.alert("choose atleast four topic type")
+                    console.log(count)
+                      Alert.alert("Choose atleast five topic type")
                       return false
               }
                 else return true
@@ -106,7 +121,6 @@ export default function preferenceTopic({navigation}) {
                             ...prevPrefer.topic_details,architecture:!prefer.topic_details.architecture,
                           }
                           }))
-                        if(prefer.topic_details.architecture){setTopics(topics-1)} else {setTopics(topics+1)}
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.topic_details.architecture} />
@@ -120,8 +134,7 @@ export default function preferenceTopic({navigation}) {
                           topic_details:{
                             ...prevPrefer.topic_details,automobile:!prefer.topic_details.automobile,
                           }
-                          }))
-                        if(prefer.topic_details.automobile){setTopics(topics-1)} else {setTopics(topics+1)}
+                          })) 
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.topic_details.automobile} />
@@ -135,8 +148,7 @@ export default function preferenceTopic({navigation}) {
                           topic_details:{
                             ...prevPrefer.topic_details,aviation:!prefer.topic_details.aviation,
                           }
-                          }))
-                        if(prefer.topic_details.aviation){setTopics(topics-1)} else {setTopics(topics+1)}
+                          })) 
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.topic_details.aviation} />
@@ -150,8 +162,7 @@ export default function preferenceTopic({navigation}) {
                           topic_details:{
                             ...prevPrefer.topic_details,famouspersonality:!prefer.topic_details.famouspersonality,
                           }
-                          }))
-                        if(prefer.topic_details.famouspersonality){setTopics(topics-1)} else {setTopics(topics+1)}
+                          })) 
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.topic_details.famouspersonality} />
@@ -165,8 +176,7 @@ export default function preferenceTopic({navigation}) {
                           topic_details:{
                             ...prevPrefer.topic_details,food:!prefer.topic_details.food,
                           }
-                          }))
-                        if(prefer.topic_details.food){setTopics(topics-1)} else {setTopics(topics+1)}
+                          })) 
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.topic_details.food} />
@@ -180,8 +190,7 @@ export default function preferenceTopic({navigation}) {
                           topic_details:{
                             ...prevPrefer.topic_details,general:!prefer.topic_details.general,
                           }
-                          }))
-                        if(prefer.topic_details.general){setTopics(topics-1)} else {setTopics(topics+1)}
+                          })) 
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.topic_details.general} />
@@ -195,8 +204,7 @@ export default function preferenceTopic({navigation}) {
                           topic_details:{
                             ...prevPrefer.topic_details,health:!prefer.topic_details.health,
                           }
-                          }))
-                        if(prefer.topic_details.health){setTopics(topics-1)} else {setTopics(topics+1)}
+                          })) 
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.topic_details.health} />
@@ -210,8 +218,7 @@ export default function preferenceTopic({navigation}) {
                           topic_details:{
                             ...prevPrefer.topic_details,psychology:!prefer.topic_details.psychology,
                           }
-                          }))
-                        if(prefer.topic_details.psychology){setTopics(topics-1)} else {setTopics(topics+1)}
+                          })) 
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.topic_details.psychology} />
@@ -225,8 +232,7 @@ export default function preferenceTopic({navigation}) {
                           topic_details:{
                             ...prevPrefer.topic_details,space:!prefer.topic_details.space,
                           }
-                          }))
-                        if(prefer.topic_details.space){setTopics(topics-1)} else {setTopics(topics+1)}
+                          })) 
                         }}>
                       <ListItem>
                         <CheckBox checked={prefer.topic_details.space} />
@@ -237,7 +243,7 @@ export default function preferenceTopic({navigation}) {
                     </TouchableOpacity>
                     <TouchableOpacity>
                     <Button transparent onPress={()=>{if(check()){navigation.navigate("profileMain")
-                                            setPass(true)
+                                            Set();
                                             isValid("topicData0") 
                                             isValid("topicData1") 
                                             isValid("topicData2")
