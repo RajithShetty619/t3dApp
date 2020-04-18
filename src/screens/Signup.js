@@ -69,11 +69,11 @@ const validationSchema = Yup.object().shape({
   async function handleOnSignup(values, actions) {
     const { name, email, password } = values;
 try{
-    fire.
+   await fire.
     auth()
      .createUserWithEmailAndPassword( email, password)
-     .then(authUser => {
-        fire.database().ref().child('/users/').child(authUser.user.uid)
+     .then(async authUser => {
+        await fire.database().ref().child('/users/').child(authUser.user.uid)
         .set({
           name,
           email,
@@ -85,9 +85,9 @@ try{
       actions.setFieldError("general");
     } finally {
       actions.setSubmitting(false);
-     
+      navigation.navigate('preference',{id:"preferenceTopic"})
+      
     }
-    navigation.navigate('preference',{id:"preferenceTopic"})
   }
 
   return (
