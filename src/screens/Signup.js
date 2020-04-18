@@ -42,8 +42,8 @@ const validationSchema = Yup.object().shape({
   const [confirmPasswordIcon, setConfirmPasswordIcon] = useState("ios-eye");
   const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(true);
 
-  function goToLogin() {
-    return navigation.navigate('Login');
+  function goToLogin() { 
+    navigation.navigate('preference',{id:"preferenceTopic"})
   }
 
   function handlePasswordVisibility() {
@@ -80,12 +80,14 @@ try{
         });
     })
     .catch(error => console.log(error))
-    navigation.navigate('preference',{id:"preferenceTopic"})
+    
     } catch (error) {
       actions.setFieldError("general");
     } finally {
       actions.setSubmitting(false);
+     
     }
+    navigation.navigate('preference',{id:"preferenceTopic"})
   }
 
   return (

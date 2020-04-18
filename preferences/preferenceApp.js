@@ -5,8 +5,8 @@ import fire from '../fire'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-export default function preferenceApp({navigation}) {
-    
+export default function preferenceApp({navigation,route}) {
+    const {id} =route.params  
     const[prefer,setPrefer]=useState({"app_details":{"booksandreference":false,"dating":false,"education":false,"entertainment":false,
     "finance":false,"fitness":false,"game":false,"lifestyle":false,
     "music":false,"news":false,"productivity":false,"socialmedia":false,"travel":false}})
@@ -111,7 +111,7 @@ export default function preferenceApp({navigation}) {
   };  
 
     return(
-        <Container style={{ justifyContent:'center',backgroundColor:'#000000',paddingTop:24}}>
+        <Container style={{ justifyContent:'center',backgroundColor:'black',paddingTop:24}}>
              <Content>
                     <Content>
                       <Separator bordered>
@@ -305,8 +305,7 @@ export default function preferenceApp({navigation}) {
                     <Button transparent onPress={()=>{
                                         console.log("onpress")
                                         if(check()){
-                                            navigation.navigate("profileMain")
-                                            console.log(prefer)
+                                            navigation.navigate(id)
                                             Set();
                                             isValid("appData0")
                                             isValid("appData1")
