@@ -2,6 +2,10 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
+import preference from '../../preferences/preference';
+import preferenceTopic from '../../preferences/preferenceTopic';
+import preferenceApp from '../../preferences/preferenceApp'; 
+
 
 const Stack = createStackNavigator();
 
@@ -39,6 +43,9 @@ const AuthNavigation = () => (
         title: "Sign Up",
       }}
     />
+    <Stack.Screen name="preference" component={preference}/>
+    <Stack.Screen name="preferenceApp" component={preferenceApp}/>
+    <Stack.Screen name="preferenceTopic" component={preferenceTopic}/> 
   </Stack.Navigator>
 )
 

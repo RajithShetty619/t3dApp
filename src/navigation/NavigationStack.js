@@ -2,7 +2,6 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import AuthNavigation from "./AuthNavigation";
 import index from "./index"
-
 const Stack = createStackNavigator();
 
 function NavigationStack(){

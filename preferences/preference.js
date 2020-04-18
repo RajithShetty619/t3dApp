@@ -5,8 +5,9 @@ import fire from '../fire'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-export default function preference({navigation}) {
-    const[pass,setPass]=useState(false)
+export default function preference({route,navigation}) {
+    
+    const {id} =route.params
     const[prefer,setPrefer]=useState({"food":{"indian":false,"british":false,"american":false,
     "spanish":false,"chinese":false,"mexican":false,
     "japanese":false,"italian":false,"french":false},
@@ -19,7 +20,7 @@ export default function preference({navigation}) {
                   async function Does(){ 
                     let pref=await AsyncStorage.getItem("prefFood")
                    
-                   
+                   if(pref)
                     setPrefer(JSON.parse(pref))
                    
                   }
@@ -28,8 +29,8 @@ export default function preference({navigation}) {
 
       
           async function Set(){
-            const authUser=fire.auth().currentUser
-            fire.database().ref('/users/'+authUser.uid+'preference/preferenceFood').set(prefer)
+            const authUser=fire.auth().currentUser;
+            fire.database().ref('/users/'+authUser.uid+'/preference/preferenceFood').set(JSON.stringify(prefer))
             let myJSON = JSON.stringify(prefer);
             await AsyncStorage.setItem("prefFood",myJSON);
           }
@@ -369,12 +370,15 @@ export default function preference({navigation}) {
               </ListItem>
               </TouchableOpacity>
              
-              <Button transparent onPress={()=>{if(check()){navigation.navigate("profileMain")
+              <Button transparent onPress={()=>{if(check()){
+                                      console.log(JSON.stringify(id),"id")
+                                      navigation.navigate(id,{id:"preferenceApp"})
                                       Set();
                                       isValid("foodData0")
                                       isValid("foodData1")
                                       isValid("foodData2") 
-                                      _storeData(date,"date") }}}>
+                                      _storeData(date,"date") 
+                                    }}}>
                 <View style={{flex:1,flexDirection:'row',justifyContent:'space-around'}}>
                   <Text style={{color:'#00BFFF'}}>SAVE</Text>
                   </View>

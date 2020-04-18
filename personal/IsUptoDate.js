@@ -18,7 +18,7 @@ export default async function IsUptoDate(){
     
     const getpathFood=async()=>{
     const prefer = await _retrieveData("prefFood")
-    console.log(prefer,"prefer")
+    
     const getFood=()=>{
     const pref = prefer["food"]
     let arr = [];

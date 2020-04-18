@@ -1,5 +1,5 @@
 import React, {  useEffect,useState } from 'react'
-import {  View,TouchableOpacity,Image,AsyncStorage,BackHandler,Alert,Dimensions} from 'react-native'
+import {  View,Image,AsyncStorage,BackHandler,Alert,Dimensions} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,} from 'native-base';
 import {useFocusEffect} from '@react-navigation/native'
 import fire from '../fire'

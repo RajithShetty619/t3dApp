@@ -64,7 +64,7 @@ export default function profileMain({navigation}) {
      });
      if (!result.cancelled) {
        setImage(result.uri)
-       console.log(JSON.stringify(result.uri),"setUri")
+      
        await AsyncStorage.setItem("image",JSON.stringify(result.uri))
      }
    } catch (E) {
@@ -179,11 +179,9 @@ export default function profileMain({navigation}) {
               <View style={styles.infoContent}>
                  <TouchableOpacity style={styles.buttonContainerTransparent} 
                  onPress={async()=>{
-                                console.log(authUser)
                                 await fire.database().ref('/users/'+authUser.uid).remove()
                                 await authUser.delete().then(function () {
                                   console.log('delete successful?')
-                                  console.log(app.auth().currentUser)
                                 }).catch(function (error) {
                                   console.error({error})
                                 })

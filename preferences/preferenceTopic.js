@@ -5,8 +5,8 @@ import fire from '../fire'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-export default function preferenceTopic({navigation}) {
-    
+export default function preferenceTopic({navigation,route}) {
+    const {id}=route.params
     const[prefer,setPrefer]=useState({"topic_details":{"architecture":false,"automobile":false,"aviation":false,"famouspersonality":false,
     "food":false,"general":false,"health":false,"psychology":false,"space":false}})
     const date = JSON.stringify(new Date().getDate());
@@ -22,6 +22,8 @@ export default function preferenceTopic({navigation}) {
         },[])
             
         async function Set(){ 
+          const authUser=fire.auth().currentUser;
+          fire.database().ref('/users/'+authUser.uid+'/preference/preferenceTopic').set(JSON.stringify(prefer))
           let myJSON = JSON.stringify(prefer);
           await AsyncStorage.setItem("prefTopic",myJSON) 
       
@@ -242,7 +244,7 @@ export default function preferenceTopic({navigation}) {
                     </ListItem>
                     </TouchableOpacity>
                     <TouchableOpacity>
-                    <Button transparent onPress={()=>{if(check()){navigation.navigate("profileMain")
+                    <Button transparent onPress={()=>{if(check()){navigation.navigate(id,{id:'main'})
                                             Set();
                                             isValid("topicData0") 
                                             isValid("topicData1") 

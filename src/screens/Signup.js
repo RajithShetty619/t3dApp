@@ -36,16 +36,14 @@ const validationSchema = Yup.object().shape({
   check: Yup.boolean().oneOf([true], "Please check the agreement")
 });
 
-function Signup({ navigation }) {
+ function Signup({ navigation }) {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [passwordIcon, setPasswordIcon] = useState("ios-eye");
   const [confirmPasswordIcon, setConfirmPasswordIcon] = useState("ios-eye");
-  const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(
-    true
-  );
+  const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(true);
 
   function goToLogin() {
-    return navigation.navigate("Login");
+    return navigation.navigate('Login');
   }
 
   function handlePasswordVisibility() {
@@ -81,11 +79,10 @@ try{
           email,
         });
     })
-    .then(()=>navigation.navigate('main'))
-        .catch(error => this.setState({ errorMessage: error.message }))
-  
+    .catch(error => console.log(error))
+    navigation.navigate('preference',{id:"preferenceTopic"})
     } catch (error) {
-      actions.setFieldError("general", error.message);
+      actions.setFieldError("general");
     } finally {
       actions.setSubmitting(false);
     }
@@ -218,7 +215,7 @@ try{
           Privacypolicy
         </Text>
         <Text style={{color: "#039BE5",fontStyle:"italic",fontSize:13,alignSelf:"center"}}
-         onPress={()=>{Linking.openURL('https://snapinsight.net/Privacypolicy.php')}}>
+         onPress={()=>{Linking.openURL('https://snapinsight.net/termsandconditions.php')}}>
          Terms and conditions
         </Text>
       </ScrollView>

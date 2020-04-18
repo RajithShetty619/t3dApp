@@ -23,6 +23,8 @@ export default function preferenceApp({navigation}) {
             
      
         async function Set(){ 
+                    const authUser=fire.auth().currentUser;
+                    fire.database().ref('/users/'+authUser.uid+'/preference/preferenceApp').set(JSON.stringify(prefer))
                     let myJSON = JSON.stringify(prefer);
                     await AsyncStorage.setItem("prefApp",myJSON)
                 }

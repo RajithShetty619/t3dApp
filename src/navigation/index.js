@@ -5,7 +5,6 @@ import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 import * as Icon from "@expo/vector-icons";
 import * as GoogleSignIn from 'expo-google-sign-in';
-import { withFirebaseHOC } from "../config/Firebase";
 import fire from '../../fire'
 
 function index({ navigation, firebase }) {
