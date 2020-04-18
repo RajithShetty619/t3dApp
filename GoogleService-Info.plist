@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>422452307527-am2mficgrt1dgk7t8sbmq029m2a2cnv0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.422452307527-am2mficgrt1dgk7t8sbmq029m2a2cnv0</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>422452307527-994mpjak4he06h37ovqfaluvr87kcend.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC2BQuqw8Jx6OrKu2gSOdySc_REyzaOuw8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>422452307527</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.t3d.snapinsight</string>
+	<key>PROJECT_ID</key>
+	<string>top3daily-d7ddd</string>
+	<key>STORAGE_BUCKET</key>
+	<string>top3daily-d7ddd.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:422452307527:ios:dafbc2e038a98a8ddb3362</string>
+	<key>DATABASE_URL</key>
+	<string>https://top3daily-d7ddd.firebaseio.com</string>
+</dict>
+</plist>

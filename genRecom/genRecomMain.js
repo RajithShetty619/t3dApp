@@ -3,7 +3,7 @@ import {View,StyleSheet,ScrollView,Image} from 'react-native';
 import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function General() {
     let [cardf1,setCardf1]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
     let [cardf2,setCardf2]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
@@ -74,7 +74,7 @@ export default function General() {
     let [cardT1,setCardT1]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [cardT2,setCardT2]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
     let [cardT3,setCardT3]=useState({"category":"","sr":"","topic_info":"","topic_name":"","topic_pic":""})
-    const [urlT1,setUrlT1]=useState('../')
+    const [urlT1,setUrlT1]=useState('../assets/loading.png')
     const [urlT2,setUrlT2]=useState('../assets/loading.png')
     const [urlT3,setUrlT3]=useState('../assets/loading.png')
     
@@ -113,25 +113,25 @@ export default function General() {
     return(
         <Container>
             <Content>
-        <View style={{flex:1,backgroundColor:'black'}}>
+        <View style={{flex:1,backgroundColor:'#000000'}}>
             <ScrollView 
                 scrollEventThrottle={16}
                 showsVerticalScrollIndicator={false}
             >
-                <View style={{flex:1,backgroundColor:'black'}}>
+                <View style={{flex:1,backgroundColor:'#000000'}}>
                     <Text style={{fontSize:20,fontWeight:'bold',paddingHorizontal:20,paddingTop:20,padding:10,color:'#00BFFF'}}>
                         Generalized Prefrences
                     </Text>
                     <View style={{height:550,marginTop:10}}>
-                        <Text style={{padding:10,fontSize:18,color:'white'}}>Generalized Food</Text>
+                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF'}}>Generalized Food</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
                         >
-                            <TouchableOpacity onPress={() =>{setTextShow({...textShow,food1:!textShow.food1})}}>
+                            <TouchableWithoutFeedback onPress={() =>{setTextShow({...textShow,food1:!textShow.food1})}}>
                                 {textShow.food1 ?(
                                        <Card transparent style={{height:500,marginTop:10,}}>
-                                       <CardItem style={{flex:1,height:null,width:300,backgroundColor:'black'}}>
+                                       <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                                    <View style={{flex:1}}>
                                        
                                            <Image source={{uri:urlf1}}
@@ -142,22 +142,22 @@ export default function General() {
                             </Card>  
                                 ):(
                                     <Card transparent style={{height:500,marginTop:10,}}>
-                                <CardItem style={{flex:1,height:null,width:300,backgroundColor:'black'}}>
+                                <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
                             <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'white',}}>{cardf1.food_info}</Text>
+                                    <Text style={{color:'#FFFFFF',}}>{cardf1.food_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
                             </Card>
                                 )
                             } 
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
                             
-                            <TouchableOpacity onPress={()=>{setTextShow({...textShow,food2:!textShow.food2})}}>
+                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,food2:!textShow.food2})}}>
                                 {textShow.food2?(
                                      <Card transparent style={{height:500,marginTop:10,}}>
-                                     <CardItem style={{flex:1,height:null,width:300,backgroundColor:'black'}}>
+                                     <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                                  <View style={{flex:1}}>
                                          <Image source={{uri:urlf2}}
                                              style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
@@ -167,22 +167,22 @@ export default function General() {
                             </Card>
                                 ):(
                                     <Card transparent style={{height:500,marginTop:10,}}>
-                                <CardItem style={{flex:1,height:null,width:300,backgroundColor:'black'}}>
+                                <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
                             <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text  style={{color:'white'}}>{cardf2.food_info}</Text>
+                                    <Text  style={{color:'#FFFFFF'}}>{cardf2.food_info}</Text>
                                 </View> 
                                 </View>
                             </CardItem>
                             </Card>
                                 )
                             }
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
 
-                            <TouchableOpacity onPress={()=>{setTextShow({...textShow,food3:!textShow.food3})}}>
+                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,food3:!textShow.food3})}}>
                                 {textShow.food3?(
                                     <Card transparent style={{height:500,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:300,backgroundColor:'black'}}>
+                                    <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlf3}}
                                             style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
@@ -192,30 +192,30 @@ export default function General() {
                             </Card>
                                 ):(
                                     <Card transparent style={{height:500,marginTop:10}}>
-                                <CardItem style={{flex:1,height:null,width:300,backgroundColor:'black'}}>
+                                <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
                             <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text  style={{color:'white'}}>  {cardf3.food_info}</Text>
+                                    <Text  style={{color:'#FFFFFF'}}>  {cardf3.food_info}</Text>
                                 </View> 
                                 </View>
                             </CardItem>
                             </Card>
                                 )
                             }
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
                         </ScrollView>
 
                     </View>
                     <View style={{height:400,marginTop:5}} >
-                        <Text style={{fontSize:18,color:'white',padding:10}}>Generalized App</Text>
+                        <Text style={{fontSize:18,color:'#FFFFFF',padding:10}}>Generalized App</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
                         >
-                             <TouchableOpacity onPress={()=>{setTextShow({...textShow,app1:!textShow.app1})}}>
+                             <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,app1:!textShow.app1})}}>
                                  {textShow.app1?(
                                      <Card transparent style={{height:300,marginTop:10}}>
-                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                  <View style={{flex:1}}>
                                          <Image source={{uri:urlA1}}
                                              style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
@@ -225,22 +225,22 @@ export default function General() {
                             </Card>
                                  ):(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                 <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'white'}}>{cardA1.app_info}</Text>
+                                    <Text style={{color:'#FFFFFF'}}>{cardA1.app_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
                             </Card>
                                  )
                                 }
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
 
-                            <TouchableOpacity onPress={()=>{setTextShow({...textShow,app2:!textShow.app2})}}>
+                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,app2:!textShow.app2})}}>
                                 {textShow.app2?(
                                    <Card transparent style={{height:300,marginTop:10}}>
-                                   <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                   <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                <View style={{flex:1}}>
                                        <Image source={{uri:urlA2}}
                                            style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
@@ -250,22 +250,22 @@ export default function General() {
                             </Card>
                                 ):(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
                             <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'white'}}>{cardA2.app_info}</Text>
+                                    <Text style={{color:'#FFFFFF'}}>{cardA2.app_info}</Text>
                                 </View> 
                                 </View>
                             </CardItem>
                             </Card>
                                 )
                             }
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
 
-                            <TouchableOpacity onPress={()=>{setTextShow({...textShow,app3:!textShow.app3})}}>
+                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,app3:!textShow.app3})}}>
                                 {textShow.app3?(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlA3}}
                                             style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
@@ -275,30 +275,30 @@ export default function General() {
                             </Card>
                                 ):(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
                             <View style={{paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'white'}}>{cardA3.app_info}</Text>
+                                    <Text style={{color:'#FFFFFF'}}>{cardA3.app_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
                             </Card>
                                 )
                                 }
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
                         </ScrollView>
 
                     </View>
                     <View style={{height:400,marginTop:10}}>
-                        <Text style={{padding:10,fontSize:18,color:'white'}}>Generalized Topic</Text>
+                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF'}}>Generalized Topic</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
                         >
-                            <TouchableOpacity onPress={()=>{setTextShow({...textShow,topic1:!textShow.topic1})}}>
+                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,topic1:!textShow.topic1})}}>
                                 {textShow.topic1?(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlT1}}
                                             style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
@@ -308,22 +308,22 @@ export default function General() {
                             </Card>
                                 ):(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>  
                                 <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'white'}}>{cardT1.topic_info}</Text>
+                                    <Text style={{color:'#FFFFFF'}}>{cardT1.topic_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
                             </Card>
                                 )
                                 }
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
 
-                            <TouchableOpacity onPress={()=>{setTextShow({...textShow,topic2:!textShow.topic2})}}>
+                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,topic2:!textShow.topic2})}}>
                                 {textShow.topic2?(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlT2}}
                                             style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
@@ -333,21 +333,21 @@ export default function General() {
                             </Card>
                                 ):(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
                             <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'white'}}>{cardT2.topic_info}</Text>
+                                    <Text style={{color:'#FFFFFF'}}>{cardT2.topic_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
                             </Card>
                                 )}
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
 
-                            <TouchableOpacity onPress={()=>{setTextShow({...textShow,topic3:!textShow.topic3})}}>
+                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,topic3:!textShow.topic3})}}>
                                 {textShow.topic3?(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlT3}}
                                             style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
@@ -357,16 +357,16 @@ export default function General() {
                             </Card>
                                 ):(
                                     <Card transparent style={{height:300,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'black'}}>
+                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}> 
                                 <View style={{paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'white'}}>{cardT3.topic_info}</Text>
+                                    <Text style={{color:'#FFFFFF'}}>{cardT3.topic_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
                             </Card>
                                 )}
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
                         </ScrollView>
 
                     </View>

@@ -1,6 +1,6 @@
 import React, { useState,useEffect} from 'react'
 import {Alert,AsyncStorage} from 'react-native'
-import {Text,Container,Content,Body,CheckBox,ListItem, Button,Separator,View} from 'native-base';
+import {Text,Container,Content,Body,CheckBox,ListItem,Button,Separator,View} from 'native-base';
 import fire from '../fire'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -14,6 +14,7 @@ export default function preferenceApp({navigation}) {
      
         useEffect(()=>{
           async function Does(){ 
+            console.log("useeffect")
             let pref=await AsyncStorage.getItem("prefApp")
             setPrefer(JSON.parse(pref))
           }
@@ -27,7 +28,7 @@ export default function preferenceApp({navigation}) {
                 }
     const [app,setApp]=useState(0) 
     const check=()=>{
-      
+      console.log("checkcalled")
       let count=0
       console.log(app,"inittialApp")
       for(let i in prefer["app_details"])
@@ -298,8 +299,12 @@ export default function preferenceApp({navigation}) {
                         </Body>
                     </ListItem>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                    <Button transparent onPress={()=>{if(check()){navigation.navigate("profileMain")
+                    
+                    <Button transparent onPress={()=>{
+                                        console.log("onpress")
+                                        if(check()){
+                                            navigation.navigate("profileMain")
+                                            console.log(prefer)
                                             Set();
                                             isValid("appData0")
                                             isValid("appData1")
@@ -310,7 +315,7 @@ export default function preferenceApp({navigation}) {
                         <Text style={{color:'#00BFFF'}}>SAVE</Text>
                         </View>
                     </Button>
-                    </TouchableOpacity>
+                    
                     </Content>
                 </Content>
             </Container>

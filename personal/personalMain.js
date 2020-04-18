@@ -6,6 +6,7 @@ import fire from '../fire'
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import IsUptoDate from './IsUptoDate'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function personalMain({navigation}) {
     let [cardF1,setCardF1]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
@@ -80,7 +81,7 @@ export default function personalMain({navigation}) {
         <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
             <Content >
             <View style={{paddingTop:20}} >
-            <TouchableOpacity onPress={()=>{
+            <TouchableWithoutFeedback  onPress={()=>{
                     navigation.navigate('personalFoodCard',{cardF1,urlF1})
                     }}>
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
@@ -97,14 +98,14 @@ export default function personalMain({navigation}) {
                             </Body>
                         </CardItem>
                     </Card>
-                    </TouchableOpacity>
+                    </TouchableWithoutFeedback>
                 </View>
                 <View style={{paddingTop:20}} >
-            <TouchableOpacity onPress={()=>{navigation.navigate('personalAppCard',{cardA1,urlA1})}}>
+            <TouchableWithoutFeedback onPress={()=>{navigation.navigate('personalAppCard',{cardA1,urlA1})}}>
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'white',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri:urlA1}} style={{height: 280, width: Dimensions.get('window').width, flex: 1,borderRadius:13}} 
+                            <Image source={{uri:urlA1}} style={{height: 300, width: Dimensions.get('window').width, flex: 1,borderRadius:13}} 
                             resizeMode="stretch" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
@@ -115,14 +116,14 @@ export default function personalMain({navigation}) {
                             </Body>
                         </CardItem>
                     </Card>
-                    </TouchableOpacity>
+                    </TouchableWithoutFeedback>
                 </View>
                 <View style={{paddingTop:20}}>
-                <TouchableOpacity onPress={()=>{navigation.navigate('personalTopicCard',{cardT1,urlT1})}}>
+                <TouchableWithoutFeedback onPress={()=>{navigation.navigate('personalTopicCard',{cardT1,urlT1})}}>
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri:urlT1}} style={{height: 280, width:Dimensions.get('window').width, flex: 1,borderRadius:13}} 
+                            <Image source={{uri:urlT1}} style={{height: 350, width:Dimensions.get('window').width, flex: 1,borderRadius:13}} 
                             resizeMode="stretch" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
@@ -133,7 +134,7 @@ export default function personalMain({navigation}) {
                             </Body>
                         </CardItem>
                     </Card>
-                    </TouchableOpacity>
+                    </TouchableWithoutFeedback>
                 </View>
             </Content>
         </Container>

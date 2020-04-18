@@ -217,6 +217,10 @@ try{
          onPress={()=>{Linking.openURL('https://snapinsight.net/Privacypolicy.php')}}>
           Privacypolicy
         </Text>
+        <Text style={{color: "#039BE5",fontStyle:"italic",fontSize:13,alignSelf:"center"}}
+         onPress={()=>{Linking.openURL('https://snapinsight.net/Privacypolicy.php')}}>
+         Terms and conditions
+        </Text>
       </ScrollView>
     </KeyboardAvoidingView>
   );

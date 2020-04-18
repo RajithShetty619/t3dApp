@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { View,Image,AsyncStorage,BackHandler} from 'react-native'
+import { View,Image,AsyncStorage,BackHandler,Dimensions} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import {useFocusEffect} from "@react-navigation/native";
 import firebase from 'firebase'
@@ -33,9 +33,6 @@ export default function personalFoodCard ({route,navigation}){
             let  val3= await _retrieveData("foodData2")
             setCardF3(val3)
             await firebase.storage().ref('/food/'+val3["food_pic"]).getDownloadURL().then(data=>setUrlF3(data))
-            // BackHandler.addEventListener("hardwareBackPress",()=>{
-            //     navigation.navigate("personalMain")
-            //     return true})
            }
            Do();
            return()=>{BackHandler.removeEventListener("hardwareBackPress",true)}
@@ -63,8 +60,8 @@ export default function personalFoodCard ({route,navigation}){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: urlF1}} style={{height: 550, width: null, flex: 1,borderRadius:16}} 
-                            resizeMode="cover" />
+                            <Image source={{uri: urlF1}} style={{height: 550, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
+                            resizeMode="stretch" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
@@ -79,8 +76,8 @@ export default function personalFoodCard ({route,navigation}){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: urlF2}} style={{height: 550, width: null, flex: 1,borderRadius:16}} 
-                            resizeMode="cover" />
+                            <Image source={{uri: urlF2}} style={{height: 550, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
+                            resizeMode="stretch" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
@@ -95,8 +92,8 @@ export default function personalFoodCard ({route,navigation}){
                     <Card style={{ borderRadius: 16,borderColor:"black"}} >
                         <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                            <Image source={{uri: urlF3}} style={{height: 550, width: null, flex: 1,borderRadius:16}} 
-                            resizeMode="cover" />
+                            <Image source={{uri: urlF3}} style={{height: 550, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
+                            resizeMode="stretch" />
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>

@@ -9,11 +9,11 @@ import { View,ActivityIndicator,AsyncStorage} from 'react-native';
 { state = {
   notification: {},
 };
-  componentDidMount()
+ async componentDidMount()
   {
-    this.Does();
-    this.pushnotif();
-    this._notificationSubscription = Notifications.addListener(this._handleNotification);
+    await this.Does();
+    await this.pushnotif();
+     this._notificationSubscription = Notifications.addListener(this._handleNotification);
    
   }
   Does=async()=>{ 
@@ -42,7 +42,7 @@ import { View,ActivityIndicator,AsyncStorage} from 'react-native';
    PUSH_ENDPOINT = 'https://your-server.com/users/push-token';
 
   pushnotif=async()=>  {
-    console.log("1111")
+    
     const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
     // only asks if permissions have not already been determined, because
     // iOS won't necessarily prompt the user a second time.

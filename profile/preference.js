@@ -13,14 +13,12 @@ export default function preference({navigation}) {
     "food_deter":{"veg":false,"nonveg":false},
     "food_type":{"snacks":false ,"maincourse":false,"dessert":false,"drinks":false}})
     const date = JSON.stringify(new Date().getDate());
-        const [foodtype, setFoodtype] = useState(0)
-        const [foodDet,setFoodDet]=useState(0)
-        const [foodClass,setFoodClass]=useState(0)
+        
 
         useEffect(()=>{
                   async function Does(){ 
                     let pref=await AsyncStorage.getItem("prefFood")
-                    
+                   
                    
                     setPrefer(JSON.parse(pref))
                    
@@ -30,13 +28,12 @@ export default function preference({navigation}) {
 
       
           async function Set(){
+            const authUser=fire.auth().currentUser
+            fire.database().ref('/users/'+authUser.uid+'preference/preferenceFood').set(prefer)
             let myJSON = JSON.stringify(prefer);
             await AsyncStorage.setItem("prefFood",myJSON);
           }
        
-       
-        
-        
        
         const check=()=>{
           let food_type=0
@@ -382,7 +379,6 @@ export default function preference({navigation}) {
                   <Text style={{color:'#00BFFF'}}>SAVE</Text>
                   </View>
               </Button>
-              
               </Content>
           </Content>
       </Container>

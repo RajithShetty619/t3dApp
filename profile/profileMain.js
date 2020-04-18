@@ -15,12 +15,13 @@ export default function profileMain({navigation}) {
         {title: "preferenceTopic", content: "Topic Preference" }
     ] 
   ];
- const [image,setImage]=useState('../assets/loading.png')
+ const [image,setImage]=useState('https://bootdey.com/img/Content/avatar/avatar6.png')
  const[user,setUser]=useState('');
  const[email,setEmail]=useState('');
+ let authUser=fire.auth().currentUser
  useEffect(() => {
   async function Does(){
-        let authUser=fire.auth().currentUser
+        
         fire.database().ref().child('/users/'+authUser.uid+'/name')
         .once("value",(snapshot)=>{
           let item=snapshot.val()
@@ -78,41 +79,47 @@ export default function profileMain({navigation}) {
        justifyContent: "center",
        alignItems: "stretch" ,
        backgroundColor: "black" }}>
-     <Text style={{ fontWeight: "600" ,color:'lightblue'}}>
+     <Text style={{ fontWeight: "700",fontSize:24 ,color:'#00BFFF'}}>
          Set preference
        </Text>
        {expanded
-         ? <Icon style={{ fontSize: 18,color:"white" }} name="remove" />
-         : <Icon style={{ fontSize: 18,color:"white" }} name="add" />}
+         ? <Icon style={{ fontSize: 20,color:"white",paddingLeft:10, }} name="remove" />
+         : <Icon style={{ fontSize: 20,color:"white",paddingLeft:10, }} name="add" />}
      </View>
    );
  }
  const  _renderContent=(item)=> {
    return (
-   <View style={{justifyContent:"center",alignContent:"center"}}>  
+   <View style={{justifyContent:"center",alignItems:"center",backgroundColor: "#e3f1f1",}}> 
+   <View >
      <Text onPress={()=>navigation.navigate('preference')}
        style={{
-         backgroundColor: "#e3f1f1",
+        //  backgroundColor: "#e3f1f1",
          padding: 10,
-         fontStyle: "italic"
+         fontStyle: "italic",
+         fontSize:20,
+         
        }}
      >
        {item[0].content}
      </Text>
+     </View> 
        <Text onPress={()=>navigation.navigate('preferenceApp')}
        style={{
-         backgroundColor: "#e3f1f1",
+        //  backgroundColor: "#e3f1f1",
          padding: 10,
          fontStyle: "italic",
+         fontSize:20
        }}
      >
        {item[1].content}
      </Text>
        <Text onPress={()=>navigation.navigate('preferenceTopic')}
        style={{
-         backgroundColor: "#e3f1f1",
+        //  backgroundColor: "#e3f1f1",
          padding: 10,
          fontStyle: "italic",
+         fontSize:20
        }}
      >
        {item[2].content}
@@ -125,15 +132,16 @@ export default function profileMain({navigation}) {
     return (
       <Container>
          <View style={{alignItems:'center'}}>
-          {image && <Image source={{ uri: image }} 
+         
+          </View>
+          <View style={styles.header}>
+            <View style={styles.headerContent}>
+            
+                 {image && <Image source={{ uri: image }} 
               style={{ width: 150, height: 150,borderRadius: 300,justifyContent:'center'}} />}
         
            <Icon style={{ fontSize: 18,color:"lightblue",justifyContent:'flex-start'}} name="create" type="MaterialIcons"
           onPress={()=>{_pickImage()}}/>
-          </View>
-          <View style={styles.header}>
-            <View style={styles.headerContent}>
-                
                 <Text style={styles.name}>{user}</Text>
                 <Text style={styles.userInfo}>{email} </Text>
                 
@@ -148,24 +156,44 @@ export default function profileMain({navigation}) {
               renderContent={_renderContent}
             />
           <View style={styles.body}>
-            <View style={styles.item}>
-            <View style={styles.infoContent}>
-                 <TouchableOpacity style={styles.buttonContainerTransparent}  onPress={()=>navigation.navigate('privacyPolicy')} >
-                <Text style={{color:'#00BFFF',padding:20,fontSize:24}}>Privacy Policy</Text> 
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={styles.item}>
+          <View style={styles.item}>
             <View style={styles.infoContent}>
                  <TouchableOpacity style={styles.buttonContainerTransparent} 
                  onPress={async()=>{
                                 await fire.auth().signOut();
                                 await GoogleSignIn.signOutAsync();
                                 navigation.navigate('NavigationStack')}}  >
-                <Text style={{color:'#00BFFF',padding:20,fontSize:20}}>Sign Out</Text> 
+                <Text style={{color:'#00BFFF',padding:20,fontSize:26}}>Sign Out</Text> 
+                </TouchableOpacity>
+              </View>
+              </View>
+            <View style={styles.item}>
+            <View style={styles.infoContent}>
+                 <TouchableOpacity style={styles.buttonContainerTransparent}  onPress={()=>navigation.navigate('privacyPolicy')} >
+                <Text style={{color:'#00BFFF',padding:20,fontSize:20}}>Privacy Policy</Text> 
                 </TouchableOpacity>
               </View>
             </View>
+           
+              <View style={styles.item}>
+              <View style={styles.infoContent}>
+                 <TouchableOpacity style={styles.buttonContainerTransparent} 
+                 onPress={async()=>{
+                                console.log(authUser)
+                                await fire.database().ref('/users/'+authUser.uid).remove()
+                                await authUser.delete().then(function () {
+                                  console.log('delete successful?')
+                                  console.log(app.auth().currentUser)
+                                }).catch(function (error) {
+                                  console.error({error})
+                                })
+                                await GoogleSignIn.signOutAsync();
+                                navigation.navigate('NavigationStack')}} >
+                <Text style={{color:'#00BFFF',padding:20,fontSize:20}}>Delete account</Text> 
+                </TouchableOpacity>
+              </View>
+              </View>
+            
           </View>
      </Content>
       </Container>
@@ -190,6 +218,14 @@ const styles = StyleSheet.create({
     width:150,
     borderRadius:30,
     backgroundColor: "#00BFFF",
+  },
+  avatar: {
+    width: 130,
+    height: 130,
+    borderRadius: 63,
+    borderWidth: 4,
+    borderColor: "white",
+    marginBottom:10,
   },
   
   name:{
