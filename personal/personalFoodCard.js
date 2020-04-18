@@ -54,11 +54,11 @@ export default function personalFoodCard ({route,navigation}){
       
        
       return(
-        <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
+        <Container style={{backgroundColor:'#000000', paddingTop:15,flex:1}}>
             <Content>
                 <View >
-                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                    <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
+                        <CardItem cardBody style={{ backgroundColor:'#000000',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Image source={{uri: urlF1}} style={{height: 550, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
                             resizeMode="stretch" />
@@ -73,8 +73,8 @@ export default function personalFoodCard ({route,navigation}){
                     </Card>
                 </View>
                 <View >
-                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                    <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
+                        <CardItem cardBody style={{ backgroundColor:'#000000',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Image source={{uri: urlF2}} style={{height: 550, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
                             resizeMode="stretch" />
@@ -89,8 +89,8 @@ export default function personalFoodCard ({route,navigation}){
                     </Card>
                 </View>
                 <View >
-                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                    <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
+                        <CardItem cardBody style={{ backgroundColor:'#000000',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Image source={{uri: urlF3}} style={{height: 550, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
                             resizeMode="stretch" />

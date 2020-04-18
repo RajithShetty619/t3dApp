@@ -78,14 +78,14 @@ export default function personalMain({navigation}) {
       };
       
     return (
-        <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
+        <Container style={{backgroundColor:'#000000', paddingTop:15,flex:1}}>
             <Content >
             <View style={{paddingTop:20}} >
             <TouchableWithoutFeedback  onPress={()=>{
                     navigation.navigate('personalFoodCard',{cardF1,urlF1})
                     }}>
-                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                    <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
+                        <CardItem cardBody style={{ backgroundColor:'#FFFFFF',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Image source={{uri:urlF1}} style={{height: 550, width: Dimensions.get('window').width, flex: 1,borderRadius:10}} 
                             resizeMode="stretch" />
@@ -102,8 +102,8 @@ export default function personalMain({navigation}) {
                 </View>
                 <View style={{paddingTop:20}} >
             <TouchableWithoutFeedback onPress={()=>{navigation.navigate('personalAppCard',{cardA1,urlA1})}}>
-                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                        <CardItem cardBody style={{ backgroundColor:'white',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                    <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
+                        <CardItem cardBody style={{ backgroundColor:'#FFFFFF',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Image source={{uri:urlA1}} style={{height: 300, width: Dimensions.get('window').width, flex: 1,borderRadius:13}} 
                             resizeMode="stretch" />
@@ -120,8 +120,8 @@ export default function personalMain({navigation}) {
                 </View>
                 <View style={{paddingTop:20}}>
                 <TouchableWithoutFeedback onPress={()=>{navigation.navigate('personalTopicCard',{cardT1,urlT1})}}>
-                    <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                        <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                    <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
+                        <CardItem cardBody style={{ backgroundColor:'#FFFFFF',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                     borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Image source={{uri:urlT1}} style={{height: 350, width:Dimensions.get('window').width, flex: 1,borderRadius:13}} 
                             resizeMode="stretch" />

@@ -78,13 +78,13 @@ export default function profileMain({navigation}) {
        padding: 10,
        justifyContent: "center",
        alignItems: "stretch" ,
-       backgroundColor: "black" }}>
+       backgroundColor: "#000000" }}>
      <Text style={{ fontWeight: "700",fontSize:24 ,color:'#00BFFF'}}>
          Set preference
        </Text>
        {expanded
-         ? <Icon style={{ fontSize: 20,color:"white",paddingLeft:10, }} name="remove" />
-         : <Icon style={{ fontSize: 20,color:"white",paddingLeft:10, }} name="add" />}
+         ? <Icon style={{ fontSize: 20,color:"#FFFFFF",paddingLeft:10, }} name="remove" />
+         : <Icon style={{ fontSize: 20,color:"#FFFFFF",paddingLeft:10, }} name="add" />}
      </View>
    );
  }
@@ -140,14 +140,14 @@ export default function profileMain({navigation}) {
                  {image && <Image source={{ uri: image }} 
               style={{ width: 150, height: 150,borderRadius: 300,justifyContent:'center'}} />}
         
-           <Icon style={{ fontSize: 18,color:"lightblue",justifyContent:'flex-start'}} name="create" type="MaterialIcons"
+           <Icon style={{ fontSize: 18,color:'#00BFFF',justifyContent:'flex-start'}} name="create" type="MaterialIcons"
           onPress={()=>{_pickImage()}}/>
                 <Text style={styles.name}>{user}</Text>
                 <Text style={styles.userInfo}>{email} </Text>
                 
             </View>
           </View>
-        <Content style={{backgroundColor:'black'}}>
+        <Content style={{backgroundColor:'#000000'}}>
         <Accordion
               dataArray={dataArray}
               animation={true}
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     height: 130,
     borderRadius: 63,
     borderWidth: 4,
-    borderColor: "white",
+    borderColor: "#FFFFFF",
     marginBottom:10,
   },
   
