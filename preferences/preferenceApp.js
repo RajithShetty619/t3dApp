@@ -111,7 +111,7 @@ export default function preferenceApp({navigation}) {
   };  
 
     return(
-        <Container style={{ justifyContent:'center',backgroundColor:'black',paddingTop:24}}>
+        <Container style={{ justifyContent:'center',backgroundColor:'#000000',paddingTop:24}}>
              <Content>
                     <Content>
                       <Separator bordered>

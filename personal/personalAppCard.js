@@ -34,7 +34,6 @@ export default function personalAppCard ({route,navigation}){
         let  val3= await _retrieveData("appData2")
         await firebase.storage().ref('/App/'+val3["app_pic"]).getDownloadURL().then(data=>setUrlA3(data))
         setCardA3(val3)
-       
         }
         Do();
         },[])
@@ -56,11 +55,11 @@ export default function personalAppCard ({route,navigation}){
 
 
           return(
-            <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
+            <Container style={{backgroundColor:'#000000', paddingTop:15,flex:1}}>
                 <Content>
                     <View style={{paddingTop:20}} >
-                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                        <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
+                            <CardItem cardBody style={{ backgroundColor:'#000000',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                         borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Image source={{uri: urlA1}} style={{height: 300, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
                                 resizeMode="stretch" />
@@ -75,8 +74,8 @@ export default function personalAppCard ({route,navigation}){
                         </Card>
                     </View>
                     <View  >
-                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                        <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
+                            <CardItem cardBody style={{ backgroundColor:'#000000',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                         borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Image source={{uri: urlA2}} style={{height: 300, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
                                 resizeMode="stretch" />
@@ -91,8 +90,8 @@ export default function personalAppCard ({route,navigation}){
                         </Card>
                     </View>
                     <View >
-                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                        <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
+                            <CardItem cardBody style={{ backgroundColor:'#000000',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                         borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Image source={{uri: urlA3}} style={{height: 300, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
                                 resizeMode="stretch" />
