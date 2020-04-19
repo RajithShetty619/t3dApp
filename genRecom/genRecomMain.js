@@ -119,11 +119,8 @@ export default function General() {
                 showsVerticalScrollIndicator={false}
             >
                 <View style={{flex:1,backgroundColor:'#000000'}}>
-                    <Text style={{fontSize:20,fontWeight:'bold',paddingHorizontal:20,paddingTop:20,padding:10,color:'#00BFFF'}}>
-                        Generalized Prefrences
-                    </Text>
                     <View style={{height:550,marginTop:10}}>
-                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF'}}>Generalized Food</Text>
+                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF',fontWeight:"700"}}> Food</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
@@ -207,7 +204,7 @@ export default function General() {
 
                     </View>
                     <View style={{height:400,marginTop:5}} >
-                        <Text style={{fontSize:18,color:'#FFFFFF',padding:10}}>Generalized App</Text>
+                        <Text style={{fontSize:18,color:'#FFFFFF',padding:10,fontWeight:"700"}}> App</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
@@ -290,7 +287,7 @@ export default function General() {
 
                     </View>
                     <View style={{height:400,marginTop:10}}>
-                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF'}}>Generalized Topic</Text>
+                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF',fontWeight:"700"}}>Topic</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}

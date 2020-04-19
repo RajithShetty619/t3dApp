@@ -15,7 +15,7 @@ import FormInput from "../components/FormInput";
 import FormButton from "../components/FormButton";
 import ErrorMessage from "../components/ErrorMessage";
 import fire from "../../fire";
-
+import {CommonActions} from '@react-navigation/native'
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -43,7 +43,7 @@ const validationSchema = Yup.object().shape({
   const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(true);
 
   function goToLogin() { 
-    navigation.navigate('preference',{id:"preferenceTopic"})
+    navigation.navigate('Login')
   }
 
   function handlePasswordVisibility() {
@@ -80,13 +80,17 @@ try{
         });
     })
     .catch(error => console.log(error))
-    
+    navigation.navigate(
+      'preference',
+      {
+       id:"preferenceTopic"
+     }
+   )
     } catch (error) {
-      actions.setFieldError("general");
+      await actions.setFieldError("general");
     } finally {
-      actions.setSubmitting(false);
-      navigation.navigate('preference',{id:"preferenceTopic"})
-      
+      await actions.setSubmitting(false);
+       
     }
   }
 

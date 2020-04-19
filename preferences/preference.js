@@ -20,9 +20,9 @@ export default function preference({route,navigation}) {
                   async function Does(){ 
                     let pref=await AsyncStorage.getItem("prefFood")
                    
-                   if(pref)
+                    if(JSON.parse(pref)!==null){
                     setPrefer(JSON.parse(pref))
-                   
+                    }
                   }
                   Does();
                 },[])

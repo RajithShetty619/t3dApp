@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AppLoading } from "expo";
-import {ActivityIndicator} from 'react-native';
+import {ActivityIndicator,BackHandler} from 'react-native';
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 import * as Icon from "@expo/vector-icons";
@@ -14,7 +14,6 @@ function index({ navigation, firebase }) {
   useEffect(() => {
     try {
       loadLocalAsync();
-
       fire.auth().onAuthStateChanged(user => {
         if(user) {
           setUser(user);

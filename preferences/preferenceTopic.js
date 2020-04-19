@@ -10,13 +10,14 @@ export default function preferenceTopic({navigation,route}) {
     const[prefer,setPrefer]=useState({"topic_details":{"architecture":false,"automobile":false,"aviation":false,"famouspersonality":false,
     "food":false,"general":false,"health":false,"psychology":false,"space":false}})
     const date = JSON.stringify(new Date().getDate());
-    const [topics,setTopics]=useState(0)   
+     
         useEffect(()=>{
           async function Does(){ 
             let pref=await AsyncStorage.getItem("prefTopic")
-           
+             
+            if(JSON.parse(pref)!==null){
             setPrefer(JSON.parse(pref))
-           
+            }
           }
           Does();
         },[])

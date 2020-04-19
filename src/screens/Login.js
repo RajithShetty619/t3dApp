@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, SafeAreaView, View, TouchableOpacity } from "react-native";
+import { StyleSheet, SafeAreaView, View, TouchableOpacity, AsyncStorage,BackHandler,Alert } from "react-native";
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 import { Formik } from "formik";
@@ -13,6 +13,7 @@ import GoogleSignInButton from '../components/GoogleSignInButton';
 import fire from '../../fire'
 import { CLIENT_ID } from '../config/GoogleSignIn'
 import firebase from 'firebase'
+import {useFocusEffect} from '@react-navigation/native'
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -30,6 +31,31 @@ function Login({ navigation }) {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [rightIcon, setRightIcon] = useState("ios-eye");
 
+  useFocusEffect(
+    React.useCallback(()=>{
+            console.log("called")
+            handleAndroidBackButton(exitAlert);    
+        return()=>{
+            BackHandler.removeEventListener('hardwareBackPress', true);
+        }    
+    },[])
+);
+const handleAndroidBackButton = callback => {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      callback();
+      return true;
+    });
+  };
+const  exitAlert = () => {
+    Alert.alert(
+      'Confirm exit',
+      'Do you want to quit the app?',
+      [
+        {text: 'CANCEL', style: 'cancel'},
+        {text: 'OK', onPress: () => BackHandler.exitApp()}
+      ]
+    );
+  };
   async function _syncUserWithStateAsync() {
     const user = await GoogleSignIn.signInSilentlyAsync();
     if (user) {
@@ -39,22 +65,56 @@ function Login({ navigation }) {
         // create a new firebase credential with the token
         const credential= firebase.auth.GoogleAuthProvider.credential(user.auth.idToken, user.auth.accessToken)
         // login with credential
-        const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
+        await firebase.auth().signInWithCredential(credential);
         const name=user.firstName+user.lastName
         const email=user.email
         let authUser= firebase.auth().currentUser
-        fire.database().ref().child('/users/').child(authUser.uid)
+        await fire.database().ref().child('/users/').child(authUser.uid)
         .set({
          name,
           email,
         });
+        navigation.navigate(
+          'preference',
+          {
+           id:"preferenceTopic"
+         }
+       )
       } catch (error) {
         alert(error)
       }
-      navigation.navigate("main");
+      
     }
   };
 
+  async function _loadPreference(){
+    let authUser= firebase.auth().currentUser
+    await fire.database().ref().child('/users/').child(authUser.uid+'/preference/preferenceFood')
+    .once("value").then(async(snapshot)=>{
+      const pref=JSON.parse(snapshot.val());console.log(pref,"pref")
+      if(pref)
+      {
+        await AsyncStorage.setItem("prefFood",JSON.stringify(pref))
+      }
+    })
+    await fire.database().ref().child('/users/').child(authUser.uid+'/preference/preferenceApp')
+    .once("value").then(async(snapshot)=>{
+      const pref=JSON.parse(snapshot.val());console.log(pref,"pref")
+      if(pref)
+      {
+        await AsyncStorage.setItem("prefApp",JSON.stringify(pref))
+      }
+    })
+    await fire.database().ref().child('/users/').child(authUser.uid+'/preference/preferenceTopic')
+    .once("value").then(async(snapshot)=>{
+      const pref=JSON.parse(snapshot.val());console.log(pref,"pref")
+      if(pref)
+      {
+        await AsyncStorage.setItem("prefTopic",JSON.stringify(pref))
+      }
+    })
+
+  };
   async function initAsync() {
     await GoogleSignIn.initAsync({ clientId: CLIENT_ID });
     _syncUserWithStateAsync();
@@ -112,6 +172,7 @@ function Login({ navigation }) {
       const response = await fire.auth().signInWithEmailAndPassword(email, password);
 
       if (response.user) {
+        await _loadPreference()
         navigation.navigate("main")
          
       }

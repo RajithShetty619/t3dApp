@@ -6,7 +6,8 @@ import * as GoogleSignIn from 'expo-google-sign-in';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
-
+import { CommonActions  } from '@react-navigation/native';
+ 
 export default function profileMain({navigation}) {
   const dataArray = [
     [
@@ -41,7 +42,7 @@ export default function profileMain({navigation}) {
             Does();          
   },[])
   
-
+  
   
  
     
@@ -77,7 +78,7 @@ export default function profileMain({navigation}) {
        flexDirection: "row",
        padding: 10,
        justifyContent: "center",
-       alignItems: "stretch" ,
+       alignItems: "center" ,
        backgroundColor: "#000000" }}>
      <Text style={{ fontWeight: "700",fontSize:24 ,color:'#00BFFF'}}>
          Set preference
@@ -92,7 +93,7 @@ export default function profileMain({navigation}) {
    return (
    <View style={{justifyContent:"center",alignItems:"center",backgroundColor: "#e3f1f1",}}> 
    <View >
-     <Text onPress={()=>navigation.navigate('preference')}
+     <Text onPress={()=>navigation.navigate('preference',{id:'profileMain'})}
        style={{
         //  backgroundColor: "#e3f1f1",
          padding: 10,
@@ -104,7 +105,7 @@ export default function profileMain({navigation}) {
        {item[0].content}
      </Text>
      </View> 
-       <Text onPress={()=>navigation.navigate('preferenceApp')}
+       <Text onPress={()=>navigation.navigate('preferenceApp',{id:'profileMain'})}
        style={{
         //  backgroundColor: "#e3f1f1",
          padding: 10,
@@ -114,7 +115,7 @@ export default function profileMain({navigation}) {
      >
        {item[1].content}
      </Text>
-       <Text onPress={()=>navigation.navigate('preferenceTopic')}
+       <Text onPress={()=>navigation.navigate('preferenceTopic',{id:'profileMain'})}
        style={{
         //  backgroundColor: "#e3f1f1",
          padding: 10,
@@ -162,7 +163,18 @@ export default function profileMain({navigation}) {
                  onPress={async()=>{
                                 await fire.auth().signOut();
                                 await GoogleSignIn.signOutAsync();
-                                navigation.navigate('NavigationStack')}}  >
+                                navigation.dispatch(
+                                  CommonActions.navigate({
+                                    name: 'NavigationStack',
+                                    params: {
+                                      screen: 'Auth',
+                                      param:{
+                                        screen:'Login'
+                                      }
+                                    },
+                                  })
+                                );
+                                }}  >
                 <Text style={{color:'#00BFFF',padding:20,fontSize:26}}>Sign Out</Text> 
                 </TouchableOpacity>
               </View>
@@ -185,8 +197,19 @@ export default function profileMain({navigation}) {
                                 }).catch(function (error) {
                                   console.error({error})
                                 })
-                                await GoogleSignIn.signOutAsync();
-                                navigation.navigate('NavigationStack')}} >
+                                await GoogleSignIn.signOutAsync(); 
+                                navigation.dispatch(
+                                  CommonActions.navigate({
+                                    name: 'NavigationStack',
+                                    // params: {
+                                    //   screen: 'Auth',
+                                    //   param:{
+                                    //     screen:'Signup'
+                                    //   }
+                                    // },
+                                  })
+                                );
+                                }} >
                 <Text style={{color:'#00BFFF',padding:20,fontSize:20}}>Delete account</Text> 
                 </TouchableOpacity>
               </View>

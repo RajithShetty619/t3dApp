@@ -14,9 +14,11 @@ export default function preferenceApp({navigation,route}) {
      
         useEffect(()=>{
           async function Does(){ 
-            console.log("useeffect")
+       
             let pref=await AsyncStorage.getItem("prefApp")
-            setPrefer(JSON.parse(pref))
+            if(JSON.parse(pref)!==null){
+              setPrefer(JSON.parse(pref))
+            }
           }
           Does();
         },[])

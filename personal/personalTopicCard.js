@@ -51,11 +51,11 @@ export default function personalTopicCard ({route,navigation}){
         );
       
         return(
-            <Container style={{backgroundColor:'#000000', paddingTop:15,flex:1}}>
+            <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
                 <Content>
                     <View style={{paddingTop:20}}>
-                        <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
-                            <CardItem cardBody style={{ backgroundColor:'#000000',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                         borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Image source={{uri: urlT1}} style={{height: 350, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
                                 resizeMode="stretch" />
@@ -71,8 +71,8 @@ export default function personalTopicCard ({route,navigation}){
                         </Card>
                     </View>
                     <View >
-                        <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
-                            <CardItem cardBody style={{ backgroundColor:'#000000',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                         borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Image source={{uri: urlT2}} style={{height: 350, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
                                 resizeMode="stretch" />
@@ -87,8 +87,8 @@ export default function personalTopicCard ({route,navigation}){
                         </Card>
                     </View>
                     <View >
-                        <Card style={{ borderRadius: 16,borderColor:"#000000"}} >
-                            <CardItem cardBody style={{ backgroundColor:'#000000',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
+                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
                                                         borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Image source={{uri: urlT3}} style={{height: 350, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
                                 resizeMode="stretch" />
