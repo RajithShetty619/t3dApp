@@ -80,12 +80,12 @@ try{
         });
     })
     .catch(error => console.log(error))
-    navigation.navigate(
-      'preference',
-      {
-       id:"preferenceTopic"
-     }
-   )
+     await navigation.replace(
+          'preference',
+          {
+           id:"preferenceTopic"
+         }
+       )
     } catch (error) {
       await actions.setFieldError("general");
     } finally {

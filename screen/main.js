@@ -12,8 +12,9 @@ import { Text } from 'native-base';
 };
  async componentDidMount()
   {
-    await this.pushnotif();
-    this._notificationSubscription = Notifications.addListener(this._handleNotification);
+    this.props.navigation.replace('tabNav')
+    // await this.pushnotif();
+    // this._notificationSubscription = Notifications.addListener(this._handleNotification);
   }
  
  

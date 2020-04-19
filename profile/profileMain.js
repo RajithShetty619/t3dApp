@@ -162,18 +162,9 @@ export default function profileMain({navigation}) {
                  <TouchableOpacity style={styles.buttonContainerTransparent} 
                  onPress={async()=>{
                                 await fire.auth().signOut();
-                                await GoogleSignIn.signOutAsync();
-                                navigation.dispatch(
-                                  CommonActions.navigate({
-                                    name: 'NavigationStack',
-                                    params: {
-                                      screen: 'Auth',
-                                      param:{
-                                        screen:'Login'
-                                      }
-                                    },
-                                  })
-                                );
+                                await GoogleSignIn.signOutAsync()
+                                const popAction = StackActions.pop(3); 
+                                navigation.dispatch(popAction);
                                 }}  >
                 <Text style={{color:'#00BFFF',padding:20,fontSize:26}}>Sign Out</Text> 
                 </TouchableOpacity>
@@ -198,18 +189,8 @@ export default function profileMain({navigation}) {
                                   console.error({error})
                                 })
                                 await GoogleSignIn.signOutAsync(); 
-                                navigation.dispatch(
-                                  CommonActions.navigate({
-                                    name: 'NavigationStack',
-                                    // params: {
-                                    //   screen: 'Auth',
-                                    //   param:{
-                                    //     screen:'Signup'
-                                    //   }
-                                    // },
-                                  })
-                                );
-                                }} >
+                                navigation.navigate('NavigationStack')
+                                }}>
                 <Text style={{color:'#00BFFF',padding:20,fontSize:20}}>Delete account</Text> 
                 </TouchableOpacity>
               </View>
