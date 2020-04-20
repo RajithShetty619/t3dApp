@@ -6,6 +6,7 @@ import * as GoogleSignIn from 'expo-google-sign-in';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
+import firebase from 'firebase';
  
 export default function profileMain({navigation}) {
   const dataArray = [
@@ -225,10 +226,33 @@ export default function profileMain({navigation}) {
                               navigation.navigate('index')
                             }
                           } catch (error) {
-                            let errorCode = error.code;
+                            let googleUser=GoogleSignIn.getCurrentUserAsync();
+                            if(googleUser===null)
+                            {
+                              let errorCode = error.code;
                             let errorMessage = error.message;
                             if (errorCode === 'auth/wrong-password') {
                               Alert.alert('Wrong password.');
+                            }
+                            else{
+                              Alert.alert(errorMessage);
+                            }
+                          }
+                            else{
+                              await GoogleSignIn.signOutAsync()
+                              navigation.navigate('index')
+                              const user = await GoogleSignIn.signInSilentlyAsync();
+                              const credential= firebase.auth.GoogleAuthProvider.credential(user.auth.idToken, user.auth.accessToken).catch(error=>Alert.alert(error))
+                              //login with credential
+                              await firebase.auth().signInWithCredential(credential);
+                              await fire.database().ref('/users/'+authUser.uid).remove()
+                              await authUser.delete().then(function () {
+                                console.log('delete successful?')
+                              }).catch(function (error) {
+                                console.error({error})
+                              })
+                              await GoogleSignIn.signOutAsync(); 
+                              
                             }
                           }
                           }}>
@@ -311,48 +335,3 @@ const styles = StyleSheet.create({
 });
 
     
-// async()=>{
-//   await fire.database().ref('/users/'+authUser.uid).remove()
-//   await authUser.delete().then(function () {
-//     console.log('delete successful?')
-//   }).catch(function (error) {
-//     console.error({error})
-//   })
-//   await GoogleSignIn.signOutAsync(); 
-//   navigation.navigate("Auth",{screen:'Signup'})
-//   }}>
-    
-// async()=>{
-//   await fire.database().ref('/users/'+authUser.uid).remove()
-//   await authUser.delete().then(function () {
-//     console.log('delete successful?')
-//   }).catch(function (error) {
-//     console.error({error})
-//   })
-//   await GoogleSignIn.signOutAsync(); 
-//   navigation.navigate("Auth",{screen:'Signup'})
-//   }}>
-// async()=>{
-//   try {
-//     const response = await fire.auth().signInWithEmailAndPassword(email, password);
-
-//     if (response.user) {
-//       await fire.database().ref('/users/'+authUser.uid).remove()
-//       await authUser.delete().then(function () {
-//         console.log('delete successful?')
-//       }).catch(function (error) {
-//         console.error({error})
-//       })
-//       await GoogleSignIn.signOutAsync(); 
-//       navigation.navigate('index')
-//     }
-//   } catch (error) {
-//     let errorCode = error.code;
-//     let errorMessage = error.message;
-//     if (errorCode === 'auth/wrong-password') {
-//       Alert.alert('Wrong password.');
-//     } else {
-//       Alert.alert(errorMessage);
-//     }
-//   }
-//   }

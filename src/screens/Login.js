@@ -144,6 +144,7 @@ const  exitAlert = () => {
 
   function _toggleAuth() {
     if (user) {
+      //Todo: JIC if old user is available in cache
       _signOutAsync();
     } else {
       _signInAsync();
