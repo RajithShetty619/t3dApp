@@ -15,7 +15,6 @@ import FormInput from "../components/FormInput";
 import FormButton from "../components/FormButton";
 import ErrorMessage from "../components/ErrorMessage";
 import fire from "../../fire";
-import {CommonActions} from '@react-navigation/native'
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -68,7 +67,7 @@ const validationSchema = Yup.object().shape({
 
   async function handleOnSignup(values, actions) {
     const { name, email, password } = values;
-try{
+  try{
    await fire.
     auth()
      .createUserWithEmailAndPassword( email, password)
@@ -80,17 +79,12 @@ try{
         });
     })
     .catch(error => console.log(error))
-     await navigation.replace(
-          'preference',
-          {
-           id:"preferenceTopic"
-         }
-       )
+      // await navigation.navigate('preference',{id:"preferenceTopic"})
+      await navigation.navigate("Auth",{screen:'preference',params:{id:"preferenceTopic"}})
     } catch (error) {
       await actions.setFieldError("general");
     } finally {
       await actions.setSubmitting(false);
-       
     }
   }
 
@@ -105,8 +99,8 @@ try{
             confirmPassword: "",
             check: false
           }}
-          onSubmit={(values, actions) => {
-            handleOnSignup(values, actions);
+          onSubmit={async(values, actions) => {
+            await handleOnSignup(values, actions);
           }}
           validationSchema={validationSchema}
         >
@@ -233,7 +227,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: 50
+    marginTop: 25
   },
   logoContainer: {
     marginBottom: 15,

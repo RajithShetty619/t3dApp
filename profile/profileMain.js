@@ -1,12 +1,11 @@
 import React, { useState,useEffect } from 'react';
-import { StyleSheet,View,TouchableOpacity,Image,AsyncStorage} from 'react-native';
-import {Container, Header, Content, Icon, Accordion, Text, } from 'native-base';
+import { StyleSheet,View,TouchableOpacity,Image,AsyncStorage,Alert} from 'react-native';
+import {Container, Button, Content, Icon, Accordion, Text,Item,Input, Body } from 'native-base';
 import fire from '../fire';
 import * as GoogleSignIn from 'expo-google-sign-in';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
-import { CommonActions  } from '@react-navigation/native';
  
 export default function profileMain({navigation}) {
   const dataArray = [
@@ -19,6 +18,8 @@ export default function profileMain({navigation}) {
  const [image,setImage]=useState('https://bootdey.com/img/Content/avatar/avatar6.png')
  const[user,setUser]=useState('');
  const[email,setEmail]=useState('');
+ const[input,setInput]=useState(false);
+ const[password,setPass]=useState('');
  let authUser=fire.auth().currentUser
  useEffect(() => {
   async function Does(){
@@ -42,7 +43,10 @@ export default function profileMain({navigation}) {
             Does();          
   },[])
   
-  
+ const PleaseCrash=()=>{
+   const crash=newCrash;
+   console.log(crash)
+ }
   
  
     
@@ -163,8 +167,9 @@ export default function profileMain({navigation}) {
                  onPress={async()=>{
                                 await fire.auth().signOut();
                                 await GoogleSignIn.signOutAsync()
-                                const popAction = StackActions.pop(3); 
-                                navigation.dispatch(popAction);
+                                navigation.navigate('index')
+
+                                
                                 }}  >
                 <Text style={{color:'#00BFFF',padding:20,fontSize:26}}>Sign Out</Text> 
                 </TouchableOpacity>
@@ -179,20 +184,68 @@ export default function profileMain({navigation}) {
             </View>
            
               <View style={styles.item}>
-              <View style={styles.infoContent}>
-                 <TouchableOpacity style={styles.buttonContainerTransparent} 
-                 onPress={async()=>{
-                                await fire.database().ref('/users/'+authUser.uid).remove()
-                                await authUser.delete().then(function () {
-                                  console.log('delete successful?')
-                                }).catch(function (error) {
-                                  console.error({error})
-                                })
-                                await GoogleSignIn.signOutAsync(); 
-                                navigation.navigate('NavigationStack')
-                                }}>
-                <Text style={{color:'#00BFFF',padding:20,fontSize:20}}>Delete account</Text> 
-                </TouchableOpacity>
+              <View style={{}}>
+                   {input?( <View style={{height:150,width:300,justifyContent:'space-evenly',alignItems:'center',flex:1}}>
+                          <Body style={{height:100}}>
+                        <View style={{width:300,height:100,alignItems:"center",justifyContent:'space-around'}}>
+                          <View style={{padding:10}}>
+                         <Item rounded style={{width:300,height:50,justifyContent:'space-around',padding:10}}>
+                           <Text style={{color:'#ffffff'}}>{email}</Text>
+                         </Item>
+                         </View> 
+                         
+                         <Item rounded >
+                          <Input secureTextEntry
+                           placeholder='Password' style={{color:'#ffffff'}} 
+                           onChangeText={(password) => setPass( password )}
+                           value={password}/>
+                         </Item>
+                         
+                         </View>
+                         <View style={{flexDirection:'row',justifyContent:'space-between',alignContent:'center',padding:10}}>
+                           <View style={{paddingRight:10}}>
+                         <Button rounded style={{backgroundColor:'#00BFFF',justifyContent:'space-between'}} onPress={()=>{setInput(false)}}>
+                           <Text>cancel</Text>
+                         </Button>
+                         </View>
+                         <View style={{paddingleft:10}}>
+                         <Button rounded style={{backgroundColor:'#32cd32',}} 
+                         onPress={async()=>{
+                          try {
+                            const response = await fire.auth().signInWithEmailAndPassword(email, password);
+                        
+                            if (response.user) {
+                              await fire.database().ref('/users/'+authUser.uid).remove()
+                              await authUser.delete().then(function () {
+                                console.log('delete successful?')
+                              }).catch(function (error) {
+                                console.error({error})
+                              })
+                              await GoogleSignIn.signOutAsync(); 
+                              navigation.navigate('index')
+                            }
+                          } catch (error) {
+                            let errorCode = error.code;
+                            let errorMessage = error.message;
+                            if (errorCode === 'auth/wrong-password') {
+                              Alert.alert('Wrong password.');
+                            }
+                          }
+                          }}>
+                           <Text>submit</Text>
+                         </Button>
+                         </View>
+                         </View>
+                         </Body>
+                        </View>
+                    ):(
+                      <Text style={{color:'#00BFFF',padding:20,fontSize:20}}
+                      onPress={()=>{setInput(true)}}
+                      >
+                        Delete account
+                      </Text>
+                    )
+                   }
               </View>
               </View>
             
@@ -242,12 +295,12 @@ const styles = StyleSheet.create({
   },
   body:{
     backgroundColor: "#000000",
-    height:250,
+    height:300,
     alignItems:'center',
   },
   item:{
     flexDirection : 'row',
-  
+    
   },
  
   info:{
@@ -258,3 +311,48 @@ const styles = StyleSheet.create({
 });
 
     
+// async()=>{
+//   await fire.database().ref('/users/'+authUser.uid).remove()
+//   await authUser.delete().then(function () {
+//     console.log('delete successful?')
+//   }).catch(function (error) {
+//     console.error({error})
+//   })
+//   await GoogleSignIn.signOutAsync(); 
+//   navigation.navigate("Auth",{screen:'Signup'})
+//   }}>
+    
+// async()=>{
+//   await fire.database().ref('/users/'+authUser.uid).remove()
+//   await authUser.delete().then(function () {
+//     console.log('delete successful?')
+//   }).catch(function (error) {
+//     console.error({error})
+//   })
+//   await GoogleSignIn.signOutAsync(); 
+//   navigation.navigate("Auth",{screen:'Signup'})
+//   }}>
+// async()=>{
+//   try {
+//     const response = await fire.auth().signInWithEmailAndPassword(email, password);
+
+//     if (response.user) {
+//       await fire.database().ref('/users/'+authUser.uid).remove()
+//       await authUser.delete().then(function () {
+//         console.log('delete successful?')
+//       }).catch(function (error) {
+//         console.error({error})
+//       })
+//       await GoogleSignIn.signOutAsync(); 
+//       navigation.navigate('index')
+//     }
+//   } catch (error) {
+//     let errorCode = error.code;
+//     let errorMessage = error.message;
+//     if (errorCode === 'auth/wrong-password') {
+//       Alert.alert('Wrong password.');
+//     } else {
+//       Alert.alert(errorMessage);
+//     }
+//   }
+//   }

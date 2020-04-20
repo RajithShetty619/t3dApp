@@ -245,8 +245,8 @@ export default function preferenceTopic({navigation,route}) {
                     </ListItem>
                     </TouchableOpacity>
                     <TouchableOpacity>
-                    <Button transparent onPress={()=>{if(check()){navigation.navigate(id,{id:'main'})
-                                            Set();
+                    <Button transparent onPress={async()=>{if(check()){navigation.navigate(id,{id:'main'})
+                                            await Set();
                                             isValid("topicData0") 
                                             isValid("topicData1") 
                                             isValid("topicData2")

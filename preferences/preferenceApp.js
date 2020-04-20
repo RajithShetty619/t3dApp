@@ -307,12 +307,16 @@ export default function preferenceApp({navigation,route}) {
                     <Button transparent onPress={async()=>{
                                         console.log("onpress")
                                         if(check()){
-                                            navigation.navigate(id)
                                             await Set();
                                             isValid("appData0")
                                             isValid("appData1")
                                             isValid("appData2")
                                             _storeData(date,"date")
+                                            if(id==="main")
+                                            {navigation.navigate('appNavigation',{screen:id})}
+                                            else{
+                                              navigation.navigate(id)
+                                            }
                                             }}}>
                       <View style={{flex:1,flexDirection:'row',justifyContent:'space-around'}}>
                         <Text style={{color:'#00BFFF'}}>SAVE</Text>

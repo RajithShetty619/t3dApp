@@ -11,14 +11,12 @@ import { Text } from 'native-base';
   notification: {},
 };
  async componentDidMount()
-  {
-    this.props.navigation.replace('tabNav')
-    // await this.pushnotif();
-    // this._notificationSubscription = Notifications.addListener(this._handleNotification);
+  { 
+    await this.pushnotif();
+    this._notificationSubscription = Notifications.addListener(this._handleNotification);
   }
  
- 
-   PUSH_ENDPOINT = 'https://your-server.com/users/push-token';
+  PUSH_ENDPOINT = 'https://your-server.com/users/push-token';
 
   pushnotif=async()=>  {
     
@@ -27,12 +25,12 @@ import { Text } from 'native-base';
     // iOS won't necessarily prompt the user a second time.
     // On Android, permissions are granted on app installation, so
     // askAsync will never prompt the user
-    console.log(status,"status")
+    
     
     // Stop here if the user did not grant permissions
     if (status !== 'granted') {
       alert('No notification permissions!');
-      return this.props.navigation.navigate('tabNav') ;
+      return this.props.navigation.navigate("index") ;
     }
     
   let uid =firebase.auth().currentUser.uid
@@ -47,9 +45,7 @@ import { Text } from 'native-base';
     expoPushToken: token
   });
 
-
-  this.props.navigation.navigate('tabNav');
-  
+  this.props.navigation.navigate("index")
 
   }
 
@@ -61,7 +57,7 @@ import { Text } from 'native-base';
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" color="black"/>
-        <Text>Please Wait</Text>
+        <Text onPress={()=>this.props.navigation.navigate("index")}>Please Wait</Text>
       </View>
     );
   }

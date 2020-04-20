@@ -8,7 +8,7 @@ function tabNav() {
     const tab=createBottomTabNavigator()
     return (
         <tab.Navigator  
-            initialRouteName="profile"
+            initialRouteName="personalNav"
             tabBarOptions={{
             activeTintColor: '#0000A0',
             inactiveTintColor: 'gray',

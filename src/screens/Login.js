@@ -144,7 +144,6 @@ const  exitAlert = () => {
 
   function _toggleAuth() {
     if (user) {
-      //Todo: JIC if old user is available in cache
       _signOutAsync();
     } else {
       _signInAsync();
@@ -173,7 +172,7 @@ const  exitAlert = () => {
 
       if (response.user) {
         await _loadPreference()
-        navigation.navigate("main")
+        navigation.navigate("appNavigation",{screen:'main'})
          
       }
     } catch (error) {

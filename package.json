@@ -20,6 +20,7 @@
     "expo-google-sign-in": "^8.1.0",
     "expo-image-picker": "~8.0.1",
     "expo-permissions": "~8.0.0",
+    "fiction-expo-restart": "^1.0.4",
     "firebase": "^7.14.0",
     "formik": "^2.1.4",
     "native-base": "^2.13.8",

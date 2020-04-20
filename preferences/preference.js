@@ -370,10 +370,10 @@ export default function preference({route,navigation}) {
               </ListItem>
               </TouchableOpacity>
              
-              <Button transparent onPress={()=>{if(check()){
+              <Button transparent onPress={async()=>{if(check()){
                                       console.log(JSON.stringify(id),"id")
                                       navigation.navigate(id,{id:"preferenceApp"})
-                                      Set();
+                                      await Set();
                                       isValid("foodData0")
                                       isValid("foodData1")
                                       isValid("foodData2") 
