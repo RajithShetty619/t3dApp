@@ -303,7 +303,6 @@ export default function preferenceApp({navigation,route}) {
                         </Body>
                     </ListItem>
                     </TouchableOpacity>
-                    
                     <Button transparent onPress={async()=>{
                                         console.log("onpress")
                                         if(check()){
@@ -322,7 +321,6 @@ export default function preferenceApp({navigation,route}) {
                         <Text style={{color:'#00BFFF'}}>SAVE</Text>
                         </View>
                     </Button>
-                    
                     </Content>
                 </Content>
             </Container>

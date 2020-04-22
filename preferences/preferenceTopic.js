@@ -74,9 +74,9 @@ export default function preferenceTopic({navigation,route}) {
                     console.log(ran)
                     return '/0/topic_details/0/'+getTopic()+'/0/data/'+ ran;
                 } 
-            const isValid=(path)=>{
-                  
-            const interval =setInterval(  async()=>{ console.log(getpath(),"getpath")
+            const isValid=(path)=>{    
+              const interval =setInterval( 
+                 async()=>{ console.log(getpath(),"getpath")
                          await  fire.database().ref().child(getpath())
                                .once("value",
                            (snapshot)=>{
@@ -244,8 +244,11 @@ export default function preferenceTopic({navigation,route}) {
                         </Body>
                     </ListItem>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                    <Button transparent onPress={async()=>{if(check()){navigation.navigate(id,{id:'main'})
+                    <Button transparent onPress={async()=>{
+                                        console.log("checkout")
+                                        if(check()){
+                                            console.log("iphone press")
+                                            navigation.navigate(id,{id:'main'})
                                             await Set();
                                             isValid("topicData0") 
                                             isValid("topicData1") 
@@ -255,7 +258,6 @@ export default function preferenceTopic({navigation,route}) {
                         <Text style={{color:'#00BFFF'}}>SAVE</Text>
                         </View>
                     </Button>
-                    </TouchableOpacity>
                     </Content>
                 </Content>
             </Container>

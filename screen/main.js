@@ -57,7 +57,7 @@ import { Text } from 'native-base';
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" color="black"/>
-        <Text onPress={()=>this.props.navigation.navigate("index")}>Please Wait</Text>
+        <Text>Please Wait</Text>
       </View>
     );
   }

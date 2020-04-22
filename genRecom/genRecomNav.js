@@ -1,5 +1,5 @@
 import React from 'react'
-import {createStackNavigator,CardStyleInterpolators} from '@react-navigation/stack'
+import {createStackNavigator} from '@react-navigation/stack'
 
 import genRecomMain from './genRecomMain'
 
@@ -7,17 +7,9 @@ function genRecomNav(){
 
     const generalStack = createStackNavigator();
     return (
-        
-        <generalStack.Navigator   headerMode="none" screenOptions={
-            {
-              gestureEnabled:true,
-              gestureDirection:'horizontal-inverted',
-              cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid,
-           
-            }} >
+        <generalStack.Navigator   headerMode="none" >
             <generalStack.Screen name="genRecomMain" component={genRecomMain}/>
         </generalStack.Navigator>
-        
     )
 }
 

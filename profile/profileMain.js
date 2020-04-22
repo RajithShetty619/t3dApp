@@ -226,34 +226,36 @@ export default function profileMain({navigation}) {
                               navigation.navigate('index')
                             }
                           } catch (error) {
-                            let googleUser=GoogleSignIn.getCurrentUserAsync();
-                            if(googleUser===null)
+                            // let googleUserC=GoogleSignIn.isConnectedAsync();
+                           try { 
+                            let googleUser=await GoogleSignIn.isSignedInAsync().catch(error=>alert(error))
+                            
+                            if(googleUser!==true)//googleuserc
                             {
-                              let errorCode = error.code;
+                            let errorCode = error.code;
                             let errorMessage = error.message;
                             if (errorCode === 'auth/wrong-password') {
                               Alert.alert('Wrong password.');
                             }
-                            else{
-                              Alert.alert(errorMessage);
-                            }
+                           
                           }
                             else{
-                              await GoogleSignIn.signOutAsync()
-                              navigation.navigate('index')
+                              await fire.auth().signOut();
+                              await GoogleSignIn.signOutAsync();
+                              navigation.navigate('index');
                               const user = await GoogleSignIn.signInSilentlyAsync();
                               const credential= firebase.auth.GoogleAuthProvider.credential(user.auth.idToken, user.auth.accessToken).catch(error=>Alert.alert(error))
                               //login with credential
                               await firebase.auth().signInWithCredential(credential);
-                              await fire.database().ref('/users/'+authUser.uid).remove()
+                              await fire.database().ref('/users/'+authUser.uid).remove();
                               await authUser.delete().then(function () {
                                 console.log('delete successful?')
                               }).catch(function (error) {
                                 console.error({error})
                               })
                               await GoogleSignIn.signOutAsync(); 
-                              
-                            }
+                            }}
+                            catch{}
                           }
                           }}>
                            <Text>submit</Text>

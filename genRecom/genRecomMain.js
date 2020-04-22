@@ -3,7 +3,7 @@ import {View,StyleSheet,ScrollView,Image} from 'react-native';
 import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import {  TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function General() {
     let [cardf1,setCardf1]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
     let [cardf2,setCardf2]=useState({"cuisine":"","food_deter":"veg","food_info":"","food_item":"","food_meal":"","food_pic":"","sr":""})
