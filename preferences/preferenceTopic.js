@@ -10,13 +10,14 @@ export default function preferenceTopic({navigation,route}) {
     const[prefer,setPrefer]=useState({"topic_details":{"architecture":false,"automobile":false,"aviation":false,"famouspersonality":false,
     "food":false,"general":false,"health":false,"psychology":false,"space":false}})
     const date = JSON.stringify(new Date().getDate());
-    const [topics,setTopics]=useState(0)   
+     
         useEffect(()=>{
           async function Does(){ 
             let pref=await AsyncStorage.getItem("prefTopic")
-           
+             
+            if(JSON.parse(pref)!==null){
             setPrefer(JSON.parse(pref))
-           
+            }
           }
           Does();
         },[])
@@ -73,9 +74,9 @@ export default function preferenceTopic({navigation,route}) {
                     console.log(ran)
                     return '/0/topic_details/0/'+getTopic()+'/0/data/'+ ran;
                 } 
-            const isValid=(path)=>{
-                  
-            const interval =setInterval(  async()=>{ console.log(getpath(),"getpath")
+            const isValid=(path)=>{    
+              const interval =setInterval( 
+                 async()=>{ console.log(getpath(),"getpath")
                          await  fire.database().ref().child(getpath())
                                .once("value",
                            (snapshot)=>{
@@ -244,9 +245,12 @@ export default function preferenceTopic({navigation,route}) {
                         </Body>
                     </ListItem>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                    <Button transparent onPress={()=>{if(check()){navigation.navigate(id,{id:'main'})
-                                            Set();
+                    <Button transparent onPress={async()=>{
+                                        console.log("checkout")
+                                        if(check()){
+                                            console.log("iphone press")
+                                            navigation.navigate(id,{id:'main'})
+                                            await Set();
                                             isValid("topicData0") 
                                             isValid("topicData1") 
                                             isValid("topicData2")
@@ -255,7 +259,6 @@ export default function preferenceTopic({navigation,route}) {
                         <Text style={{color:'#00BFFF'}}>SAVE</Text>
                         </View>
                     </Button>
-                    </TouchableOpacity>
                     </Content>
                 </Content>
             </Container>

@@ -1,22 +1,20 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native'
 import AuthNavigation from "./AuthNavigation";
+import appNavigation from '../../Navigation/appNavigation'
 import index from "./index"
 const Stack = createStackNavigator();
 
 function NavigationStack(){
     return(
-        
+    < NavigationContainer> 
         <Stack.Navigator
            
             headerMode="none"
             initialRouteName="index"
             screenOptions={{
-                 //Defailt title,
-                headerTitleStyle: {
-                    fontSize: 16,
-                    flex: 1,
-                },
+
                 cardStyle: {
                     backgroundColor: "white"
                 },
@@ -28,10 +26,7 @@ function NavigationStack(){
             }}
         >
            
-                    <Stack.Screen
-                        name="index"
-                        component={index}
-                    />
+                   
                     <Stack.Screen
                         name="Auth"
                         component={AuthNavigation}
@@ -39,8 +34,19 @@ function NavigationStack(){
                             title: "Auth",
                         }}
                     />
+                     <Stack.Screen
+                        name="appNavigation"
+                        component={appNavigation}
+                        options={{
+                            title: "appNavigation",
+                        }}
+                    /> 
+                    <Stack.Screen
+                        name="index"
+                        component={index}
+                    />
         </Stack.Navigator>
- 
+    </ NavigationContainer>
     )
 }
 

@@ -14,9 +14,11 @@ export default function preferenceApp({navigation,route}) {
      
         useEffect(()=>{
           async function Does(){ 
-            console.log("useeffect")
+       
             let pref=await AsyncStorage.getItem("prefApp")
-            setPrefer(JSON.parse(pref))
+            if(JSON.parse(pref)!==null){
+              setPrefer(JSON.parse(pref))
+            }
           }
           Does();
         },[])
@@ -302,22 +304,24 @@ export default function preferenceApp({navigation,route}) {
                         </Body>
                     </ListItem>
                     </TouchableOpacity>
-                    
-                    <Button transparent onPress={()=>{
+                    <Button transparent onPress={async()=>{
                                         console.log("onpress")
                                         if(check()){
-                                            navigation.navigate(id)
-                                            Set();
+                                            await Set();
                                             isValid("appData0")
                                             isValid("appData1")
                                             isValid("appData2")
                                             _storeData(date,"date")
+                                            if(id==="main")
+                                            {navigation.navigate('appNavigation',{screen:id})}
+                                            else{
+                                              navigation.navigate(id)
+                                            }
                                             }}}>
                       <View style={{flex:1,flexDirection:'row',justifyContent:'space-around'}}>
                         <Text style={{color:'#00BFFF'}}>SAVE</Text>
                         </View>
                     </Button>
-                    
                     </Content>
                 </Content>
             </Container>

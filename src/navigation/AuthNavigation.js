@@ -14,11 +14,7 @@ const AuthNavigation = () => (
     initialRouteName="Login"
     headerMode="none"
     screenOptions={{
-      title: "Demo",
-      headerTitleStyle: {
-        fontSize: 16,
-        flex: 1,
-      },
+     
       cardStyle: {
         backgroundColor: "white"
       },

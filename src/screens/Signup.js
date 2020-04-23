@@ -16,7 +16,6 @@ import FormButton from "../components/FormButton";
 import ErrorMessage from "../components/ErrorMessage";
 import fire from "../../fire";
 
-
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .label("Name")
@@ -43,7 +42,7 @@ const validationSchema = Yup.object().shape({
   const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(true);
 
   function goToLogin() { 
-    navigation.navigate('preference',{id:"preferenceTopic"})
+    navigation.navigate('Login')
   }
 
   function handlePasswordVisibility() {
@@ -68,26 +67,25 @@ const validationSchema = Yup.object().shape({
 
   async function handleOnSignup(values, actions) {
     const { name, email, password } = values;
-try{
-    fire.
+  try{
+   await fire.
     auth()
      .createUserWithEmailAndPassword( email, password)
-     .then(authUser => {
-        fire.database().ref().child('/users/').child(authUser.user.uid)
+     .then(async authUser => {
+        await fire.database().ref().child('/users/').child(authUser.user.uid)
         .set({
           name,
           email,
         });
     })
     .catch(error => console.log(error))
-    
+      // await navigation.navigate('preference',{id:"preferenceTopic"})
+      await navigation.navigate("Auth",{screen:'preference',params:{id:"preferenceTopic"}})
     } catch (error) {
-      actions.setFieldError("general");
+      await actions.setFieldError("general");
     } finally {
-      actions.setSubmitting(false);
-     
+      await actions.setSubmitting(false);
     }
-    navigation.navigate('preference',{id:"preferenceTopic"})
   }
 
   return (
@@ -101,8 +99,8 @@ try{
             confirmPassword: "",
             check: false
           }}
-          onSubmit={(values, actions) => {
-            handleOnSignup(values, actions);
+          onSubmit={async(values, actions) => {
+            await handleOnSignup(values, actions);
           }}
           validationSchema={validationSchema}
         >
@@ -229,7 +227,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: 50
+    marginTop: 25
   },
   logoContainer: {
     marginBottom: 15,
