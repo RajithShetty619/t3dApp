@@ -74,6 +74,7 @@ const  exitAlert = () => {
          name,
           email,
         });
+      
         navigation.navigate(
           'preference',
           {

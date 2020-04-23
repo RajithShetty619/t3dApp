@@ -30,7 +30,8 @@
         "googleSignIn": {
           "reservedClientId": "com.googleusercontent.apps.422452307527-am2mficgrt1dgk7t8sbmq029m2a2cnv0"
         }
-      }
+      },
+      "buildNumber": "1.0.1"
     },
     "android": {
       "config": {
