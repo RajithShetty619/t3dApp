@@ -226,31 +226,18 @@ export default function profileMain({navigation}) {
                               navigation.navigate('index')
                             }
                           } catch (error) {
-<<<<<<< HEAD
-                            let googleUserC=GoogleSignIn.isConnectedAsync();
-                            // let googleUser=GoogleSignIn.isSignedInAsync()
-                            Alert.alert(googleUserC)
-                            if(googleUserC!==true)//googleuserc
-=======
                             // let googleUserC=GoogleSignIn.isConnectedAsync();
                            try { 
                             let googleUser=await GoogleSignIn.isSignedInAsync().catch(error=>alert(error))
                             
                             if(googleUser!==true)//googleuserc
->>>>>>> 48c8fe1bdb94777b0598e7d72dc2aed8aaf71558
                             {
                             let errorCode = error.code;
                             let errorMessage = error.message;
                             if (errorCode === 'auth/wrong-password') {
                               Alert.alert('Wrong password.');
                             }
-<<<<<<< HEAD
-                            else{
-                              Alert.alert(errorMessage);
-                            }
-=======
                            
->>>>>>> 48c8fe1bdb94777b0598e7d72dc2aed8aaf71558
                           }
                             else{
                               await fire.auth().signOut();
@@ -267,12 +254,8 @@ export default function profileMain({navigation}) {
                                 console.error({error})
                               })
                               await GoogleSignIn.signOutAsync(); 
-<<<<<<< HEAD
-                            }
-=======
                             }}
                             catch{}
->>>>>>> 48c8fe1bdb94777b0598e7d72dc2aed8aaf71558
                           }
                           }}>
                            <Text>submit</Text>
