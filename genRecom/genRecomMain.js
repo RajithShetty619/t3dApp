@@ -135,7 +135,7 @@ export default function General() {
                                    <View style={{flex:1}}>
                                        
                                            <Image source={{uri:urlf1}}
-                                               style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                               style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                            />   
                                         </View>
                             </CardItem>
@@ -145,7 +145,9 @@ export default function General() {
                                 <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
                             <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
+                            
                                     <Text style={{color:'#FFFFFF',}}>{cardf1.food_info}</Text>
+                                    
                                 </View>
                                 </View>
                             </CardItem>
@@ -158,9 +160,9 @@ export default function General() {
                                 {textShow.food2?(
                                      <Card transparent style={{height:500,marginTop:10,}}>
                                      <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
-                                 <View style={{flex:1}}>
+                                        <View style={{flex:1}}>
                                          <Image source={{uri:urlf2}}
-                                             style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                             style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                          />
                                         </View>
                             </CardItem>
@@ -185,7 +187,7 @@ export default function General() {
                                     <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlf3}}
-                                            style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                            style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                         />
                                         </View>
                             </CardItem>
@@ -218,7 +220,7 @@ export default function General() {
                                      <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                  <View style={{flex:1}}>
                                          <Image source={{uri:urlA1}}
-                                             style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                             style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                          />
                                          </View>
                             </CardItem>
@@ -243,7 +245,7 @@ export default function General() {
                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                <View style={{flex:1}}>
                                        <Image source={{uri:urlA2}}
-                                           style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                           style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                        /> 
                                        </View>
                             </CardItem>
@@ -268,7 +270,7 @@ export default function General() {
                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlA3}}
-                                            style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                            style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                         />
                                         </View>
                             </CardItem>
@@ -301,7 +303,7 @@ export default function General() {
                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlT1}}
-                                            style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                            style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                         />
                                         </View>
                             </CardItem>
@@ -326,7 +328,7 @@ export default function General() {
                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlT2}}
-                                            style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                            style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                         />
                                         </View>
                             </CardItem>
@@ -350,7 +352,7 @@ export default function General() {
                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
                                         <Image source={{uri:urlT3}}
-                                            style={{flex:1,width:null,height:null,resizeMode:'contain',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                            style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                         />
                                          </View>
                             </CardItem>

@@ -114,11 +114,12 @@ export default function preferenceApp({navigation,route}) {
         <Container style={{ justifyContent:'center',backgroundColor:'black',paddingTop:24}}>
              <Content>
                     <Content>
-                      <Separator bordered>
-                        <View style={{flexDirection:'row',justifyContent:'space-around'}}>
-                        <Text style={{fontSize:24}}>App Preferences</Text>
-                        </View>
-                        </Separator>
+                      
+                            <ListItem itemDivider>
+                              <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
+                              <Text style={{fontSize:24,}}>App Preferences</Text>
+                              </View>
+                            </ListItem>  
                         <TouchableOpacity   onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           app_details:{

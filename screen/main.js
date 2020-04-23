@@ -3,7 +3,7 @@ import {Notifications} from 'expo';
 import * as Permissions from 'expo-permissions';
 import firebase from 'firebase';
 import fire from '../fire';
-import { View,ActivityIndicator,AsyncStorage} from 'react-native';
+import { View,ActivityIndicator,AsyncStorage,Text} from 'react-native';
 
  export default class main extends Component
 { state = {
@@ -82,6 +82,7 @@ import { View,ActivityIndicator,AsyncStorage} from 'react-native';
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" color="black"/>
+        <Text>Please Wait</Text>
       </View>
     );
   }
