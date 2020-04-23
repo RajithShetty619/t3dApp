@@ -240,6 +240,7 @@ export default function preference({route,navigation}) {
               </TouchableOpacity>
               <Separator bordered>
                   <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+
                   <Text style={{fontSize:18}}>Food Cuisine</Text>
                   </View>
                   </Separator>

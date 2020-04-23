@@ -74,12 +74,12 @@ const  exitAlert = () => {
          name,
           email,
         });
-      
+        
         navigation.navigate(
           'preference',
           {
            id:"preferenceTopic"
-         }
+          }
        )
       } catch (error) {
         alert(error)
