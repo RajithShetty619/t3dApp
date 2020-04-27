@@ -3,7 +3,12 @@ import {Notifications} from 'expo';
 import * as Permissions from 'expo-permissions';
 import firebase from 'firebase';
 import fire from '../fire';
+
+import { ActivityIndicator,AsyncStorage,View} from 'react-native';
+import { Text } from 'native-base';
+
 import { View,ActivityIndicator,ImageBackground,Dimensions,Text} from 'react-native';
+
 
 
  export default class main extends Component

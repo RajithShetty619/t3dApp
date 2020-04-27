@@ -141,9 +141,9 @@ export default function General() {
                                     <Card transparent style={{height:500,marginTop:10,}}>
                                 <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
                             
-                                    <Text style={{color:'#FFFFFF',}}>{cardf1.food_info}</Text>
+                                    <Text style={{color:'#000000',}}>{cardf1.food_info}</Text>
                                     
                                 </View>
                                 </View>
@@ -168,8 +168,8 @@ export default function General() {
                                     <Card transparent style={{height:500,marginTop:10,}}>
                                 <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text  style={{color:'#FFFFFF'}}>{cardf2.food_info}</Text>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text  style={{color:'#000000'}}>{cardf2.food_info}</Text>
                                 </View> 
                                 </View>
                             </CardItem>
@@ -193,8 +193,8 @@ export default function General() {
                                     <Card transparent style={{height:500,marginTop:10}}>
                                 <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text  style={{color:'#FFFFFF'}}>  {cardf3.food_info}</Text>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text  style={{color:'#000000'}}>  {cardf3.food_info}</Text>
                                 </View> 
                                 </View>
                             </CardItem>
@@ -220,15 +220,14 @@ export default function General() {
                                             style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                         />
                                         </View>
-
                             </CardItem>
                             </Card>
                                 ):(
                                     <Card transparent style={{height:300,marginTop:10}}>
                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>  
-                                <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardT1.topic_info}</Text>
+                                <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardT1.topic_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
@@ -252,8 +251,8 @@ export default function General() {
                                     <Card transparent style={{height:300,marginTop:10}}>
                                 <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardT2.topic_info}</Text>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardT2.topic_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
@@ -276,8 +275,8 @@ export default function General() {
                                     <Card transparent style={{height:300,marginTop:10}}>
                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}> 
-                                <View style={{paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardT3.topic_info}</Text>
+                                <View style={{paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardT3.topic_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
@@ -308,8 +307,8 @@ export default function General() {
                                     <Card transparent style={{height:300,marginTop:10}}>
                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>
-                                <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardA1.app_info}</Text>
+                                <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardA1.app_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
@@ -333,8 +332,8 @@ export default function General() {
                                     <Card transparent style={{height:300,marginTop:10}}>
                                 <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardA2.app_info}</Text>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardA2.app_info}</Text>
                                 </View> 
                                 </View>
                             </CardItem>
@@ -358,8 +357,8 @@ export default function General() {
                                     <Card transparent style={{height:300,marginTop:10}}>
                                 <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardA3.app_info}</Text>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardA3.app_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
