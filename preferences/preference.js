@@ -142,11 +142,12 @@ export default function preference({route,navigation}) {
 
           <Content>
               <Content>
-                <Separator bordered>
-                  <View style={{flexDirection:'row',justifyContent:'space-around'}}>
-                  <Text style={{fontSize:24}}>Food Preference</Text>
-                  </View>
-                  </Separator>
+               
+                  <ListItem itemDivider>
+                      <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
+                      <Text style={{fontSize:24,}}>Food Preferences</Text>
+                      </View>
+                    </ListItem>  
                   <TouchableOpacity   onPress={()=>{
                       setPrefer((prevPrefer)=>({...prevPrefer,
                     food_deter:{
@@ -176,11 +177,12 @@ export default function preference({route,navigation}) {
                   </Body>
               </ListItem>
               </TouchableOpacity>
-              <Separator bordered>
-                  <View style={{flexDirection:'row',justifyContent:'space-around'}}>
-                  <Text style={{fontSize:18}}>Food Type</Text>
-                  </View>
-                  </Separator>
+             
+                  <ListItem itemDivider>
+                      <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
+                      <Text style={{fontSize:24,}}>Food Type</Text>
+                      </View>
+                    </ListItem>  
               <TouchableOpacity onPress={()=>{
                       setPrefer((prevPrefer)=>({...prevPrefer,
                     food_type:{
@@ -241,12 +243,11 @@ export default function preference({route,navigation}) {
                   </Body>
               </ListItem>
               </TouchableOpacity>
-              <Separator bordered>
-                  <View style={{flexDirection:'row',justifyContent:'space-around'}}>
-
-                  <Text style={{fontSize:18}}>Food Cuisine</Text>
-                  </View>
-                  </Separator>
+                  <ListItem itemDivider>
+                      <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
+                      <Text style={{fontSize:24,}}>Food Cuisine</Text>
+                      </View>
+                    </ListItem>  
               <TouchableOpacity  onPress={()=>{
                       setPrefer((prevPrefer)=>({...prevPrefer,
                     food:{

@@ -220,6 +220,7 @@ export default function General() {
                                             style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
                                         />
                                         </View>
+
                             </CardItem>
                             </Card>
                                 ):(

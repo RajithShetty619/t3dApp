@@ -107,11 +107,20 @@ export default function preferenceTopic({navigation,route}) {
                 <Container style={{ justifyContent:'center',backgroundColor:'#000000',paddingTop:24}}>
                     <Content>
                         <Content>
+<<<<<<< HEAD
                         <Separator bordered>
                       <View style={{flexDirection:'row',justifyContent:'space-around'}}>
                       <Text style={{fontSize:20}}>Topic Preferences</Text>
                       </View>
                         </Separator>
+=======
+                       
+                        <ListItem itemDivider>
+                          <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
+                          <Text style={{fontSize:24,}}>Topic Prefrences</Text>
+                          </View>
+                        </ListItem>  
+>>>>>>> 1724288a3af62e430bcaa296f0aae1dfd3a46538
                         <TouchableOpacity  onPress={()=>{
                             setPrefer((prevPrefer)=>({...prevPrefer,
                           topic_details:{
