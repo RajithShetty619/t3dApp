@@ -1,9 +1,8 @@
 import {AsyncStorage} from 'react-native'
 import fire from '../fire';
-import firebase from 'firebase';
 
 export default async function IsUptoDate(){
-
+    
     const _retrieveData = async (path) => {
         try {
           const value = await AsyncStorage.getItem(path);
@@ -15,7 +14,9 @@ export default async function IsUptoDate(){
         }
       };
 
-    
+    const _storeData = async (obj,path) => {
+      await AsyncStorage.setItem(path,JSON.stringify(obj) );   
+    };  
     const getpathFood=async()=>{
     const prefer = await _retrieveData("prefFood")
     
@@ -49,46 +50,39 @@ export default async function IsUptoDate(){
    
     return path
 }
-  const isValidFood=(path)=>{
-      const interval =  setInterval( async() => {
-              firebase.database().ref().child( await getpathFood())
-                   .on("value",
-               (snapshot)=>{
-                   let item=snapshot.val()
-                   if(item!==null){
-                   let array=[];
-                   Object.
-                   keys(item)
-                   .forEach(i=>array.push(item[i]));   
-              }
-              
+const isValidFood=async(path)=>{
+    async function inter(){
+      await fire.database().ref().child( await getpathFood())
+      .once("value",
+          async(snapshot)=>{
+              let item=snapshot.val() 
               if(item!==null)
               { 
-                _storeData(item,path); 
-                clearInterval(interval); 
-                
+                await _storeData(item,path);
+                return new Promise(resolve => {
+                console.log('true')
+                resolve('true');
+                });
               }
-             })
-           }, 100)    
+              else{
+                setTimeout(inter,10)
+              }
+            })
+          }
+    await inter();
+      
 }  
-const _storeData = async (obj,path) => {
-try {
-  
-  await AsyncStorage.setItem(path,JSON.stringify(obj) );
-} catch (error) {
-  
-}
-};  
- const  pathItemsApp=(path)=>{
-    if(path ==='/0/app_details/0/booksandreference') {return 4;}
-    if(path==='/0/app_details/0/dating') {return 19;}
-    if(path==='/0/app_details/0/education') {return 11;}
-    if(path==='/0/app_details/0/entertainment') {return 12;}
-    if(path==='/0/app_details/0/finance') {return 8;}
-    if(path==='/0/app_details/0/fitness') {return 13;}
-    if(path==='/0/app_details/0/game') {return 12;}
-    if(path==='/0/app_details/0/lifestyle') {return 4;}
-    if(path==='/0/app_details/0/music') {return 11;}
+
+    const  pathItemsApp=(path)=>{
+      if(path ==='/0/app_details/0/booksandreference') {return 4;}
+      if(path==='/0/app_details/0/dating') {return 19;}
+      if(path==='/0/app_details/0/education') {return 11;}
+      if(path==='/0/app_details/0/entertainment') {return 12;}
+      if(path==='/0/app_details/0/finance') {return 8;}
+      if(path==='/0/app_details/0/fitness') {return 13;}
+      if(path==='/0/app_details/0/game') {return 12;}
+      if(path==='/0/app_details/0/lifestyle') {return 4;}
+      if(path==='/0/app_details/0/music') {return 11;}
       if(path==='/0/app_details/0/news') {return 11;}
       if(path==='/0/app_details/0/productivity') {return 7;}
       if(path==='/0/app_details/0/socialmedia') {return 24;}
@@ -101,7 +95,6 @@ try {
             let arr = [];
                 for (let key in pref) {
                     if (pref[key]) arr.push(key);
-                        
                 } 
              return arr[Math.floor(Math.random()*arr.length)]  
             }
@@ -111,32 +104,29 @@ try {
             let ran=Math.floor(Math.random()* pathItemsApp(path))
             return '/0/app_details/0/'+getTopic()+'/0/data/'+ ran;
         } 
-    const isValidApp=(path)=>{
-          const interval=setInterval(()=>{
-            async function Does(){
-            await  fire.database().ref().child( await getpathApp() )
-                  .once("value",
-              (snapshot)=>{
-                  let item=snapshot.val()
-                  if(item!==null){
-                  let array=[];
-                  Object.
-                  keys(item)
-                  .forEach(i=>array.push(item[i]));   
-                  if(item!==null)
-                  {
-                    _storeData(item,path); 
-                    clearInterval(interval)
-                  }
-                  }
-               
-            })
-           }
-           Does();
-          },200)
+    const isValidApp=async(path)=>{
+      async function inter(){
+      await  fire.database().ref().child( await getpathApp() )
+        .once("value",
+        async(snapshot)=>{
+            let item=snapshot.val()
+            if(item!==null)
+              {
+                await _storeData(item,path); 
+                return new Promise(resolve => {
+                  console.log('true!')
+                  resolve('true');
+                });
+              }
+            else{
+              setTimeout(inter,10)
+            }
+        })
+      }
+      setTimeout(inter,10)
          
     } 
-    function pathItemsTopic(path){
+    const pathItemsTopic=(path)=>{
         if(path ==='/0/topic_details/0/architecture') {return 0;}
         if(path==='/0/topic_details/0/automobile') {return 9;}
         if(path==='/0/topic_details/0/aviation') {return 4;}
@@ -164,28 +154,28 @@ try {
             
             return '/0/topic_details/0/'+getTopic()+'/0/data/'+ ran;
         } 
-    const isValidTopic=(path)=>{
-          
-    const interval =setInterval(  async()=>{ 
-                 await  firebase.database().ref().child(await getpathTopics())
+    const isValidTopic=async(path)=>{
+    async function inter(){
+      await  fire.database().ref().child(await getpathTopics())
                        .once("value",
-                   (snapshot)=>{
-                       let item=snapshot.val()
-                       if(item!==null){
-                       let array=[];
-                       Object.
-                       keys(item)
-                       .forEach(i=>array.push(item[i]));   
-                       }
+                   async(snapshot)=>{
+                       let item=snapshot.val() 
                        if(item!==null)
                         { 
-                        _storeData(item,path); 
-                        clearInterval(interval); 
-                        
+                        await _storeData(item,path); 
+                        return new Promise(resolve => {
+                          console.log('true@')
+                          resolve('true');
+                        });
+                        }
+                        else{
+                          setTimeout(inter,10)
                         }
              })
-                
-                },1000)
+    }      
+    setTimeout(inter,10)
+
+    
 
    }  
     const  date= parseInt(JSON.parse(await AsyncStorage.getItem("date")))
@@ -196,16 +186,22 @@ try {
     {   let keys=["foodData0","foodData1","foodData2",
                   "appData0","appData1","appData2",
                   "topicData0","topicData1","topicData2"]
+                  
         await AsyncStorage.multiRemove(keys)
-        isValidFood("foodData0")
-        isValidFood("foodData1")
-        isValidFood("foodData2")
-        isValidApp("appData0")
-        isValidApp("appData1")
-        isValidApp("appData2")
-        isValidTopic("topicData0")
-        isValidTopic("topicData1")
-        isValidTopic("topicData2")
+        await isValidFood("foodData0")
+        .then(async()=>await isValidApp("appData0"))
+          .then(async()=>await isValidTopic("topicData0"))
+            .then(async()=>await isValidFood("foodData2"))
+              .then(async()=>await isValidFood("foodData1"))
+                .then(async()=>await isValidApp("appData1"))
+                  .then(async()=>await isValidApp("appData2"))
+                    .then(async()=>await isValidTopic("topicData1"))
+                      .then(async()=>await isValidTopic("topicData2"))
+                        
+                      
+        
+        
+       
 
         await AsyncStorage.setItem("date",JSON.stringify(NewDate))
     }

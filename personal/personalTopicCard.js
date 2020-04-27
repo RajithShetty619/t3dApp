@@ -62,10 +62,12 @@ export default function personalTopicCard ({route,navigation}){
                             </CardItem>
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
-                            
-                                <Text >
+                               {cardT1?
+                               ( <Text >
                                     {cardT1["topic_info"]}
-                                </Text>
+                                </Text>)
+                                :
+                                null}
                                 </Body>
                             </CardItem>
                         </Card>

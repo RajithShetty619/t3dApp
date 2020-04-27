@@ -44,11 +44,11 @@ export default function profileMain({navigation}) {
             Does();          
   },[])
   
- const PleaseCrash=()=>{
-   const crash=newCrash;
-   console.log(crash)
- }
-  
+ 
+  const ClearLocalStorage=async()=>{
+    let keys=["prefFood","prefApp","prefTopic","date","foodData0"]
+    await AsyncStorage.multiRemove(keys)
+  }
  
     
  const  getPermissionAsync = async () => {
@@ -166,11 +166,10 @@ export default function profileMain({navigation}) {
             <View style={styles.infoContent}>
                  <TouchableOpacity style={styles.buttonContainerTransparent} 
                  onPress={async()=>{
+                                await ClearLocalStorage();
                                 await fire.auth().signOut();
                                 await GoogleSignIn.signOutAsync()
                                 navigation.navigate('index')
-
-                                
                                 }}  >
                 <Text style={{color:'#00BFFF',padding:20,fontSize:26}}>Sign Out</Text> 
                 </TouchableOpacity>
@@ -216,14 +215,15 @@ export default function profileMain({navigation}) {
                             const response = await fire.auth().signInWithEmailAndPassword(email, password);
                         
                             if (response.user) {
-                              await fire.database().ref('/users/'+authUser.uid).remove()
+                              await ClearLocalStorage();
+                              await fire.database().ref('/users/'+authUser.uid).remove();
                               await authUser.delete().then(function () {
                                 console.log('delete successful?')
                               }).catch(function (error) {
                                 console.error({error})
                               })
                               await GoogleSignIn.signOutAsync(); 
-                              navigation.navigate('index')
+                              navigation.navigate('index');
                             }
                           } catch (error) {
                             // let googleUserC=GoogleSignIn.isConnectedAsync();
@@ -255,7 +255,9 @@ export default function profileMain({navigation}) {
                               })
                               await GoogleSignIn.signOutAsync(); 
                             }}
-                            catch{}
+                            catch{
+                              console.log("error")
+                            }
                           }
                           }}>
                            <Text>submit</Text>

@@ -79,8 +79,7 @@ const validationSchema = Yup.object().shape({
         });
     })
     .catch(error => console.log(error))
-      // await navigation.navigate('preference',{id:"preferenceTopic"})
-      await navigation.navigate("Auth",{screen:'preference',params:{id:"preferenceTopic"}})
+      navigation.navigate("appNavigation",{screen:"getstarted"})
     } catch (error) {
       await actions.setFieldError("general");
     } finally {

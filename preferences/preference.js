@@ -19,7 +19,6 @@ export default function preference({route,navigation}) {
         useEffect(()=>{
                   async function Does(){ 
                     let pref=await AsyncStorage.getItem("prefFood")
-                   
                     if(JSON.parse(pref)!==null){
                     setPrefer(JSON.parse(pref))
                     }
@@ -30,7 +29,7 @@ export default function preference({route,navigation}) {
       
           async function Set(){
             const authUser=fire.auth().currentUser;
-            fire.database().ref('/users/'+authUser.uid+'/preference/preferenceFood').set(JSON.stringify(prefer))
+            fire.database().ref('/users/'+authUser.uid+'/preference/preferenceFood').set(JSON.stringify(prefer));
             let myJSON = JSON.stringify(prefer);
             await AsyncStorage.setItem("prefFood",myJSON);
           }
@@ -55,7 +54,7 @@ export default function preference({route,navigation}) {
          }
             if(food<=3){
                   
-                  Alert.alert("Choose atlest 4 food cusines")
+                  Alert.alert("Choose atleast 4 food cusines")
                   return false
             }
             if(food_deter<=0){
@@ -103,28 +102,32 @@ export default function preference({route,navigation}) {
           return path
       }
       
-        const isValid=(path)=>{
+        const isValid=async(path)=>{
           
-            const interval =  setInterval(async() => {
-                   await  fire.database().ref().child(getpath())
-                         .once("value",
-                     (snapshot)=>{
-                         let item=snapshot.val()
-                         if(item!==null){
-                         let array=[];
-                         Object.
-                         keys(item)
-                         .forEach(i=>array.push(item[i]));   
-                    }
+          async function inter(){
+           await fire.database().ref().child(  getpath())
+           .once("value",
+               async(snapshot)=>{
+                   let item=snapshot.val()
+                   console.log(item)
+                   
+                  if(item!==null)
+                      { 
+                      await _storeData(item,path);
+                      return new Promise(resolve => {
+                      console.log('true')
+                      resolve('true');
+                    });
+
+                      }
+                  else{
+                    setTimeout(inter,10)
                     
-                    if(item!==null)
-                    { 
-                      _storeData(item,path); 
-                      clearInterval(interval); 
-                      
-                    }
-                   })
-                 }, 200)    
+                  }
+             })
+         }
+        await inter();
+           
      }  
      const _storeData = async (obj,path) => {
       try {
@@ -372,13 +375,13 @@ export default function preference({route,navigation}) {
               </TouchableOpacity>
              
               <Button transparent onPress={async()=>{if(check()){
-                                      console.log(JSON.stringify(id),"id")
                                       navigation.navigate(id,{id:"preferenceApp"})
                                       await Set();
-                                      isValid("foodData0")
-                                      isValid("foodData1")
-                                      isValid("foodData2") 
-                                      _storeData(date,"date") 
+                                      await isValid("foodData0")
+                                      await isValid("foodData1")
+                                      await isValid("foodData2")
+                                      await _storeData(date,"date")
+                    
                                     }}}>
                 <View style={{flex:1,flexDirection:'row',justifyContent:'space-around'}}>
                   <Text style={{color:'#00BFFF'}}>SAVE</Text>

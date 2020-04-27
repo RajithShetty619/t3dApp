@@ -4,6 +4,9 @@
     "slug": "t3dApp",
     "privacy": "public",
     "sdkVersion": "36.0.0",
+    "notification": {
+      "icon": "./assets/appimg.png"
+    },
     "platforms": [
       "ios",
       "android",

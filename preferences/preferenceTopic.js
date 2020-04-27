@@ -75,28 +75,22 @@ export default function preferenceTopic({navigation,route}) {
                     return '/0/topic_details/0/'+getTopic()+'/0/data/'+ ran;
                 } 
             const isValid=(path)=>{    
-              const interval =setInterval( 
-                 async()=>{ console.log(getpath(),"getpath")
-                         await  fire.database().ref().child(getpath())
-                               .once("value",
-                           (snapshot)=>{
-                               let item=snapshot.val()
-                               if(item!==null){
-                               let array=[];
-                               Object.
-                               keys(item)
-                               .forEach(i=>array.push(item[i]));
-                               if(item!==null)
-                                { 
-                                _storeData(item,path); 
-                                clearInterval(interval); 
-                                }   
-                               }
-                                
-                     })
-                        
-                        },1000)
-
+              async function inter(){
+                await  fire.database().ref().child(await getpath())
+                                 .once("value",
+                             (snapshot)=>{
+                                 let item=snapshot.val()
+                                 if(item!==null)
+                                  { 
+                                  _storeData(item,path); 
+                                  
+                                  }
+                                  else{
+                                    setTimeout(inter,10)
+                                  }
+                       })
+              }      
+              setTimeout(inter,10)
            }  
            const _storeData = async (obj,path) => {
             try {
@@ -115,7 +109,7 @@ export default function preferenceTopic({navigation,route}) {
                         <Content>
                         <Separator bordered>
                       <View style={{flexDirection:'row',justifyContent:'space-around'}}>
-                      <Text style={{fontSize:20}}>Topic Prefrences</Text>
+                      <Text style={{fontSize:20}}>Topic Preferences</Text>
                       </View>
                         </Separator>
                         <TouchableOpacity  onPress={()=>{

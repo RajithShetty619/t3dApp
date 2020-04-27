@@ -65,9 +65,11 @@ export default function personalFoodCard ({route,navigation}){
                         </CardItem>
                         <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                             <Body>
-                            <Text >
-                                {cardF1["food_info"]}
-                            </Text>
+                                {cardF1?
+                                (<Text >
+                                    {cardF1["food_info"]}
+                                </Text>)
+                                :null}
                             </Body>
                         </CardItem>
                     </Card>
@@ -106,7 +108,6 @@ export default function personalFoodCard ({route,navigation}){
                 </View>
             </Content>
         </Container>
-
     )
 
 }
