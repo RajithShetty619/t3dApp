@@ -3,10 +3,8 @@ import {Notifications} from 'expo';
 import * as Permissions from 'expo-permissions';
 import firebase from 'firebase';
 import fire from '../fire';
+import { View,ActivityIndicator,ImageBackground,Dimensions,Text} from 'react-native';
 
-import { View,ActivityIndicator,ImageBackground,Dimensions} from 'react-native';
-
-import { View,ActivityIndicator,Text} from 'react-native';
 
  export default class main extends Component
 { state = {
