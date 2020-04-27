@@ -119,8 +119,8 @@ export default function General() {
                 showsVerticalScrollIndicator={false}
             >
                 <View style={{flex:1,backgroundColor:'#000000'}}>
-                    <View style={{height:550,marginTop:10}}>
-                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF',fontWeight:"700"}}> Food</Text>
+                    <View style={{height:550,marginTop:20}}>
+                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF',fontWeight:"700" }}> Food</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
@@ -141,9 +141,9 @@ export default function General() {
                                     <Card transparent style={{height:500,marginTop:10,}}>
                                 <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
                             
-                                    <Text style={{color:'#FFFFFF',}}>{cardf1.food_info}</Text>
+                                    <Text style={{color:'#000000',}}>{cardf1.food_info}</Text>
                                     
                                 </View>
                                 </View>
@@ -168,8 +168,8 @@ export default function General() {
                                     <Card transparent style={{height:500,marginTop:10,}}>
                                 <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text  style={{color:'#FFFFFF'}}>{cardf2.food_info}</Text>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text  style={{color:'#000000'}}>{cardf2.food_info}</Text>
                                 </View> 
                                 </View>
                             </CardItem>
@@ -193,97 +193,14 @@ export default function General() {
                                     <Card transparent style={{height:500,marginTop:10}}>
                                 <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text  style={{color:'#FFFFFF'}}>  {cardf3.food_info}</Text>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text  style={{color:'#000000'}}>  {cardf3.food_info}</Text>
                                 </View> 
                                 </View>
                             </CardItem>
                             </Card>
                                 )
                             }
-                            </TouchableWithoutFeedback>
-                        </ScrollView>
-
-                    </View>
-                    <View style={{height:400,marginTop:5}} >
-                        <Text style={{fontSize:18,color:'#FFFFFF',padding:10,fontWeight:"700"}}> App</Text>
-                        <ScrollView
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                        >
-                             <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,app1:!textShow.app1})}}>
-                                 {textShow.app1?(
-                                     <Card transparent style={{height:300,marginTop:10}}>
-                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
-                                 <View style={{flex:1}}>
-                                         <Image source={{uri:urlA1}}
-                                             style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
-                                         />
-                                         </View>
-                            </CardItem>
-                            </Card>
-                                 ):(
-                                    <Card transparent style={{height:300,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
-                                <View style={{flex:1}}>
-                                <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardA1.app_info}</Text>
-                                </View>
-                                </View>
-                            </CardItem>
-                            </Card>
-                                 )
-                                }
-                            </TouchableWithoutFeedback>
-
-                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,app2:!textShow.app2})}}>
-                                {textShow.app2?(
-                                   <Card transparent style={{height:300,marginTop:10}}>
-                                   <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
-                               <View style={{flex:1}}>
-                                       <Image source={{uri:urlA2}}
-                                           style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
-                                       /> 
-                                       </View>
-                            </CardItem>
-                            </Card>
-                                ):(
-                                    <Card transparent style={{height:300,marginTop:10}}>
-                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
-                            <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardA2.app_info}</Text>
-                                </View> 
-                                </View>
-                            </CardItem>
-                            </Card>
-                                )
-                            }
-                            </TouchableWithoutFeedback>
-
-                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,app3:!textShow.app3})}}>
-                                {textShow.app3?(
-                                    <Card transparent style={{height:300,marginTop:10}}>
-                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
-                                <View style={{flex:1}}>
-                                        <Image source={{uri:urlA3}}
-                                            style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
-                                        />
-                                        </View>
-                            </CardItem>
-                            </Card>
-                                ):(
-                                    <Card transparent style={{height:300,marginTop:10}}>
-                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
-                            <View style={{flex:1}}>
-                            <View style={{paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardA3.app_info}</Text>
-                                </View>
-                                </View>
-                            </CardItem>
-                            </Card>
-                                )
-                                }
                             </TouchableWithoutFeedback>
                         </ScrollView>
 
@@ -309,8 +226,8 @@ export default function General() {
                                     <Card transparent style={{height:300,marginTop:10}}>
                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}>  
-                                <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardT1.topic_info}</Text>
+                                <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardT1.topic_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
@@ -334,8 +251,8 @@ export default function General() {
                                     <Card transparent style={{height:300,marginTop:10}}>
                                 <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                             <View style={{flex:1}}>
-                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardT2.topic_info}</Text>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardT2.topic_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
@@ -358,8 +275,8 @@ export default function General() {
                                     <Card transparent style={{height:300,marginTop:10}}>
                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
                                 <View style={{flex:1}}> 
-                                <View style={{paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center'}}>
-                                    <Text style={{color:'#FFFFFF'}}>{cardT3.topic_info}</Text>
+                                <View style={{paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardT3.topic_info}</Text>
                                 </View>
                                 </View>
                             </CardItem>
@@ -369,6 +286,90 @@ export default function General() {
                         </ScrollView>
 
                     </View>
+                    <View style={{height:400}} >
+                        <Text style={{fontSize:18,color:'#FFFFFF',padding:10,fontWeight:"700"}}> App</Text>
+                        <ScrollView
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                        >
+                             <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,app1:!textShow.app1})}}>
+                                 {textShow.app1?(
+                                     <Card transparent style={{height:300,marginTop:10}}>
+                                     <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
+                                 <View style={{flex:1}}>
+                                         <Image source={{uri:urlA1}}
+                                             style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                         />
+                                         </View>
+                            </CardItem>
+                            </Card>
+                                 ):(
+                                    <Card transparent style={{height:300,marginTop:10}}>
+                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
+                                <View style={{flex:1}}>
+                                <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardA1.app_info}</Text>
+                                </View>
+                                </View>
+                            </CardItem>
+                            </Card>
+                                 )
+                                }
+                            </TouchableWithoutFeedback>
+
+                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,app2:!textShow.app2})}}>
+                                {textShow.app2?(
+                                   <Card transparent style={{height:300,marginTop:10}}>
+                                   <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
+                               <View style={{flex:1}}>
+                                       <Image source={{uri:urlA2}}
+                                           style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                       /> 
+                                       </View>
+                            </CardItem>
+                            </Card>
+                                ):(
+                                    <Card transparent style={{height:300,marginTop:10}}>
+                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
+                            <View style={{flex:1}}>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardA2.app_info}</Text>
+                                </View> 
+                                </View>
+                            </CardItem>
+                            </Card>
+                                )
+                            }
+                            </TouchableWithoutFeedback>
+
+                            <TouchableWithoutFeedback onPress={()=>{setTextShow({...textShow,app3:!textShow.app3})}}>
+                                {textShow.app3?(
+                                    <Card transparent style={{height:300,marginTop:10}}>
+                                    <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
+                                <View style={{flex:1}}>
+                                        <Image source={{uri:urlA3}}
+                                            style={{flex:1,width:null,height:null,resizeMode:'stretch',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}
+                                        />
+                                        </View>
+                            </CardItem>
+                            </Card>
+                                ):(
+                                    <Card transparent style={{height:300,marginTop:10}}>
+                                <CardItem style={{flex:1,height:null,width:330,backgroundColor:'#000000'}}>
+                            <View style={{flex:1}}>
+                            <View style={{flex:1,paddingLeft:5,paddingTop:5,alignContent:'center',justifyContent:'center',backgroundColor:'#ffffff',borderTopLeftRadius:16,borderTopRightRadius:16,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
+                                    <Text style={{color:'#000000'}}>{cardA3.app_info}</Text>
+                                </View>
+                                </View>
+                            </CardItem>
+                            </Card>
+                                )
+                                }
+                            </TouchableWithoutFeedback>
+                        </ScrollView>
+
+                    </View>
+                   
                 </View>
                 
             </ScrollView>

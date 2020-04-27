@@ -3,12 +3,9 @@ import {Notifications} from 'expo';
 import * as Permissions from 'expo-permissions';
 import firebase from 'firebase';
 import fire from '../fire';
-<<<<<<< HEAD
-import { View,ActivityIndicator,AsyncStorage,Text} from 'react-native';
-=======
-import { View,ActivityIndicator,} from 'react-native';
+import { ActivityIndicator,AsyncStorage,View} from 'react-native';
 import { Text } from 'native-base';
->>>>>>> 48c8fe1bdb94777b0598e7d72dc2aed8aaf71558
+
 
  export default class main extends Component
 { state = {
