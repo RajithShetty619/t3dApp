@@ -66,7 +66,7 @@ import { View,ActivityIndicator,ImageBackground,Dimensions,Text} from 'react-nat
                       height:Dimensions.get('window').height
                     }}
         > 
-          <ActivityIndicator size="large" color="#44626e"/>
+          <ActivityIndicator size="large" color="#44626e" style/>
           <Text onPress={()=>this.props.navigation.navigate("index")}
                 style={{textAlign:'center',textAlignVertical:'bottom'}}
           >

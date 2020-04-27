@@ -120,7 +120,7 @@ export default function General() {
             >
                 <View style={{flex:1,backgroundColor:'#000000'}}>
                     <View style={{height:550,marginTop:20}}>
-                        <Text style={{backgroundColor:'#777777',padding:10,fontSize:18,color:'#FFFFFF',fontWeight:"700" }}> Food</Text>
+                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF',fontWeight:"700" }}> Food</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
@@ -206,7 +206,7 @@ export default function General() {
 
                     </View>
                     <View style={{height:400,marginTop:10}}>
-                        <Text style={{backgroundColor:'#777777',padding:10,fontSize:18,color:'#FFFFFF',fontWeight:"700"}}>Topic</Text>
+                        <Text style={{padding:10,fontSize:18,color:'#FFFFFF',fontWeight:"700"}}>Topic</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
@@ -288,7 +288,7 @@ export default function General() {
 
                     </View>
                     <View style={{height:400}} >
-                        <Text style={{backgroundColor:'#777777',fontSize:18,color:'#FFFFFF',padding:10,fontWeight:"700"}}> App</Text>
+                        <Text style={{fontSize:18,color:'#FFFFFF',padding:10,fontWeight:"700"}}> App</Text>
                         <ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}

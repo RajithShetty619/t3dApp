@@ -85,7 +85,7 @@ export default function profileMain({navigation}) {
        justifyContent: "center",
        alignItems: "center" ,
        backgroundColor: "#000000" }}>
-     <Text style={{ fontWeight: "700",fontSize:24 ,color:'#00BFFF'}}>
+     <Text style={{ fontWeight: "700",fontSize:24 ,color:'#00BFFF',justifyContent:'center'}}>
          Set preference
        </Text>
        {expanded
