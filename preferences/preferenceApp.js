@@ -79,30 +79,23 @@ export default function preferenceApp({navigation,route}) {
              
             return '/0/app_details/0/'+getTopic()+'/0/data/'+ ran;
         } 
-    const isValid=(path)=>{
-          const interval=setInterval(()=>{
-            async function Does(){  
-            await  fire.database().ref().child(getpath())
-                  .once("value",
-              (snapshot)=>{
-                  let item=snapshot.val()
-                  if(item!==null){
-                  let array=[];
-                  Object.
-                  keys(item)
-                  .forEach(i=>array.push(item[i]));  
-                  if(item!==null)
-                  {
-                    _storeData(item,path); 
-                    clearInterval(interval)
-                  } 
-                  }
-               
-            })
-           }
-           Does()
-          },1000)
-         
+    const isValid=async(path)=>{
+      async function inter(){
+        await  fire.database().ref().child( await getpath() )
+          .once("value",
+          (snapshot)=>{
+              let item=snapshot.val()
+              console.log(item)
+              if(item!==null)
+                {
+                  _storeData(item,path); 
+                }
+              else{
+                setTimeout(inter,100)
+              }
+          })
+        }
+        setTimeout(inter,100)
    }  
    const _storeData = async (obj,path) => {
     try {  
@@ -326,5 +319,4 @@ export default function preferenceApp({navigation,route}) {
                 </Content>
             </Container>
         )
-    
 }

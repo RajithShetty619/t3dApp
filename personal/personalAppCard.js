@@ -66,9 +66,12 @@ export default function personalAppCard ({route,navigation}){
                             </CardItem>
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
-                                <Text >
+                               {cardA1?    
+                                (<Text >
                                     {cardA1["app_info"]}
-                                </Text>
+                                </Text>)
+                                :
+                                null}
                                 </Body>
                             </CardItem>
                         </Card>

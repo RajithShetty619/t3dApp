@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, SafeAreaView, View, TouchableOpacity, AsyncStorage,BackHandler,Alert } from "react-native";
+import { StyleSheet, SafeAreaView, View, TouchableOpacity, AsyncStorage,BackHandler,Alert,Image} from "react-native";
 import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 import { Formik } from "formik";
@@ -74,24 +74,21 @@ const  exitAlert = () => {
          name,
           email,
         });
-        navigation.navigate(
-          'preference',
-          {
-           id:"preferenceTopic"
-         }
-       )
-      } catch (error) {
+        await _loadPreference();
+        navigation.navigate("appNavigation",{screen:'main'})
+        } 
+        catch (error) {
         alert(error)
       }
-      
     }
   };
 
   async function _loadPreference(){
+    
     let authUser= firebase.auth().currentUser
     await fire.database().ref().child('/users/').child(authUser.uid+'/preference/preferenceFood')
     .once("value").then(async(snapshot)=>{
-      const pref=JSON.parse(snapshot.val());console.log(pref,"pref")
+      const pref=JSON.parse(snapshot.val());
       if(pref)
       {
         await AsyncStorage.setItem("prefFood",JSON.stringify(pref))
@@ -99,7 +96,7 @@ const  exitAlert = () => {
     })
     await fire.database().ref().child('/users/').child(authUser.uid+'/preference/preferenceApp')
     .once("value").then(async(snapshot)=>{
-      const pref=JSON.parse(snapshot.val());console.log(pref,"pref")
+      const pref=JSON.parse(snapshot.val());
       if(pref)
       {
         await AsyncStorage.setItem("prefApp",JSON.stringify(pref))
@@ -107,7 +104,7 @@ const  exitAlert = () => {
     })
     await fire.database().ref().child('/users/').child(authUser.uid+'/preference/preferenceTopic')
     .once("value").then(async(snapshot)=>{
-      const pref=JSON.parse(snapshot.val());console.log(pref,"pref")
+      const pref=JSON.parse(snapshot.val());
       if(pref)
       {
         await AsyncStorage.setItem("prefTopic",JSON.stringify(pref))
@@ -193,9 +190,13 @@ const  exitAlert = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <HideWithKeyboard style={styles.logoContainer}>
-       
-      </HideWithKeyboard>
+      {/* <HideWithKeyboard style={styles.logoContainer}>
+     
+      </HideWithKeyboard> */}
+       <Image 
+                source={require('../../assets/logo.png')} 
+                resizeMode="contain" 
+                style={{height:200,width:null}}/>
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, actions) => {
@@ -214,6 +215,7 @@ const  exitAlert = () => {
           isSubmitting
         }) => (
             <>
+              
               <FormInput
                 name="email"
                 value={values.email}
@@ -272,11 +274,10 @@ const  exitAlert = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50
   },
   logoContainer: {
     marginBottom: 15,
-    alignItems: "center"
+    alignItems: "center",
   },
   buttonContainer: {
     margin: 25

@@ -3,8 +3,12 @@ import {Notifications} from 'expo';
 import * as Permissions from 'expo-permissions';
 import firebase from 'firebase';
 import fire from '../fire';
+
 import { ActivityIndicator,AsyncStorage,View} from 'react-native';
 import { Text } from 'native-base';
+
+import { View,ActivityIndicator,ImageBackground,Dimensions,Text} from 'react-native';
+
 
 
  export default class main extends Component
@@ -56,9 +60,23 @@ import { Text } from 'native-base';
   };
   render(){
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="black"/>
-        <Text>Please Wait</Text>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:'white' }}>
+        <ImageBackground 
+                    source={require('../assets/logoV2.png')} 
+                    resizeMode="contain"
+                    style={{ 
+                      alignContent:"center",
+                      justifyContent: "center",
+                      width:Dimensions.get('window').width,
+                      height:Dimensions.get('window').height
+                    }}
+        > 
+          <ActivityIndicator size="large" color="#44626e"/>
+          <Text onPress={()=>this.props.navigation.navigate("index")}
+                style={{textAlign:'center',textAlignVertical:'bottom'}}
+          >
+            Please Wait</Text>
+        </ImageBackground>
       </View>
     );
   }
