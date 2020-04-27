@@ -11,28 +11,48 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  slide:{
+    flex:1,
+    justifyContent:'center',
+    alignContent:'center',
+  },
+  title: {
+    fontWeight:"bold",
+    fontSize:"26"
+  },
+  subTitle:{
+    fontSize:"14",
+  },
   
 });
 const slides = [
   {
     key: 1,
-    title: 'Title 1',
+    title: 'Setting up your App',
+    subTitle:'A one step process',
     text: 'Description.\nSay something cool',
-    image: require('./assets/IMG-5709.png'),
+    image: require('../assets/loading.png'),
     backgroundColor: '#59b2ab',
   },
   {
     key: 2,
     title: 'Title 2',
     text: 'Other cool stuff',
-    image: require('./assets/IMG-5710.png'),
+    image: require('../assets/IMG-5710.png'),
     backgroundColor: '#febe29',
   },
   {
     key: 3,
     title: 'Rocket guy',
     text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-    image: require('./assets/IMG-5710.png'),
+    image: require('../assets/IMG-5710.png'),
+    backgroundColor: '#22bcb5',
+  },
+  {
+    key: 4,
+    title: 'Rocket guy',
+    text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
+    image: require('../assets/IMG-5710.png'),
     backgroundColor: '#22bcb5',
   }
 ];
@@ -44,6 +64,8 @@ export default class App extends React.Component {
       return (
         <View style={styles.slide}>
           <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.subTitle}>{item.title}</Text>
+          
           <Image source={item.image} />
           <Text style={styles.text}>{item.text}</Text>
         </View>
