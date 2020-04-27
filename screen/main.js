@@ -3,10 +3,6 @@ import {Notifications} from 'expo';
 import * as Permissions from 'expo-permissions';
 import firebase from 'firebase';
 import fire from '../fire';
-
-import { ActivityIndicator,AsyncStorage,View} from 'react-native';
-import { Text } from 'native-base';
-
 import { View,ActivityIndicator,ImageBackground,Dimensions,Text} from 'react-native';
 
 
@@ -71,7 +67,7 @@ import { View,ActivityIndicator,ImageBackground,Dimensions,Text} from 'react-nat
                       height:Dimensions.get('window').height
                     }}
         > 
-          <ActivityIndicator size="large" color="#44626e" style/>
+          <ActivityIndicator size="large" color="#5d7bce" style={{alignItems:'center'}}/>
           <Text onPress={()=>this.props.navigation.navigate("index")}
                 style={{textAlign:'center',textAlignVertical:'bottom'}}
           >

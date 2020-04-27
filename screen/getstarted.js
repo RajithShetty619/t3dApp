@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
  
   const slides = [
   {
-    key: 1,
+    key: "1",
     title: 'Setting up your App',
     subTitle:'A one step process',
     text: "Set your Food,Topic and App preferences\nAnd avail to feed filled with personalized recommendation",
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#22bcb5',
   },
   {
-    key: 2,
+    key: "2",
     title: 'Title 2',
     subTitle:'A one step process',
     text: 'Other cool stuff',
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#febe29',
   },
   {
-    key: 3,
+    key: "3",
     title: 'Rocket guy',
     subTitle:'A one step process',
     text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   
   {
-    key: 4,
+    key: "4",
     title: 'Setting up your App',
     subTitle:'A one step process',
     text: 'Description.\nSay something cool',
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#59b2ab',
   },
   {
-    key: 5,
+    key: "5",
     title: 'Setting up your App',
     subTitle:'A one step process',
     text: 'Description.\nSay something cool',
@@ -99,9 +99,7 @@ export default class getstarted extends React.Component {
       <View style={styles.slide}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.subTitle}>{item.subTitle}</Text>
-        <View style={{alignContent:'space-around',justifyContent:'center'}}>
-          <Image source={item.image} styles={{flex:1,height:50,width:50}}/>
-        </View>
+          <Image source={item.image}  styles={{height:null,width:150}}/>
         <Text style={styles.text}>{item.text}</Text>
       </View>
     );
