@@ -125,7 +125,7 @@ export default function preferenceApp({navigation,route}) {
                       <ListItem>
                         <CheckBox checked={prefer.app_details.booksandreference} />
                         <Body>
-                            <Text style={{color:'#ffffff'}}>Book & Reference</Text>
+                            <Text style={{color:'#ffffff'}}>Books & References</Text>
                         </Body>
                     </ListItem>
                     </TouchableOpacity>

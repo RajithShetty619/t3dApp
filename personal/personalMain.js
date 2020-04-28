@@ -1,5 +1,5 @@
 import React, {  useEffect,useState } from 'react'
-import {  View,Image,AsyncStorage,BackHandler,Alert,Dimensions} from 'react-native'
+import {  View,Image,AsyncStorage,BackHandler,Alert,Dimensions,StatusBar} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,} from 'native-base';
 import {useFocusEffect} from '@react-navigation/native'
 import fire from '../fire'
@@ -104,6 +104,8 @@ export default function personalMain({navigation}) {
     return (
         <Container style={{backgroundColor:'#000000', paddingTop:15,flex:1}}>
             <Content >
+            <StatusBar translucent backgroundColor="transparent" />
+
             <View style={{paddingTop:20}} >
             <TouchableWithoutFeedback  onPress={()=>{
                     navigation.navigate('personalFoodCard',{cardF1,urlF1})

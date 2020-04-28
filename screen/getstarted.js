@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View,Text,Image } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Icon from 'react-native-vector-icons/Ionicons';
 const styles = StyleSheet.create({
@@ -40,21 +40,21 @@ const styles = StyleSheet.create({
     key: 2,
     title: 'Title 2',
     text: 'Other cool stuff',
-    image: require('../assets/IMG-5710.png'),
+    image: require('../assets/img-5710.png'),
     backgroundColor: '#febe29',
   },
   {
     key: 3,
     title: 'Rocket guy',
     text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-    image: require('../assets/IMG-5710.png'),
+    image: require('../assets/img-5710.png'),
     backgroundColor: '#22bcb5',
   },
   {
     key: 4,
     title: 'Rocket guy',
     text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-    image: require('../assets/IMG-5710.png'),
+    image: require('../assets/img-5710.png'),
     backgroundColor: '#22bcb5',
   }
 ];
