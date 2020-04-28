@@ -26,7 +26,7 @@ function tabNav() {
             
             <tab.Screen  name="Profile" component={profileNav}
             options={{
-                tabBarIcon:({color,size})=>{ return <Icon name='person-outline' size={size} color={color} />;}
+                tabBarIcon:({color,size})=>{ return <Icon name='person' size={size} color={color} />;}
             }}/>
         </tab.Navigator>
     )

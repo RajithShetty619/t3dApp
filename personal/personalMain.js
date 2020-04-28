@@ -1,5 +1,5 @@
-import React, {  useEffect,useState } from 'react'
-import {  View,Image,AsyncStorage,BackHandler,Alert,Dimensions,StyleSheet} from 'react-native'
+import React, {  useState } from 'react'
+import {  View,Image,AsyncStorage,Alert,Dimensions,StyleSheet} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body,} from 'native-base';
 import {useFocusEffect} from '@react-navigation/native'
 import fire from '../fire'
@@ -29,7 +29,7 @@ export default function personalMain({navigation}) {
    
     useFocusEffect(
         React.useCallback(()=>{
-                handleAndroidBackButton(exitAlert);
+                
                 async function Does(){
                   let  pref= await _retrieveData("prefApp")
                     if(JSON.stringify(pref))
@@ -78,29 +78,10 @@ export default function personalMain({navigation}) {
                     }
                   }
                   Does();
-                
-            return()=>{
-                BackHandler.removeEventListener('hardwareBackPress', true);
-            }    
+                  
         },[])
   );
-    const handleAndroidBackButton = callback => {
-        BackHandler.addEventListener('hardwareBackPress', () => {
-          callback();
-          return true;
-        });
-      };
-    const  exitAlert = () => {
-        Alert.alert(
-          'Confirm exit',
-          'Do you want to quit the app?',
-          [
-            {text: 'CANCEL', style: 'cancel'},
-            {text: 'OK', onPress: () => BackHandler.exitApp()}
-          ]
-        );
-      };
-      
+    
     return (
         <Container style={{backgroundColor:'#2b2c35', paddingTop:15,flex:1}}>
             <Content >
