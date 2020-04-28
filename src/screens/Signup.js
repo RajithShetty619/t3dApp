@@ -121,7 +121,7 @@ const validationSchema = Yup.object().shape({
                 onChangeText={handleChange("name")}
                 placeholder="Enter your full name"
                 iconName="md-person"
-                iconColor="#2C384A"
+                iconColor="#f9f2f2"
                 onBlur={handleBlur("name")}
               />
               <ErrorMessage errorValue={touched.name && errors.name} />
@@ -132,7 +132,7 @@ const validationSchema = Yup.object().shape({
                 placeholder="Enter email"
                 autoCapitalize="none"
                 iconName="ios-mail"
-                iconColor="#2C384A"
+                iconColor="#f9f2f2"
                 onBlur={handleBlur("email")}
               />
               <ErrorMessage errorValue={touched.email && errors.email} />
@@ -142,7 +142,7 @@ const validationSchema = Yup.object().shape({
                 onChangeText={handleChange("password")}
                 placeholder="Enter password"
                 iconName="ios-lock"
-                iconColor="#2C384A"
+                iconColor="#f9f2f2"
                 onBlur={handleBlur("password")}
                 secureTextEntry={passwordVisibility}
                 rightIcon={
@@ -158,7 +158,7 @@ const validationSchema = Yup.object().shape({
                 onChangeText={handleChange("confirmPassword")}
                 placeholder="Confirm password"
                 iconName="ios-lock"
-                iconColor="#2C384A"
+                iconColor="#f9f2f2"
                 onBlur={handleBlur("confirmPassword")}
                 secureTextEntry={confirmPasswordVisibility}
                 rightIcon={
@@ -178,9 +178,10 @@ const validationSchema = Yup.object().shape({
                 containerStyle={styles.checkBoxContainer}
                 checkedIcon="check-box"
                 iconType="material"
+                textStyle={{color:'#f9f2f2',fontWeight:"200"}}
                 uncheckedIcon="check-box-outline-blank"
                 title="Agree to terms and conditions"
-                checkedTitle="You agreed to our terms and conditions"
+                checkedTitle="Agreed to terms and conditions"
                 checked={values.check}
                 onPress={() => setFieldValue("check", !values.check)}
               />
@@ -225,7 +226,7 @@ const validationSchema = Yup.object().shape({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#2B2C35",
     marginTop: 25
   },
   logoContainer: {
@@ -236,8 +237,11 @@ const styles = StyleSheet.create({
     margin: 25
   },
   checkBoxContainer: {
-    backgroundColor: "#fff",
-    borderColor: "#fff"
+    backgroundColor: "#2b2c35",
+    borderColor: "#f9f2f2",
+    borderRadius:30,
+    borderWidth:.5,
+    
   }
 });
 

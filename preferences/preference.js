@@ -1,6 +1,8 @@
 import React, { useState,useEffect} from 'react'
 import {Alert,AsyncStorage} from 'react-native'
-import {Text,Container,Content,Body,CheckBox,ListItem, Button,Separator, View} from 'native-base';
+import {Text,Container,Content,Body,CheckBox,ListItem, Button,Separator, View,StyleProvider} from 'native-base';
+import getTheme from '../native-base-theme/components';
+import material from '../native-base-theme/variables/material';
 import fire from '../fire'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -96,7 +98,7 @@ export default function preference({route,navigation}) {
             }
             return arr[Math.floor(Math.random()*arr.length)]
           }   
-          let ran =Math.floor(Math.random()*10)
+          let ran =Math.floor(Math.random()*15)
           let path='/0/food/0/'+getDeter()+'/0/'+getFoodType()+'/0/'+getFood()+'/0/data/'+ran
         
           return path
@@ -138,260 +140,262 @@ export default function preference({route,navigation}) {
      
 
     return(
-      <Container style={{ justifyContent:'center',backgroundColor:'#000000',paddingTop:24}}>
-
-          <Content>
-              <Content>
-               
-                  <ListItem itemDivider>
-                      <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
-                      <Text style={{fontSize:24,}}>Food Preferences</Text>
-                      </View>
-                    </ListItem>  
-                  <TouchableOpacity   onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food_deter:{
-                      ...prevPrefer.food_deter,veg:!prefer.food_deter.veg
-                    }
-                    }))
-                  }}>
-              <ListItem> 
-                  <CheckBox checked={prefer.food_deter.veg}/>
-                  <Body>
-                      <Text style={{fontWeight:'bold' ,color:'#ffffff'}}>Veg</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>{
-                  setPrefer((prevPrefer)=>({...prevPrefer,
-                food_deter:{
-                  ...prevPrefer.food_deter,nonveg:!prefer.food_deter.nonveg
-                }
-                }))
-                  
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food_deter.nonveg}/>
-                  <Body>
-                      <Text style={{fontWeight:'bold' ,color:'#ffffff'}}>Non-Veg</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-             
-                  <ListItem itemDivider>
-                      <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
-                      <Text style={{fontSize:24,}}>Food Type</Text>
-                      </View>
-                    </ListItem>  
-              <TouchableOpacity onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food_type:{
-                      ...prevPrefer.food_type,drinks:!prefer.food_type.drinks
-                    }
-                    }))
-                   
-                  }} >
-              <ListItem>
-                  <CheckBox checked={prefer.food_type.drinks} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>Drinks</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food_type:{
-                      ...prevPrefer.food_type,snacks:!prefer.food_type.snacks
-                    }
-                    }))
-                   
-                  }} >
-              <ListItem>
-                  <CheckBox checked={prefer.food_type.snacks} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>Snacks</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity  onPress={()=>{
-                  setPrefer((prevPrefer)=>({...prevPrefer,
-                food_type:{
-                  ...prevPrefer.food_type,maincourse:!prefer.food_type.maincourse
-                }
-                }))
-                  
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food_type.maincourse} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>MainCourse</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity  onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food_type:{
-                      ...prevPrefer.food_type,dessert:!prefer.food_type.dessert
-                    }
-                    }))
-                      
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food_type.dessert} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>Dessert</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-                  <ListItem itemDivider>
-                      <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
-                      <Text style={{fontSize:24,}}>Food Cuisine</Text>
-                      </View>
-                    </ListItem>  
-              <TouchableOpacity  onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food:{
-                      ...prevPrefer.food,indian:!prefer.food.indian,
-                    }
-                    })) 
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food.indian} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>Indian</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity   onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food:{
-                      ...prevPrefer.food,british:!prefer.food.british,
-                    }
-                    })) 
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food.british} />
-                  <Body>
-                      <Text  style={{color:'#ffffff'}}>British</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity  onPress={()=>{
-                  setPrefer((prevPrefer)=>({...prevPrefer,
-                food:{
-                  ...prevPrefer.food,american:!prefer.food.american,
-                }
-                })) 
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food.american} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>American</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity  onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food:{
-                      ...prevPrefer.food,spanish:!prefer.food.spanish,
-                    }
-                    })) 
-                  }}>
-              <ListItem>    
-                  <CheckBox checked={prefer.food.spanish} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>Spanish</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food:{
-                      ...prevPrefer.food,chinese:!prefer.food.chinese,
-                    }
-                    })) 
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food.chinese} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>Chinese</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity   onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food:{
-                      ...prevPrefer.food,french:!prefer.food.french,
-                    }
-                    })) 
-                  }}>
-              <ListItem>
-                       <CheckBox checked={prefer.food.french} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>French</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity  onPress={()=>{
-                  setPrefer((prevPrefer)=>({...prevPrefer,
-                food:{
-                  ...prevPrefer.food,mexican:!prefer.food.mexican,
-                }
-                })) 
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food.mexican} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>Mexican</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity   onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food:{
-                      ...prevPrefer.food,japanese:!prefer.food.japanese,
-                    }
-                    })) 
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food.japanese} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>Japanese</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>{
-                      setPrefer((prevPrefer)=>({...prevPrefer,
-                    food:{
-                      ...prevPrefer.food,italian:!prefer.food.italian,
-                    }
-                    })) 
-                  }}>
-              <ListItem>
-                  <CheckBox checked={prefer.food.italian} />
-                  <Body>
-                      <Text style={{color:'#ffffff'}}>Italian</Text>
-                  </Body>
-              </ListItem>
-              </TouchableOpacity>
-             
-              <Button transparent onPress={async()=>{if(check()){
-                                      navigation.navigate(id,{id:"preferenceApp"})
-                                      await Set();
-                                      await isValid("foodData0")
-                                      await isValid("foodData1")
-                                      await isValid("foodData2")
-                                      await _storeData(date,"date")
+      <StyleProvider style={getTheme(material)}>
+          <Container style={{ justifyContent:'center',backgroundColor:'#2B2C35',paddingTop:24}}>
+            <Content>
+                <Content>
+                    <ListItem itemDivider >
+                        <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
+                        <Text style={{fontSize:24,}}>Food Preferences</Text>
+                        </View>
+                      </ListItem>  
+                    <TouchableOpacity   onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food_deter:{
+                        ...prevPrefer.food_deter,veg:!prefer.food_deter.veg
+                      }
+                      }))
+                    }}>
+                <ListItem> 
+                    <CheckBox checked={prefer.food_deter.veg}  />
+                    <Body>
+                        <Text style={{fontWeight:'bold' ,color:'#ffffff'}}>Veg</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    setPrefer((prevPrefer)=>({...prevPrefer,
+                  food_deter:{
+                    ...prevPrefer.food_deter,nonveg:!prefer.food_deter.nonveg
+                  }
+                  }))
                     
-                                    }}}>
-                <View style={{flex:1,flexDirection:'row',justifyContent:'space-around'}}>
-                  <Text style={{color:'#00BFFF'}}>SAVE</Text>
-                  </View>
-              </Button>
-              </Content>
-          </Content>
-      </Container>
-  )
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food_deter.nonveg}/>
+                    <Body>
+                        <Text style={{fontWeight:'bold' ,color:'#ffffff'}}>Non-Veg</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+              
+                    <ListItem itemDivider>
+                        <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
+                        <Text style={{fontSize:24,}}>Food Type</Text>
+                        </View>
+                      </ListItem>  
+                <TouchableOpacity onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food_type:{
+                        ...prevPrefer.food_type,drinks:!prefer.food_type.drinks
+                      }
+                      }))
+                    
+                    }} >
+                <ListItem>
+                    <CheckBox checked={prefer.food_type.drinks} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>Drinks</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food_type:{
+                        ...prevPrefer.food_type,snacks:!prefer.food_type.snacks
+                      }
+                      }))
+                    
+                    }} >
+                <ListItem>
+                    <CheckBox checked={prefer.food_type.snacks} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>Snacks</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity  onPress={()=>{
+                    setPrefer((prevPrefer)=>({...prevPrefer,
+                  food_type:{
+                    ...prevPrefer.food_type,maincourse:!prefer.food_type.maincourse
+                  }
+                  }))
+                    
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food_type.maincourse} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>MainCourse</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity  onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food_type:{
+                        ...prevPrefer.food_type,dessert:!prefer.food_type.dessert
+                      }
+                      }))
+                        
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food_type.dessert} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>Dessert</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                    <ListItem itemDivider>
+                        <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
+                        <Text style={{fontSize:24,}}>Food Cuisine</Text>
+                        </View>
+                      </ListItem>  
+                <TouchableOpacity  onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food:{
+                        ...prevPrefer.food,indian:!prefer.food.indian,
+                      }
+                      })) 
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food.indian} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>Indian</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity   onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food:{
+                        ...prevPrefer.food,british:!prefer.food.british,
+                      }
+                      })) 
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food.british} />
+                    <Body>
+                        <Text  style={{color:'#f9f2f2'}}>British</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity  onPress={()=>{
+                    setPrefer((prevPrefer)=>({...prevPrefer,
+                  food:{
+                    ...prevPrefer.food,american:!prefer.food.american,
+                  }
+                  })) 
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food.american} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>American</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity  onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food:{
+                        ...prevPrefer.food,spanish:!prefer.food.spanish,
+                      }
+                      })) 
+                    }}>
+                <ListItem>    
+                    <CheckBox checked={prefer.food.spanish} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>Spanish</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food:{
+                        ...prevPrefer.food,chinese:!prefer.food.chinese,
+                      }
+                      })) 
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food.chinese} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>Chinese</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity   onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food:{
+                        ...prevPrefer.food,french:!prefer.food.french,
+                      }
+                      })) 
+                    }}>
+                <ListItem>
+                        <CheckBox checked={prefer.food.french} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>French</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity  onPress={()=>{
+                    setPrefer((prevPrefer)=>({...prevPrefer,
+                  food:{
+                    ...prevPrefer.food,mexican:!prefer.food.mexican,
+                  }
+                  })) 
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food.mexican} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>Mexican</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity   onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food:{
+                        ...prevPrefer.food,japanese:!prefer.food.japanese,
+                      }
+                      })) 
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food.japanese} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>Japanese</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                        setPrefer((prevPrefer)=>({...prevPrefer,
+                      food:{
+                        ...prevPrefer.food,italian:!prefer.food.italian,
+                      }
+                      })) 
+                    }}>
+                <ListItem>
+                    <CheckBox checked={prefer.food.italian} />
+                    <Body>
+                        <Text style={{color:'#ffffff'}}>Italian</Text>
+                    </Body>
+                </ListItem>
+                </TouchableOpacity>
+              
+                <Button transparent onPress={async()=>{if(check()){
+                                        navigation.navigate(id,{id:"preferenceApp"})
+                                        await Set();
+                                        await isValid("foodData0")
+                                        await isValid("foodData1")
+                                        await isValid("foodData2")
+                                        await _storeData(date,"date")
+                      
+                                      }}}>
+                  <View style={{flex:1,flexDirection:'row',justifyContent:'space-around'}}>
+                    <Text style={{color:'#00BFFF'}}>SAVE</Text>
+                    </View>
+                </Button>
+                </Content>
+            </Content>
+        </Container>
+  
+      </StyleProvider>
+
+         )
 
 }
  

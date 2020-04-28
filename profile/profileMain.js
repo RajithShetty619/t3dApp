@@ -84,8 +84,8 @@ export default function profileMain({navigation}) {
        padding: 10,
        justifyContent: "center",
        alignItems: "center" ,
-       backgroundColor: "#000000" }}>
-     <Text style={{ fontWeight: "700",fontSize:24 ,color:'#00BFFF'}}>
+       backgroundColor: "#0C0C0C" }}>
+     <Text style={{ fontWeight: "700",fontSize:24 ,color:'#F0F8FF',justifyContent:'center'}}>
          Set preference
        </Text>
        {expanded
@@ -171,20 +171,20 @@ export default function profileMain({navigation}) {
                                 await GoogleSignIn.signOutAsync()
                                 navigation.navigate('index')
                                 }}  >
-                <Text style={{color:'#00BFFF',padding:20,fontSize:26}}>Sign Out</Text> 
+                <Text style={{color:'#F0F8FF',padding:20,fontSize:26}}>Sign Out</Text> 
                 </TouchableOpacity>
               </View>
               </View>
             <View style={styles.item}>
             <View style={styles.infoContent}>
                  <TouchableOpacity style={styles.buttonContainerTransparent}  onPress={()=>navigation.navigate('privacyPolicy')} >
-                <Text style={{color:'#00BFFF',padding:20,fontSize:20}}>Privacy Policy</Text> 
+                <Text style={{color:'#F0F8FF',padding:20,fontSize:20}}>Privacy Policy</Text> 
                 </TouchableOpacity>
               </View>
             </View>
            
               <View style={styles.item}>
-              <View style={{}}>
+              
                    {input?( <View style={{height:150,width:300,justifyContent:'space-evenly',alignItems:'center',flex:1}}>
                           <Body style={{height:100}}>
                         <View style={{width:300,height:100,alignItems:"center",justifyContent:'space-around'}}>
@@ -205,7 +205,7 @@ export default function profileMain({navigation}) {
                          <View style={{flexDirection:'row',justifyContent:'space-between',alignContent:'center',padding:10}}>
                            <View style={{paddingRight:10}}>
                          <Button rounded style={{backgroundColor:'#00BFFF',justifyContent:'space-between'}} onPress={()=>{setInput(false)}}>
-                           <Text>cancel</Text>
+                           <Text>Cancel</Text>
                          </Button>
                          </View>
                          <View style={{paddingleft:10}}>
@@ -260,21 +260,21 @@ export default function profileMain({navigation}) {
                             }
                           }
                           }}>
-                           <Text>submit</Text>
+                           <Text>Submit</Text>
                          </Button>
                          </View>
                          </View>
                          </Body>
                         </View>
                     ):(
-                      <Text style={{color:'#00BFFF',padding:20,fontSize:20}}
+                      <Text style={{color:'#F0F8FF',padding:20,fontSize:20}}
                       onPress={()=>{setInput(true)}}
                       >
                         Delete account
                       </Text>
                     )
                    }
-              </View>
+              
               </View>
             
           </View>
@@ -322,8 +322,8 @@ const styles = StyleSheet.create({
     fontWeight:'600',
   },
   body:{
-    backgroundColor: "#000000",
-    height:300,
+    backgroundColor: "#2b2c35",
+    height:280,
     alignItems:'center',
   },
   item:{

@@ -2,16 +2,15 @@ import React from 'react'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import personalNav from '../personal/personalNav'
 import genRecomNav  from '../genRecom/genRecomNav'
-import General from '../genRecom/genRecomMain'
 import profileNav from '../profile/profileNav'
 import { Icon } from 'react-native-elements'
 function tabNav() {
     const tab=createBottomTabNavigator()
     return (
         <tab.Navigator  
-            initialRouteName="personalNav"
+            initialRouteName="General"
             tabBarOptions={{
-            activeTintColor: '#0000A0',
+            activeTintColor: '#124494',
             inactiveTintColor: 'gray',
             keyboardHidesTabBar:true
            
@@ -27,7 +26,7 @@ function tabNav() {
             
             <tab.Screen  name="Profile" component={profileNav}
             options={{
-                tabBarIcon:({color,size})=>{ return <Icon name='person-outline' size={size} color={color} />;}
+                tabBarIcon:({color,size})=>{ return <Icon name='person' size={size} color={color} />;}
             }}/>
         </tab.Navigator>
     )
