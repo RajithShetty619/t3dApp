@@ -27,8 +27,8 @@ export default function personalTopicCard ({route,navigation}){
         useEffect(()=>{  
          async function Do() { 
            let  val2= await _retrieveData("topicData1")
-           setCardT2(val2) //+val2["topic_pic"]
-           await firebase.storage().ref('/topics/IMG_6301.jpeg').getDownloadURL().then(data=>setUrlT2(data))
+           setCardT2(val2)
+           await firebase.storage().ref('/topics/'+val2["topic_pic"]).getDownloadURL().then(data=>setUrlT2(data))
            let  val3= await _retrieveData("topicData2")
            setCardT3(val3)
            await firebase.storage().ref('/topics/'+val3["topic_pic"]).getDownloadURL().then(data=>setUrlT3(data))
@@ -82,7 +82,7 @@ export default function personalTopicCard ({route,navigation}){
                             <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
                                 <Body>
                                 <Text >
-                                   70 {/* {cardT2["topic_info"]} */}
+                                    {cardT2["topic_info"]}
                                 </Text>
                                 </Body>
                             </CardItem>

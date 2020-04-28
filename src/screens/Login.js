@@ -4,7 +4,6 @@ import { Button } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { HideWithKeyboard } from "react-native-hide-with-keyboard";
 import * as GoogleSignIn from 'expo-google-sign-in';
 import FormInput from "../components/FormInput";
 import FormButton from "../components/FormButton";
@@ -190,13 +189,12 @@ const  exitAlert = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <HideWithKeyboard style={styles.logoContainer}>
-     
-      </HideWithKeyboard> */}
+      <View style={{paddingBottom: 15,paddingTop: 30,}}>
        <Image 
                 source={require('../../assets/logo.png')} 
                 resizeMode="contain" 
-                style={{height:200,width:null}}/>
+                style={{height:150,width:null,borderRadius:16,}}/>
+      </View>
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, actions) => {
@@ -223,8 +221,9 @@ const  exitAlert = () => {
                 placeholder="Enter email"
                 autoCapitalize="none"
                 iconName="ios-mail"
-                iconColor="#2C384A"
+                iconColor="#f9f2f2"
                 onBlur={handleBlur("email")}
+                style={{color:'white'}}
               />
               <ErrorMessage errorValue={touched.email && errors.email} />
               <FormInput
@@ -234,7 +233,7 @@ const  exitAlert = () => {
                 placeholder="Enter password"
                 secureTextEntry={passwordVisibility}
                 iconName="ios-lock"
-                iconColor="#2C384A"
+                iconColor="#f9efef"
                 onBlur={handleBlur("password")}
                 rightIcon={
                   <TouchableOpacity onPress={handlePasswordVisibility}>
@@ -257,7 +256,7 @@ const  exitAlert = () => {
             </>
           )}
       </Formik>
-      <GoogleSignInButton onPress={_toggleAuth}>{" "}{buttonTitle()}{" "}</GoogleSignInButton>
+      <GoogleSignInButton style={{backgroundColor:'#2B2C35'}} onPress={_toggleAuth}>{" "}{buttonTitle()}{" "}</GoogleSignInButton>
 
       <Button
         title="Don't have an account? Sign Up"
@@ -274,6 +273,8 @@ const  exitAlert = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'#2B2C35',
+    
   },
   logoContainer: {
     marginBottom: 15,

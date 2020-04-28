@@ -34,7 +34,7 @@ function NavigationStack(){
                             title: "Auth",
                         }}
                     />
-                     <Stack.Screen
+                    <Stack.Screen
                         name="appNavigation"
                         component={appNavigation}
                         options={{
@@ -46,7 +46,7 @@ function NavigationStack(){
                         component={index}
                     />
         </Stack.Navigator>
-    </ NavigationContainer>
+    </NavigationContainer>
     )
 }
 

@@ -12,7 +12,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "splash": {
@@ -43,7 +43,8 @@
         }
       },
       "package": "com.t3d.snapinsight",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "versionCode":2
       
     }    
 

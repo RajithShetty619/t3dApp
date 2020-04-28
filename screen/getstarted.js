@@ -15,23 +15,29 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent:'center',
     alignContent:'center',
-    backgroundColor:'gray',
-    marginTop:17
+    backgroundColor:'#2B2C35',
+    marginTop:20
   },
   title: {
     fontWeight:"500",
     fontSize:20,
     textAlign:'center',
+    color:"white"
+    
   },
   subTitle:{
     fontSize:14,
     fontWeight:"400",
-    textAlign:'center'
+    textAlign:'center',
+    marginBottom:5,
+    color:"white"
   },
   text:{
     fontSize:14,
     textAlign:'center',
     flex:1,
+    marginTop:7,
+    color:"white"
   }
   
 });
@@ -48,36 +54,19 @@ const styles = StyleSheet.create({
   },
   {
     key: "2",
-    title: 'Title 2',
-    subTitle:'A one step process',
-    text: 'Other cool stuff',
-    image: require('../assets/IMG-5710.png'),
+    title: 'Personalized feed',
+    subTitle:'Three recommendations per-section daily',
+    text: 'Easy access to information\nto your personalized item',
+    image: require('../assets/topicStart.jpg'),
     backgroundColor: '#febe29',
   },
   {
     key: "3",
-    title: 'Rocket guy',
-    subTitle:'A one step process',
-    text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
+    title: 'General Feed',
+    subTitle:'Alternative recommendations',
+    text: "daily three generalized recommendation,\n with one-tap information",
     image: require('../assets/IMG-5710.png'),
     backgroundColor: '#22bcb5',
-  },
-  
-  {
-    key: "4",
-    title: 'Setting up your App',
-    subTitle:'A one step process',
-    text: 'Description.\nSay something cool',
-    image: require('../assets/loading.png'),
-    backgroundColor: '#59b2ab',
-  },
-  {
-    key: "5",
-    title: 'Setting up your App',
-    subTitle:'A one step process',
-    text: 'Description.\nSay something cool',
-    image: require('../assets/loading.png'),
-    backgroundColor: '#59b2ab',
   },
 ];
 
@@ -99,22 +88,22 @@ export default class getstarted extends React.Component {
       <View style={styles.slide}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.subTitle}>{item.subTitle}</Text>
-          <Image source={item.image}  styles={{height:null,width:150}}/>
+        <View style={{height:null,width:null,borderRadius:16,}}>
+          <Image source={item.image} resizeMode="contain" style={{height:400,width:null,borderRadius:16}}/>
+        </View> 
         <Text style={styles.text}>{item.text}</Text>
       </View>
     );
   }
   
   render() {
-    // if (this.state.showRealApp) {
-    //  return this.props.navigation.navigate('main')
-    // } else {
       return <AppIntroSlider 
                   renderItem={this._renderItem} 
                   data={slides} 
                   onDone={this._onDone}
+                  dotStyle={{backgroundColor:"gray"}}
+                  activeDotStyle={{backgroundColor:"white"}}
                   />
-    // }
   }
 }
  

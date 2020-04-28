@@ -225,7 +225,7 @@ const validationSchema = Yup.object().shape({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#2B2C35",
     marginTop: 25
   },
   logoContainer: {
