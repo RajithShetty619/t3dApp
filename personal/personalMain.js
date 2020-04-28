@@ -69,10 +69,10 @@ export default function personalMain({navigation}) {
                    else
                     {
                       Alert.alert(
-                        'Preferences not set',
-                        'Please,set preference.',
+                        'New here?',
+                        'Lets get you started.',
                         [
-                          {text: 'OK', onPress: () => navigation.navigate("Auth",{screen:'preference',params:{id:"preferenceTopic"}})}
+                          {text: 'OK', onPress: () => navigation.navigate("getstarted")}
                         ]
                       );
                     }

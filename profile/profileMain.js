@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import { StyleSheet,View,TouchableOpacity,Image,AsyncStorage,Alert} from 'react-native';
-import {Container, Button, Content, Icon, Accordion, Text,Item,Input, Body } from 'native-base';
+import { StyleSheet,View,TouchableOpacity,Image,AsyncStorage,Alert,Text} from 'react-native';
+import {Container, Button, Content, Icon, Accordion,Item,Input, Body } from 'native-base';
 import fire from '../fire';
 import * as GoogleSignIn from 'expo-google-sign-in';
 import * as ImagePicker from 'expo-image-picker';
@@ -205,7 +205,7 @@ export default function profileMain({navigation}) {
                          <View style={{flexDirection:'row',justifyContent:'space-between',alignContent:'center',padding:10}}>
                            <View style={{paddingRight:10}}>
                          <Button rounded style={{backgroundColor:'#00BFFF',justifyContent:'space-between'}} onPress={()=>{setInput(false)}}>
-                           <Text>cancel</Text>
+                           <Text style={{paddingHorizontal:10}}>cancel</Text>
                          </Button>
                          </View>
                          <View style={{paddingleft:10}}>
@@ -260,7 +260,7 @@ export default function profileMain({navigation}) {
                             }
                           }
                           }}>
-                           <Text>submit</Text>
+                          <Text style={{paddingHorizontal:10}}>submit</Text>
                          </Button>
                          </View>
                          </View>

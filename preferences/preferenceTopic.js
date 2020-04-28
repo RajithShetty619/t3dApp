@@ -110,7 +110,6 @@ export default function preferenceTopic({navigation,route}) {
                 <Container style={{ justifyContent:'center',backgroundColor:'#2b2c35',paddingTop:24}}>
                     <Content>
                         <Content>
-                       
                         <ListItem itemDivider>
                           <View style={{flexDirection:'row',justifyContent:'space-around',flex:1}}>
                           <Text style={{fontSize:24,}}>Topic Prefrences</Text>

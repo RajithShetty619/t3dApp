@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignContent:'center',
     backgroundColor:'#2B2C35',
-    marginTop:20
+    paddingTop:20
   },
   title: {
     fontWeight:"500",
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     title: 'Personalized feed',
     subTitle:'Three recommendations per-section daily',
     text: 'Easy access to information\nto your personalized item',
-    image: require('../assets/topicStart.jpg'),
+    image: require('../assets/personalFood.jpg'),
     backgroundColor: '#febe29',
   },
   {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     title: 'General Feed',
     subTitle:'Alternative recommendations',
     text: "daily three generalized recommendation,\n with one-tap information",
-    image: require('../assets/IMG-5710.png'),
+    image: require('../assets/general.jpg'),
     backgroundColor: '#22bcb5',
   },
 ];
@@ -80,7 +80,7 @@ export default class getstarted extends React.Component {
     // User finished the introduction. Show real app through
     // navigation or simply by controlling state
     this.setState({ showRealApp: true });
-    this.props.navigation.navigate('main')
+    this.props.navigation.navigate("Auth",{screen:'preference',params:{id:"preferenceTopic"}})
 
   }
   _renderItem = ({ item }) => {

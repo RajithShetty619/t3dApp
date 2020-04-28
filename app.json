@@ -5,7 +5,7 @@
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "notification": {
-      "icon": "./assets/appimg.png",
+      "icon": "./assets/grayscale_img.png",
       "color": "#72bcd4", 
       "androidMode": "default"
     },
