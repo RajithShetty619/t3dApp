@@ -45,7 +45,7 @@ export default async function IsUptoDate(){
       }
       return arr[Math.floor(Math.random()*arr.length)]
     }   
-    let ran =Math.floor(Math.random()*10)
+    let ran =Math.floor(Math.random()*15)
     let path='/0/food/0/'+getDeter()+'/0/'+getFoodType()+'/0/'+getFood()+'/0/data/'+ran
    
     return path

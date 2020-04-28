@@ -223,7 +223,7 @@ const  exitAlert = () => {
                 iconName="ios-mail"
                 iconColor="#f9f2f2"
                 onBlur={handleBlur("email")}
-                style={{color:'white'}}
+                
               />
               <ErrorMessage errorValue={touched.email && errors.email} />
               <FormInput
@@ -257,7 +257,6 @@ const  exitAlert = () => {
           )}
       </Formik>
       <GoogleSignInButton style={{backgroundColor:'#2B2C35'}} onPress={_toggleAuth}>{" "}{buttonTitle()}{" "}</GoogleSignInButton>
-
       <Button
         title="Don't have an account? Sign Up"
         onPress={goToSignup}

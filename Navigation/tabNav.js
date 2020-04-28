@@ -10,7 +10,7 @@ function tabNav() {
         <tab.Navigator  
             initialRouteName="General"
             tabBarOptions={{
-            activeTintColor: '#0000A0',
+            activeTintColor: '#124494',
             inactiveTintColor: 'gray',
             keyboardHidesTabBar:true
            

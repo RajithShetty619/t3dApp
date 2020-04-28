@@ -68,10 +68,10 @@ import { View,ActivityIndicator,ImageBackground,Dimensions,Text} from 'react-nat
                     }}
         > 
           <ActivityIndicator size="large" color="#5d7bce" style={{alignItems:'center'}}/>
-          {/* <Text onPress={()=>this.props.navigation.navigate("index")}
+          <Text onPress={()=>this.props.navigation.navigate("index")}
                 style={{textAlign:'center',textAlignVertical:'bottom'}}
           >
-            Please Wait</Text> */}
+            Please Wait</Text>
         </ImageBackground>
       </View>
     );

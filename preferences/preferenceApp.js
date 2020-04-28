@@ -1,8 +1,10 @@
 import React, { useState,useEffect} from 'react'
 import {Alert,AsyncStorage} from 'react-native'
-import {Text,Container,Content,Body,CheckBox,ListItem,Button,Separator,View} from 'native-base';
+import {Text,Container,Content,Body,CheckBox,ListItem,Button,Separator,View,StyleProvider} from 'native-base';
 import fire from '../fire'
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import getTheme from '../native-base-theme/components';
+import material from '../native-base-theme/variables/material';
 
 
 export default function preferenceApp({navigation,route}) {
@@ -106,7 +108,8 @@ export default function preferenceApp({navigation,route}) {
   };  
 
     return(
-        <Container style={{ justifyContent:'center',backgroundColor:'black',paddingTop:24}}>
+      <StyleProvider style={getTheme(material)}>
+         <Container style={{ justifyContent:'center',backgroundColor:'#2b2c35',paddingTop:24}}>
              <Content>
                     <Content>
                       
@@ -125,7 +128,7 @@ export default function preferenceApp({navigation,route}) {
                       <ListItem>
                         <CheckBox checked={prefer.app_details.booksandreference} />
                         <Body>
-                            <Text style={{color:'#ffffff'}}>Book & Reference</Text>
+                            <Text style={{color:'#ffffff'}}>Books & References</Text>
                         </Body>
                     </ListItem>
                     </TouchableOpacity>
@@ -317,6 +320,7 @@ export default function preferenceApp({navigation,route}) {
                     </Button>
                     </Content>
                 </Content>
-            </Container>
-        )
+            </Container> 
+      </StyleProvider>
+       )
 }

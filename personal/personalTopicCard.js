@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { View,Image,AsyncStorage,BackHandler,Dimensions} from 'react-native'
+import { View,AsyncStorage,BackHandler,Dimensions,TouchableWithoutFeedback,ImageBackground,StyleSheet} from 'react-native'
 import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
 import firebase from 'firebase'
 import {useFocusEffect} from "@react-navigation/native";
@@ -24,6 +24,9 @@ export default function personalTopicCard ({route,navigation}){
     let {urlT1}=route.params
     let [urlT2,setUrlT2]=useState('../assets/loading.png')
     let [urlT3,setUrlT3]=useState('../assets/loading.png')
+    const [isPressed1,setPress1]=useState(false)
+    const [isPressed2,setPress2]=useState(false)
+    const [isPressed3,setPress3]=useState(false)
         useEffect(()=>{  
          async function Do() { 
            let  val2= await _retrieveData("topicData1")
@@ -51,63 +54,161 @@ export default function personalTopicCard ({route,navigation}){
         );
       
         return(
-            <Container style={{backgroundColor:'black', paddingTop:15,flex:1}}>
-                <Content>
-                    <View style={{paddingTop:20}}>
-                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
-                                                        borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                                <Image source={{uri: urlT1}} style={{height: 350, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
-                                resizeMode="stretch" />
-                            </CardItem>
-                            <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                                <Body>
-                               {cardT1?
-                               ( <Text >
-                                    {cardT1["topic_info"]}
-                                </Text>)
-                                :
-                                null}
-                                </Body>
-                            </CardItem>
-                        </Card>
-                    </View>
-                    <View >
-                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
-                                                        borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                                <Image source={{uri: urlT2}} style={{height: 350, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
-                                resizeMode="stretch" />
-                            </CardItem>
-                            <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                                <Body>
-                                <Text >
-                                    {cardT2["topic_info"]}
-                                </Text>
-                                </Body>
-                            </CardItem>
-                        </Card>
-                    </View>
-                    <View >
-                        <Card style={{ borderRadius: 16,borderColor:"black"}} >
-                            <CardItem cardBody style={{ backgroundColor:'black',borderTopLeftRadius: 16, borderTopRightRadius: 16,
-                                                        borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                                <Image source={{uri: urlT3}} style={{height: 350, width: Dimensions.get('window').width, flex: 1,borderRadius:16}} 
-                                resizeMode="stretch" />
-                            </CardItem>
-                            <CardItem style={{ borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
-                                <Body>
-                                <Text >
-                                    {cardT3["topic_info"]}
-                                </Text>
-                                </Body>
-                            </CardItem>
-                        </Card>
-                    </View>
-                </Content>
-            </Container>
-    
+            <Container style={{backgroundColor:'#2b2c35', paddingTop:15,flex:1}}>
+            <Content>
+                    <Card style={{ borderRadius: 16,borderColor:"#2b2c35"}} >
+                        <CardItem cardBody style={{ backgroundColor:'#2b2c35',borderRadius:16 }}>
+                            <TouchableWithoutFeedback onPress={()=>{setPress1(!isPressed1)}}>
+                               <View style={{ backgroundColor:'#2b2c35',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                    borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                    <ImageBackground
+                                source={{uri: urlT1}}
+                                style={styles.image}
+                                imageStyle={{borderRadius:16}}
+                                resizeMode="cover" 
+                                >
+                                    {isPressed1&&cardT1?
+                                    <View style={styles.opacity}>
+                                        <Text style={styles.info} >
+                                            {cardT1["topic_info"]}
+                                        </Text>
+                                    </View>
+                                    :
+                                    <View style={styles.imageDetail}>
+                                        <Text style={styles.textHeading}>
+                                            {cardT1["topic_name"]}
+                                        </Text>
+                                        <Text style={styles.details} >
+                                            {cardT1["category"]}  
+                                        </Text>
+                                    </View>
+                                    }
+                                    
+                                </ImageBackground> 
+                               </View>
+                              
+                            </TouchableWithoutFeedback>
+                            
+                        </CardItem>
+                    </Card>
+                    <Card style={{ borderRadius: 16,borderColor:"#2b2c35"}} >
+                        <CardItem cardBody style={{ backgroundColor:'#2b2c35',borderRadius:16 }}>
+                            <TouchableWithoutFeedback onPress={()=>{setPress2(!isPressed2)}}>
+                               <View style={{ backgroundColor:'#2b2c35',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                    borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                    <ImageBackground
+                                source={{uri: urlT2}}
+                                style={styles.image}
+                                imageStyle={{borderRadius:16}}
+                                resizeMode="cover" 
+                                >
+                                    {isPressed2?
+                                    <View style={styles.opacity}>
+                                        <Text style={styles.info} >
+                                            {cardT2["topic_info"]}
+                                        </Text>
+                                    </View>
+                                    :
+                                    <View style={styles.imageDetail}>
+                                        <Text style={styles.textHeading}>
+                                            {cardT2["topic_name"]}
+                                        </Text>
+                                        <Text style={styles.details} >
+                                            {cardT2["category"]}  
+                                        </Text>
+                                    </View>
+                                    }
+                                    
+                                </ImageBackground> 
+                               </View>
+                              
+                            </TouchableWithoutFeedback>
+                            
+                        </CardItem>
+                    </Card>
+                    <Card style={{ borderRadius: 16,borderColor:"#2b2c35"}} >
+                        <CardItem cardBody style={{ backgroundColor:'#2b2c35',borderRadius:16 }}>
+                            <TouchableWithoutFeedback onPress={()=>{setPress3(!isPressed3)}}>
+                               <View style={{ backgroundColor:'#2b2c35',borderTopLeftRadius: 16, borderTopRightRadius: 16,
+                                                    borderBottomRightRadius:16,borderBottomLeftRadius:16 }}>
+                                    <ImageBackground
+                                source={{uri: urlT3}}
+                                style={styles.image}
+                                imageStyle={{borderRadius:16}}
+                                resizeMode="cover" 
+                                >
+                                    {isPressed3?
+                                    <View style={styles.opacity}>
+                                        <Text style={styles.info} >
+                                            {cardT3["topic_info"]}
+                                        </Text>
+                                    </View>
+                                    :
+                                    <View style={styles.imageDetail}>
+                                        <Text style={styles.textHeading}>
+                                            {cardT3["topic_name"]}
+                                        </Text>
+                                        <Text style={styles.details} >
+                                            {cardT3["category"]} 
+                                        </Text>
+                                    </View>
+                                    }
+                                </ImageBackground> 
+                               </View>
+                            </TouchableWithoutFeedback>
+                        </CardItem>
+                    </Card>
+            </Content>
+        </Container>
         )
-    
-    
+     
 }
+const styles=StyleSheet.create({
+    image:{
+        flex:1,
+        height: Dimensions.get('window').height/2,
+        width: Dimensions.get('window').width/1.01,
+        borderRadius:16 ,
+        justifyContent:'flex-end'
+    },
+    opacity: {
+        borderRadius:16,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba( 0, 0, 0, 0.6 )',
+    },
+    info:{
+        color:'#f9efef',
+        padding: 3,
+        textAlign:"center",
+        paddingBottom:5
+    },
+    imageDetail:{
+        color:'#f9efef',
+        flex: .26,
+        backgroundColor: 'rgba( 0, 0, 0, 0.3 )',
+        marginHorizontal:60,
+        borderRadius:16,
+    },
+    textHeading:{
+        fontWeight:"500",
+        fontSize:18,
+        textAlign:'center',
+        color:'#f9efef',
+        borderRadius:5,
+        flexDirection:'column',
+    },
+    details:{
+        fontWeight:"300",
+        fontSize:13,
+        textAlign:'center',
+        textAlignVertical:'center',
+        alignSelf:'center',
+        color:'#2b2c35',
+        paddingHorizontal:5,
+        backgroundColor: '#f9efef',
+        borderRadius:30,
+        flexDirection:'column'
+    },
+})
