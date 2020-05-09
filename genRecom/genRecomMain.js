@@ -110,7 +110,11 @@ export default function General() {
                setCardT1(item)
                console.log(item["topic_pic"],"topicpic")
                firebase.storage().ref('/topics/'+item["topic_pic"]).getDownloadURL().then(data=>setUrlT1(data))
+<<<<<<< HEAD
               
+=======
+               
+>>>>>>> 4f9ecef727b673684f8319abf213e8f25b5fa1bc
             })
            await fire.database().ref('/0/general/topic/1').once("value",snapshot=>{
                let item=snapshot.val() 
@@ -450,6 +454,7 @@ const styles=StyleSheet.create({
         height: null,
         width: null,
         borderRadius:16 ,
+        resizeMode:'contain'
         
     },
     opacity: {
