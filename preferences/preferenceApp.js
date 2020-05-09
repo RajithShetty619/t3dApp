@@ -308,8 +308,8 @@ export default function preferenceApp({navigation,route}) {
                                             isValid("appData1")
                                             isValid("appData2")
                                             _storeData(date,"date")
-                                            if(id==="main")
-                                            {navigation.navigate('appNavigation',{screen:id})}
+                                            if(id==="Personal")
+                                            {navigation.navigate('AppNavigation',{screen:id})}
                                             else{
                                               navigation.navigate(id)
                                             }

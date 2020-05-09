@@ -36,7 +36,7 @@ const AuthNavigation = () => (
       name="Signup"
       component={Signup}
       options={{
-        title: "Sign Up",
+        title: "SignUp",
       }}
     />
     <Stack.Screen name="preference" component={preference}/>

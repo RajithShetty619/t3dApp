@@ -79,7 +79,7 @@ const validationSchema = Yup.object().shape({
         });
     })
     .catch(error => console.log(error))
-      navigation.navigate("appNavigation",{screen:"getstarted"})
+      navigation.navigate('AppNavigation',{screen:'tabNav',params:{screen:'Personal'}})
     } catch (error) {
       await actions.setFieldError("general");
     } finally {

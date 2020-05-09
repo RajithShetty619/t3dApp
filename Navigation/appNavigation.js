@@ -6,6 +6,7 @@ import getstarted from '../screen/getstarted'
 import {createStackNavigator} from '@react-navigation/stack'
 // import NavigationStack from '../src/navigation/NavigationStack';
 
+
 function AppNavigation(){
 
     const rootStack = createStackNavigator();

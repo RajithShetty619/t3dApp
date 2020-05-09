@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
-import {View,StyleSheet,ScrollView,Image,StatusBar,ImageBackground,BackHandler,Alert} from 'react-native';
-import {Card,CardItem,Text,Container,Content,Body} from 'native-base';
+import {View,StyleSheet,ScrollView,StatusBar,ImageBackground,BackHandler,Alert} from 'react-native';
+import {Card,CardItem,Text,Container,Content,} from 'native-base';
 import fire from '../fire'
 import firebase from 'firebase'
 import {  TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -110,8 +110,7 @@ export default function General() {
                setCardT1(item)
                console.log(item["topic_pic"],"topicpic")
                firebase.storage().ref('/topics/'+item["topic_pic"]).getDownloadURL().then(data=>setUrlT1(data))
-               //which is the tallest residential building.jpg
-               //which is the tallest residential building in the world.jpg
+              
             })
            await fire.database().ref('/0/general/topic/1').once("value",snapshot=>{
                let item=snapshot.val() 
@@ -408,7 +407,7 @@ export default function General() {
                                 <Card transparent style={{height:350,marginTop:10,}}>
                                 <CardItem style={{flex:1,height:null,width:300,backgroundColor:'#2b2c35'}}>
                                 <View style={{flex:1}}>
-                                    <ImageBackground source={{uri:urlA1}}
+                                    <ImageBackground source={{uri:urlA3}}
                                         style={styles.image}
                                         imageStyle={{borderRadius:16 }}
                                         >

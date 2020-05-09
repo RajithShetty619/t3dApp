@@ -14,16 +14,16 @@ function index({ navigation }) {
           fire.auth().onAuthStateChanged(user => {
             if(user) {
               setUser(user);
-              navigation.navigate('appNavigation')
+              navigation.navigate('AppNavigation')
             } else {
               const user = GoogleSignIn.getCurrentUser();
               if (user) {
-              navigation.navigate('appNavigation')
+              navigation.navigate('AppNavigation')
               
               setUser(user);
               } else {
                 setUser(null);
-              navigation.navigate("Auth")
+              navigation.navigate('Auth')
               }
             }
           });

@@ -80,7 +80,7 @@ const isValidFood=async(path)=>{
       if(path==='/0/app_details/0/entertainment') {return 12;}
       if(path==='/0/app_details/0/finance') {return 8;}
       if(path==='/0/app_details/0/fitness') {return 13;}
-      if(path==='/0/app_details/0/game') {return 12;}
+      if(path==='/0/app_details/0/game') {return 16;}
       if(path==='/0/app_details/0/lifestyle') {return 4;}
       if(path==='/0/app_details/0/music') {return 11;}
       if(path==='/0/app_details/0/news') {return 11;}
@@ -190,13 +190,13 @@ const isValidFood=async(path)=>{
         await AsyncStorage.multiRemove(keys)
         await isValidFood("foodData0")
         .then(async()=>await isValidApp("appData0"))
-          .then(async()=>await isValidTopic("topicData0"))
-            .then(async()=>await isValidFood("foodData2"))
-              .then(async()=>await isValidFood("foodData1"))
-                .then(async()=>await isValidApp("appData1"))
-                  .then(async()=>await isValidApp("appData2"))
-                    .then(async()=>await isValidTopic("topicData1"))
-                      .then(async()=>await isValidTopic("topicData2"))
+        .then(async()=>await isValidTopic("topicData0"))
+        .then(async()=>await isValidFood("foodData2"))
+        .then(async()=>await isValidFood("foodData1"))
+        .then(async()=>await isValidApp("appData1"))
+        .then(async()=>await isValidApp("appData2"))
+        .then(async()=>await isValidTopic("topicData1"))
+        .then(async()=>await isValidTopic("topicData2"))
                         
                       
         

@@ -3,13 +3,7 @@ import {Notifications} from 'expo';
 import * as Permissions from 'expo-permissions';
 import firebase from 'firebase';
 import fire from '../fire';
-<<<<<<< HEAD
-import { Text } from 'native-base';
-
-import { View,ActivityIndicator,ImageBackground,Dimensions} from 'react-native';
-=======
 import { View,ActivityIndicator,ImageBackground,Dimensions,Text} from 'react-native';
->>>>>>> 36d6a52f8972e1497dccf95953a5a406b7889b60
 
 
 

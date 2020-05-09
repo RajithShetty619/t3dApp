@@ -10,7 +10,6 @@ import FormButton from "../components/FormButton";
 import ErrorMessage from "../components/ErrorMessage";
 import GoogleSignInButton from '../components/GoogleSignInButton';
 import fire from '../../fire'
-import { CLIENT_ID } from '../config/GoogleSignIn'
 import firebase from 'firebase'
 import {useFocusEffect} from '@react-navigation/native'
 
@@ -74,7 +73,7 @@ const  exitAlert = () => {
           email,
         });
         await _loadPreference();
-        navigation.navigate("appNavigation",{screen:'main'})
+        navigation.navigate("AppNavigation",{screen:'main'})
         } 
         catch (error) {
         alert(error)
@@ -112,7 +111,7 @@ const  exitAlert = () => {
 
   };
   async function initAsync() {
-    await GoogleSignIn.initAsync({ clientId: CLIENT_ID });
+    await GoogleSignIn.initAsync({ clientId: "422452307527-am2mficgrt1dgk7t8sbmq029m2a2cnv0.apps.googleusercontent.com"|"422452307527-994mpjak4he06h37ovqfaluvr87kcend.apps.googleusercontent.com" });
     _syncUserWithStateAsync();
   };
 
@@ -169,7 +168,7 @@ const  exitAlert = () => {
 
       if (response.user) {
         await _loadPreference()
-        navigation.navigate("appNavigation",{screen:'main'})
+        navigation.navigate("AppNavigation",{screen:'main'})
          
       }
     } catch (error) {

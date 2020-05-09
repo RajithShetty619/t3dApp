@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native'
 import AuthNavigation from "./AuthNavigation";
-import appNavigation from '../../Navigation/appNavigation'
+import AppNavigation from '../../Navigation/AppNavigation'
 import index from "./index"
 const Stack = createStackNavigator();
 
@@ -35,10 +35,10 @@ function NavigationStack(){
                         }}
                     />
                     <Stack.Screen
-                        name="appNavigation"
-                        component={appNavigation}
+                        name="AppNavigation"
+                        component={AppNavigation}
                         options={{
-                            title: "appNavigation",
+                            title: "AppNavigation",
                         }}
                     /> 
                     <Stack.Screen

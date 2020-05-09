@@ -83,12 +83,9 @@ export default function personalTopicCard ({route,navigation}){
                                         </Text>
                                     </View>
                                     }
-                                    
                                 </ImageBackground> 
                                </View>
-                              
                             </TouchableWithoutFeedback>
-                            
                         </CardItem>
                     </Card>
                     <Card style={{ borderRadius: 16,borderColor:"#2b2c35"}} >
@@ -188,7 +185,7 @@ const styles=StyleSheet.create({
         color:'#f9efef',
         flex: .26,
         backgroundColor: 'rgba( 0, 0, 0, 0.3 )',
-        marginHorizontal:60,
+        marginHorizontal:30,
         borderRadius:16,
     },
     textHeading:{
